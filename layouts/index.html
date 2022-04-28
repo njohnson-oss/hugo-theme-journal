@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1>{{ .Site.Params.indexTitle }}</h1>
+<p>{{ .Site.Params.indexIntro }}</p>
+<h2>Navigation Links</h2>
+<nav>
+  <p>
+  {{- range .Site.Menus.main }}
+  <a href="{{ .URL }}" rel="noreferrer">{{ .Name }}</a><br>
+  {{- end }}
+  </p>
+</nav>
+<h2>Journal Entries</h2>
+{{ partial "metadata.html" . }}
+{{ end }}

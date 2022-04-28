@@ -1,0 +1,10 @@
+name = "Journal"
+license = "GPLv3 or later"
+licenselink = "https://www.gnu.org/licenses/gpl-3.0.en.html"
+description = "Minimalist journaling theme."
+tags = ["journal"]
+features = ["nojs", "minimal", "lightweight", "contrast"]
+min_version = "0.41.0"
+
+[author]
+  name = "Nicholas Johnson"

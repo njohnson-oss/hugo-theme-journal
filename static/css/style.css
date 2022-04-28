@@ -1,0 +1,88 @@
+/*
+    journal-gmi  Generates a Gemini capsule from existing files
+    Copyright (C) 2021  Nicholas Johnson
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+body {
+    line-height: 1.4;
+    background-color: black;
+    color: lightgray;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    margin: 0 auto; /* remove default styling */
+}
+
+@media only screen and (min-width: 780px) {
+    body {
+        max-width: 780px;
+    }
+}
+
+h1 { color: #ff0000; font-size: 22px; }
+h2 { color: #66ff00; font-size: 20px; }
+h3 { color: #ff007f; font-size: 18px;}
+
+p {
+    overflow-wrap: break-word;
+}
+
+a {
+    color: #0091ea;
+    text-decoration: none; /* remove default styling */
+}
+
+a:hover {
+    color: black;
+    background-color: #004eff;
+}
+
+pre {
+    color: #ffffba;
+    overflow: auto;
+}
+
+header pre {
+    margin-bottom: 2em;
+    line-height: 1.1em;
+    overflow: hidden;
+}
+
+footer p {
+    margin-top: 2em;
+    margin-bottom: 0em;
+}
+
+blockquote p {
+    margin-bottom: 0em;
+}
+
+ol {
+    list-style: decimal-leading-zero inside none;
+}
+
+ul {
+    list-style: disc inside none;
+}
+
+p, pre, ul, ol, blockquote {
+    margin-bottom: 1.4em;
+}
