@@ -1,4 +1,4 @@
-{{ range (where .Site.RegularPages.ByTitle "Section" "post").ByPublishDate.Reverse }}
+{{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 {{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
 <article>
   <header>
