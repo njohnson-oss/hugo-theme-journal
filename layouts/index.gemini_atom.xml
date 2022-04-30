@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ replace .Permalink "https://" "gemini://" }}</id>
-    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ .Site.Title }}</title>
     <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self" />
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />{{ if not .Date.IsZero }}{{ end }}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ .Site.Title }}</title>
     <link href="{{ .Permalink }}atom.xml" rel="self"/>
     <link href="{{ .Permalink }}"/>{{ if not .Date.IsZero }}
     <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>{{ end }}
@@ -11,12 +11,12 @@
     </author>
     <generator>Hugo -- gohugo.io</generator>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
-        {{ `<title type="html">{{ .Title }}]]></title>
+        <title type="html">{{ .Title }}></title>
         <link href="{{ .Permalink }}"/>
         <id>{{ .Permalink }}</id>
         <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
         {{- if .Content }}
-        {{ `<content type="html"><{{ .Content }}</content>
+        <content type="html"><{{ .Content }}</content>
         {{- end }}
     </entry>{{ end }}
 </feed>
