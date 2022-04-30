@@ -4,7 +4,7 @@
     <title>{{ .Site.Title }}</title>
     <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self">
-    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate">{{ if not .Date.IsZero }}{{ end }}
+    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate">
     <author>
         <name>{{ .Site.Author.name }}</name>
         <email>{{ .Site.Author.email }}</email>
