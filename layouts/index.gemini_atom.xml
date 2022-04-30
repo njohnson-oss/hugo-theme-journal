@@ -6,12 +6,12 @@
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self" />
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />{{ if not .Date.IsZero }}{{ end }}
     <author>
-        <name>{{ $.Site.Author.name }}</name>
-        <email>{{ $.Site.Author.email }}</email>
+        <name>{{ .Site.Author.name }}</name>
+        <email>{{ .Site.Author.email }}</email>
     </author>
     <generator>Hugo -- gohugo.io</generator>
-    <rights type="html">{{ $.Site.Copyright }} {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}</rights>
-    <subtitle>{{ $.Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
+    <rights type="html">{{ .Site.Copyright }} {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ .Site.Author.name }}</rights>
+    <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
         <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
         <title>{{ .Title }}</title>
