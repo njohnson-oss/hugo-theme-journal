@@ -3,8 +3,8 @@
     <id>{{ replace .Permalink "https://" "gemini://" }}</id>
     <title>{{ .Site.Title }}</title>
     <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
-    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self">
-    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate">
+    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self" />
+    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />
     <author>
         <name>{{ .Site.Author.name }}</name>
         <email>{{ .Site.Author.email }}</email>
@@ -16,6 +16,6 @@
         <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
         <title>{{ .Title }}</title>
         <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
-        <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate">
+        <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />
     </entry>{{ end }}
 </feed>
