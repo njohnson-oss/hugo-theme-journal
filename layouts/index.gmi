@@ -1,10 +1,10 @@
 {{ define "main" }}
-# {{ .Site.Params.indexTitle }}
-{{ .Site.Params.indexIntro }}
+# {{ .Site.Params.indexTitle | safeHTML }}
+{{ .Site.Params.indexIntro | safeHTML }}
 
 ## Navigation Links
 {{ range .Site.Menus.main -}}
-=> .{{ .URL }} {{ .Name }}
+=> .{{ .URL }} {{ .Name | safeHTML }}
 {{ end }}
 ## Journal Entries
 {{ partial "metadata.gmi" . }}{{ end }}

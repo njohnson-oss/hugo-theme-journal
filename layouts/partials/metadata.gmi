@@ -2,10 +2,10 @@
 {{- range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 {{- $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
 {{- .PublishDate.Format $dateFormat }} - {{ .ReadingTime }} minute read
-=> .{{ .RelPermalink }} {{ .Title }}
+=> .{{ .RelPermalink }} {{ .Title | safeHTML }}
 
 {{ end }}
 {{- range last 1 (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 {{- $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
 {{- .PublishDate.Format $dateFormat }} - {{ .ReadingTime }} minute read
-=> .{{ .RelPermalink }} {{ .Title }}{{ end }}
+=> .{{ .RelPermalink }} {{ .Title | safeHTML }}{{ end }}
