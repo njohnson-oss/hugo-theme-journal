@@ -1,15 +1,3 @@
-{{ $pctx := . }}
-{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
-{{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
-{{- $pages = $pctx.RegularPages }}
-{{- else }}
-{{- $pages = $pctx.Pages }}
-{{- end }}
-{{- $limit := .Site.Config.Services.RSS.Limit }}
-{{- if ge $limit 1 }}
-{{- $pages = $pages | first $limit }}
-{{- end -}}
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ replace .Permalink "https://" "gemini://" }}</id>
@@ -23,7 +11,7 @@
     </author>
     <generator>Hugo -- gohugo.io</generator>
     <rights type="html">{{ $.Site.Copyright }} {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}</rights>
-    <subtitle>{{ $.Site.Params.Description }}</subtitle>{{ range $pages }}
+    <subtitle>{{ $.Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
         <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
         <title>{{ .Title }}</title>

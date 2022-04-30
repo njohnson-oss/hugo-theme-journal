@@ -1,15 +1,3 @@
-{{ $pctx := . }}
-{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
-{{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
-{{- $pages = $pctx.RegularPages }}
-{{- else }}
-{{- $pages = $pctx.Pages }}
-{{- end }}
-{{- $limit := .Site.Config.Services.RSS.Limit }}
-{{- if ge $limit 1 }}
-{{- $pages = $pages | first $limit }}
-{{- end -}}
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
@@ -21,7 +9,7 @@
         <name>{{ $.Site.Author.name }}</name>
         <email>{{ $.Site.Author.email }}</email>
     </author>
-    <generator>Hugo -- gohugo.io</generator>{{ range $pages }}
+    <generator>Hugo -- gohugo.io</generator>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
         {{ `<title type="html"><![CDATA[` | safeHTML }}{{ .Title }}]]></title>
         <link href="{{ .Permalink }}"/>
