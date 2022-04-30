@@ -1,0 +1,32 @@
+{{ $pctx := . }}
+{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
+{{- $pages := slice }}
+{{- if or $.IsHome $.IsSection }}
+{{- $pages = $pctx.RegularPages }}
+{{- else }}
+{{- $pages = $pctx.Pages }}
+{{- end }}
+{{- $limit := .Site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+{{- $pages = $pages | first $limit }}
+{{- end -}}
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>{{ replace .Permalink "https://" "gemini://" }}</id>
+    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self" />
+    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />{{ if not .Date.IsZero }}{{ end }}
+    <author>
+        <name>{{ $.Site.Author.name }}</name>
+    </author>
+    <generator>Hugo -- gohugo.io</generator>
+    <rights type="html">{{ $.Site.Copyright }} {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}</rights>
+    <subtitle>{{ $.Site.Params.Description }}</subtitle>{{ range $pages }}
+    <entry>
+        <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
+        <title>{{ .Title }}</title>
+        <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+        <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />
+    </entry>{{ end }}
+</feed>
