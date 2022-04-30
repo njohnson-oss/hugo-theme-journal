@@ -1,0 +1,6 @@
+{{ define "main" }}
+=> ./{{ replaceRE ".+?/" "../" .RelPermalink }} Return to homepage
+
+{{ $content := .RawContent }}
+{{- $content = $content | replaceRE `\[(.+?)\]\((.+?)\)` "=> $2 $1" }}
+{{- $content  }}{{ end }}

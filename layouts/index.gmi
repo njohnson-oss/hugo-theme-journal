@@ -1,0 +1,10 @@
+{{ define "main" }}
+# {{ .Site.Params.indexTitle }}
+{{ .Site.Params.indexIntro }}
+
+## Navigation Links
+{{ range .Site.Menus.main -}}
+=> .{{ .URL }} {{ .Name }}
+{{ end }}
+## Journal Entries
+{{ partial "metadata.gmi" . }}{{ end }}

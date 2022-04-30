@@ -1,0 +1,4 @@
+{{ partial "header.gmi" . }}
+{{ block "main" . }}{{ end }}
+
+{{ partial "footer.gmi" . -}}
