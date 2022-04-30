@@ -11,12 +11,12 @@
     </author>
     <generator>Hugo -- gohugo.io</generator>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
-        {{ `<title type="html"><![CDATA[` | safeHTML }}{{ .Title }}]]></title>
+        {{ `<title type="html">{{ .Title }}]]></title>
         <link href="{{ .Permalink }}"/>
         <id>{{ .Permalink }}</id>
         <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
         {{- if .Content }}
-        {{ `<content type="html"><![CDATA[` | safeHTML }}{{ .Content }}]]></content>
+        {{ `<content type="html"><{{ .Content }}</content>
         {{- end }}
     </entry>{{ end }}
 </feed>
