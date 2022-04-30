@@ -19,6 +19,7 @@
     <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />{{ if not .Date.IsZero }}{{ end }}
     <author>
         <name>{{ $.Site.Author.name }}</name>
+        <email>{{ $.Site.Author.email }}</email>
     </author>
     <generator>Hugo -- gohugo.io</generator>
     <rights type="html">{{ $.Site.Copyright }} {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}</rights>
