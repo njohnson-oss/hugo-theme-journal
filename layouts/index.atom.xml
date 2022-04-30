@@ -1,4 +1,4 @@
-{{ printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink }}</id>
     <title>{{ .Site.Title }}</title>
@@ -17,6 +17,6 @@
         <title type="html">{{ .Title }}></title>
         <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
         <link href="{{ .Permalink }}">
-        <content type="html">{{ .Content }}</content>
+        <content type="html">{{ .Content | html }}</content>
     </entry>{{ end }}
 </feed>
