@@ -1,5 +1,5 @@
 {{ define "main" }}
-=> ./{{ replaceRE ".+?/" "../" .RelPermalink }} Return to homepage
+=> ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} Return to homepage
 
 {{ $content := .RawContent }}
 {{- $content = $content | replaceRE `\[(.+?)\]\((.+?)\)` "=> $2 $1" }}

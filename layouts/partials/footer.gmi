@@ -1,2 +1,2 @@
-Unless otherwise noted, the writing in this journal is licensed under {{ $.Site.Copyright }}
-Copyright {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}
+Unless otherwise noted, the writing in this journal is licensed under {{ $.Site.Copyright | safeHTML }}
+Copyright {{ .Site.Params.beginCopyrightYear | safeHTML }}-{{ now.Format "2006" | safeHTML }} {{ $.Site.Author.name | safeHTML }}
