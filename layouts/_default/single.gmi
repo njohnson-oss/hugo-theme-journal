@@ -3,4 +3,5 @@
 
 {{ $content := .RawContent }}
 {{- $content = $content | replaceRE `\[(.+?)\]\((.+?)\)` "=> $2 $1" }}
+{{- $content = $content | replaceRE `\*{3}(.+?)\*{3}|\*{2}(.+?)\*{2}|\*{1}(.+?)\*{1}` "$1$2$3$4$5$6" }}
 {{- $content | safeHTML }}{{ end }}
