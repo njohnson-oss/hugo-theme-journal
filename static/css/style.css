@@ -31,9 +31,9 @@ body {
     margin: 0 auto; /* remove default styling */
 }
 
-@media only screen and (min-width: 780px) {
+@media only screen and (min-width: 40em) {
     body {
-        max-width: 780px;
+        max-width: 40em;
     }
 }
 
