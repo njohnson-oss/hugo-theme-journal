@@ -57,13 +57,12 @@ a:hover {
 
 pre {
     color: #ffffba;
-    overflow: auto;
+    overflow: scroll;
 }
 
 header pre {
     margin-bottom: 2em;
     line-height: 1.1em;
-    overflow: hidden;
 }
 
 footer p {
