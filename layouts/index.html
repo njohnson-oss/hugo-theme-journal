@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "main" -}}
 <main>
   <h1>{{ .Site.Params.indexTitle }}</h1>
   <p>{{ .Site.Params.indexIntro }}</p>
@@ -11,6 +11,6 @@
     </p>
   </nav>
   <h2>Journal Entries</h2>
-  {{ partial "metadata.html" . }}
+  {{ partial "metadata.html" . -}}
 </main>
-{{ end }}
+{{- end }}

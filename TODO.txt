@@ -1,4 +1,3 @@
 * fix logo being cut off on mobile devices
 * make navigation link tap targets bigger on mobile devices
 * make journal entry link tap targets bigger on mobile devices
-* remove extra newlines from HTML output

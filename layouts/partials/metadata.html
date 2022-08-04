@@ -1,5 +1,5 @@
-{{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
-{{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
+{{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
+{{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" -}}
 <article>
   <header>
     <p>{{ .PublishDate.Format $dateFormat }} - {{ .ReadingTime }} minute read<br>
