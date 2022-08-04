@@ -1,4 +1,5 @@
 {{ define "main" }}
+<main>
 <h1>{{ .Site.Params.indexTitle }}</h1>
 <p>{{ .Site.Params.indexIntro }}</p>
 <h2>Navigation Links</h2>
@@ -11,4 +12,5 @@
 </nav>
 <h2>Journal Entries</h2>
 {{ partial "metadata.html" . }}
+</main>
 {{ end }}
