@@ -60,13 +60,19 @@ pre {
     overflow: scroll;
 }
 
-header pre {
+body > header {
     margin-bottom: 2em;
+}
+
+body > header pre {
     line-height: 1.1em;
 }
 
-footer p {
+body > footer {
     margin-top: 2em;
+}
+
+body > footer p {
     margin-bottom: 0em;
 }
 
