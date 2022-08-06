@@ -64,8 +64,8 @@ body > header {
     margin-bottom: 2em;
 }
 
-body > header pre {
-    line-height: 1.1em;
+#logo {
+    line-height: normal;
 }
 
 body > footer {
