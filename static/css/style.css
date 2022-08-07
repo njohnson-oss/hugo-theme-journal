@@ -82,7 +82,7 @@ blockquote p {
 }
 
 ol {
-    list-style: decimal-leading-zero inside none;
+    list-style: decimal inside none;
 }
 
 ul {
