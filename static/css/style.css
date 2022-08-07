@@ -58,6 +58,7 @@ a:hover {
 pre {
     color: #ffffba;
     overflow: scroll;
+    line-height: normal;
 }
 
 body > header {
