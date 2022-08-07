@@ -97,12 +97,12 @@ nav ul {
     list-style: none;
 }
 
+#return {
+    margin-bottom: 2em;
+}
+
 @media (pointer: coarse) {
     .navlink {
         margin-bottom: 1em;
-    }
-
-    #return {
-        margin-bottom: 2em;
     }
 }
