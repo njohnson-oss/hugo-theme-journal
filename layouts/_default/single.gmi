@@ -1,6 +1,7 @@
 {{ define "main" }}
 => ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} Return to homepage
 
+
 {{ $content := .RawContent }}
 {{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` "\n=> $2 $1" }}
 {{- $content = $content | replaceRE `\*{3}(.+?)\*{3}|\*{2}(.+?)\*{2}|\*{1}(.+?)\*{1}` "$1$2$3$4$5$6" }}
