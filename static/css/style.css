@@ -98,7 +98,11 @@ nav ul {
 }
 
 @media (pointer: coarse) {
-    .return, .navlink {
+    .navlink {
         margin-bottom: 1em;
+    }
+
+    #return {
+        margin-bottom: 2em;
     }
 }
