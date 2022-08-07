@@ -1,1 +1,3 @@
 - fix "layouts/_default/single.gmi" changing preformatted text
+- support inline links for HTML. need regex for single.gmi to move links to the
+  bottom of the page content
