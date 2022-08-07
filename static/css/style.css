@@ -92,3 +92,13 @@ ul {
 p, pre, ul, ol, blockquote {
     margin-bottom: 1.4em;
 }
+
+nav ul {
+    list-style: none;
+}
+
+@media (pointer: coarse) {
+    .return, .navlink {
+        margin-bottom: 1em;
+    }
+}
