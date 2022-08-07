@@ -1,0 +1,1 @@
+- fix "layouts/_default/single.gmi" changing preformatted text
