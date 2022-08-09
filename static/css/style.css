@@ -57,7 +57,7 @@ a:hover {
 
 pre {
     color: #ffffba;
-    overflow: scroll;
+    overflow: auto;
     line-height: normal;
 }
 
