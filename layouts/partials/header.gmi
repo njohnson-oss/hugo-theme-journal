@@ -1,3 +1,3 @@
 ```journal logo
-{{ $.Site.Params.logo | safeHTML }}
+{{ readFile "/content/templates/logo" | safeHTML }}
 ```
