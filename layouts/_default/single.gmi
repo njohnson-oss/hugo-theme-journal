@@ -1,5 +1,5 @@
 {{ define "main" }}
-=> ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} Return to homepage
+=> ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} 🔗 Return to homepage
 
 
 {{ $content := .RawContent }}
