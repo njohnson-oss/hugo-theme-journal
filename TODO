@@ -1,5 +1,4 @@
 - put date written somewhere in page
-- give all pages an h1 heading based on their title
 - add tag support
 - fix "layouts/_default/single.gmi" changing preformatted text
 - add support for inline elements for HTML

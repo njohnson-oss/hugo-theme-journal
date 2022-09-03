@@ -2,6 +2,7 @@
 => ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} 🔗 Return to homepage
 
 
+# {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
 {{- $content = $content | replaceRE `\n####{0,3}` "\n###" }}
 {{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` "\n=> $2 $1" }}

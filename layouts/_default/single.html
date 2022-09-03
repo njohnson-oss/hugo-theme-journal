@@ -3,6 +3,7 @@
   <p id="return"><a href="/" rel="noreferrer">🔗 Return to homepage</a></p>
 </nav>
 <main>
+  <h1 id="{{ .File.TranslationBaseName }}">{{ .Name }}</h1>
   {{ .Content -}}
 </main>
 {{- end }}
