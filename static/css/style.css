@@ -39,7 +39,10 @@ body {
 
 h1 { color: #ff0000; font-size: 22px; }
 h2 { color: #66ff00; font-size: 20px; }
-h3 { color: #ff007f; font-size: 18px;}
+h3 { color: #ff007f; font-size: 18px; }
+h4 { color: #ff007f; font-size: 18px; }
+h5 { color: #ff007f; font-size: 18px; }
+h6 { color: #ff007f; font-size: 18px; }
 
 p {
     overflow-wrap: break-word;
