@@ -2,7 +2,7 @@
 {{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" -}}
 <article>
   <header>
-    <p>{{ .PublishDate.Format $dateFormat }} - {{ .ReadingTime }} minute read<br>
+    <p>📆 {{ .PublishDate.Format $dateFormat }} | ⏱️ {{ .ReadingTime }} minute read<br>
     <a href="{{ .RelPermalink }}" rel="noreferrer">🔗 {{ .Title }}</a></p>
   </header>
 </article>
