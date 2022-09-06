@@ -1,4 +1,4 @@
-- create shortcode for relative root
+- fix Gemini pages' relative URL handling
 - put date written and time to read somewhere in page
 - add tag support
 - fix "layouts/_default/single.gmi" changing preformatted text
