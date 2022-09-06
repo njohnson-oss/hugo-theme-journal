@@ -1,5 +1,4 @@
 - create shortcode for relative root
-- allow link emojis to be turned off on a per-page basis
 - put date written and time to read somewhere in page
 - add tag support
 - fix "layouts/_default/single.gmi" changing preformatted text
