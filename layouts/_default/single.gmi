@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $emoji := cond (.Page.Params.nolinkemoji | default false) "" "🔗 " -}}
-=> ./{{ replaceRE ".+?/" "../" .RelPermalink | safeURL }} 🔗 Return to homepage
+=> / 🔗 Return to homepage
 
 
 # {{ .Name | safeHTML }}
