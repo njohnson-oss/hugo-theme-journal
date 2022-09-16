@@ -3,6 +3,9 @@
 => / 🔗 Return to homepage
 
 
+{{ if .Page.Params.pageinfo }}{{ partial "pageinfo" . }}
+
+{{ end -}}
 # {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
 {{- $content = $content | replaceRE `\n####{0,3}` "\n###" }}

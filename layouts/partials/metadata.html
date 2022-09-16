@@ -1,8 +1,7 @@
 {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
-{{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" -}}
 <article>
   <header>
-    <p>📆 {{ .PublishDate.Format $dateFormat }} | ⏱️ {{ .ReadingTime }} minute read<br>
+    <p>{{ partial "pageinfo" . }}<br>
     <a href="{{ .RelPermalink }}" rel="noreferrer">🔗 {{ .Title }}</a></p>
   </header>
 </article>
