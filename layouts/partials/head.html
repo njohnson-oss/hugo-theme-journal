@@ -4,6 +4,6 @@
   <meta name="description" content="{{ $.Site.Params.description }}">
   <meta name="keywords" content="{{ $.Site.Params.keywords }}">
   <meta name="theme-color" content="#000">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
   <title>{{ $.Site.Title }}</title>
 </head>

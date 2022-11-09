@@ -7,12 +7,7 @@ $ git clone <repository-url> themes/hugo-theme-journal
 ```
 
 ## Generate The Blog
-Since Hugo can't separate the Gemtext and HTML output by itself, this theme uses two scripts to handle the output:
-
-* `python3 themes/hugo-theme-journal/scripts/generate.py` outputs the site and the capsule
-* `python3 themes/hugo-theme-journal/scripts/clean.py` removes previously generated output
-
-If the correct media types, output formats, markup settings, and outputs are not specified in config.toml, the above scripts may fail or the blog may render correctly.
+In order to render the blog in Gemini and Web format, it's best to render it with separate configs.
 
 ## License
 GPLv3 or later
