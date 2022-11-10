@@ -1,0 +1,22 @@
+[mediaTypes]
+  [mediaTypes."application/atom"]
+    suffixes = ["xml"]
+  [mediaTypes."text/gemini"]
+    suffixes = ["gmi"]
+
+[outputFormats]
+  [outputFormats.Atom]
+    mediaType = "application/atom"
+    baseName = "atom"
+  [outputFormats.Gemini]
+    mediaType = "text/gemini"
+  [outputFormats.Gemini_Atom]
+    mediaType = "application/atom"
+    baseName = "atom"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = true
+    [markup.goldmark.extensions]
+      linkify = false
