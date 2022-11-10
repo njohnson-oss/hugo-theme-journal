@@ -2,3 +2,4 @@
 - add tag support
 - fix "layouts/_default/single.gmi" changing preformatted text
 - add support for inline elements for HTML
+- make logo, header, intro text, etc. optional
