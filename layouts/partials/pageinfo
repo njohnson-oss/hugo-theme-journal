@@ -1,2 +1,2 @@
 {{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" -}}
-📆 {{ .Page.PublishDate.Format $dateFormat | safeHTML }} | ⏱️  {{ .Page.ReadingTime | safeHTML }} minute read
+{{ emojify ":calendar:" }} {{ .Page.PublishDate.Format $dateFormat | safeHTML }} | {{ emojify ":stopwatch:" }} {{ .Page.ReadingTime | safeHTML }} minute read

@@ -1,2 +1,2 @@
-{{ $emoji := cond (.Page.Params.nolinkemoji | default false) "" "🔗 " -}}
+{{ $emoji := cond (.Page.Params.nolinkemoji | default false) "" (emojify ":link: ") -}}
 <a href="{{ .Destination | safeURL }}" rel="noreferrer">{{ $emoji }}{{ .Text | safeHTML }}</a>

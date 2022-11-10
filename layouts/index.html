@@ -6,7 +6,7 @@
   <nav>
     <ul>
     {{- range .Site.Menus.main }}
-    <li class="navlink"><a href="{{ .URL }}" rel="noreferrer">🔗 {{ .Name }}</a></li>
+	<li class="navlink"><a href="{{ .URL }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Name }}</a></li>
     {{- end }}
     </ul>
   </nav>
