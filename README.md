@@ -3,7 +3,7 @@ An accessible, no-JS, minimalist, high-contrast Hugo theme that outputs Gemtext 
 
 ## Clone to Your Theme Directory
 ```bash
-$ git clone <repository-url> themes/hugo-theme-journal
+$ git clone <repository-url> themes/journal
 ```
 
 ## Generate The Blog

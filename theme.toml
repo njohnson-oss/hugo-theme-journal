@@ -1,4 +1,4 @@
-name = "Journal"
+name = "journal"
 license = "GPLv3 or later"
 licenselink = "https://www.gnu.org/licenses/gpl-3.0.en.html"
 description = "Minimalist journaling theme."
