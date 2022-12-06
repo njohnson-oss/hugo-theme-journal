@@ -3,7 +3,7 @@
 => / 🔗 Return to homepage
 
 
-{{ if .Page.Params.pageinfo }}{{ partial "pageinfo" . }}
+{{ if (.Page.Params.pageinfo | default true) }}{{ partial "pageinfo" . }}
 
 {{ end -}}
 # {{ .Name | safeHTML }}

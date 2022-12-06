@@ -2,7 +2,7 @@
 <nav>
   <p id="return"><a href="/" rel="noreferrer">🔗 Return to homepage</a></p>
 </nav>
-{{- if .Page.Params.pageinfo }}
+{{- if (.Page.Params.pageinfo | default true) }}
 <p>{{ partial "pageinfo" . }}</p>{{ end }}
 <main>
   <h1 id="{{ .File.TranslationBaseName }}">{{ .Name }}</h1>
