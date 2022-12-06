@@ -100,7 +100,7 @@ ul {
     list-style: disc inside none;
 }
 
-p, pre, ul, ol, blockquote {
+p, main > pre, ul, ol, blockquote, .highlight {
     margin-bottom: 1.4em;
 }
 
