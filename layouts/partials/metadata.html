@@ -2,7 +2,7 @@
 <article>
   <header>
     <p>{{ partial "pageinfo" . }}<br>
-	<a href="{{ .RelPermalink }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Title }}</a></p>
+	<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Title }}</a></p>
   </header>
 </article>
 {{ end }}

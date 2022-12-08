@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <nav>
-  <p id="return"><a href="/" rel="noreferrer">🔗 Return to homepage</a></p>
+  <p><a class="link" href="/" rel="noreferrer">🔗 Return to homepage</a></p>
 </nav>
 {{- if (.Page.Params.pageinfo | default true) }}
 <p>{{ partial "pageinfo" . }}</p>{{ end }}

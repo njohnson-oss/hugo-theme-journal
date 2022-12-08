@@ -1,119 +1,133 @@
 /*
-    hugo-theme-journal  Hugo theme for my journal
-    Copyright (C) 2022  Nicholas Johnson
+	hugo-theme-journal  Hugo theme for my journal
+	Copyright (C) 2022  Nicholas Johnson
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
+h1 {
+	color: #ff0000;
+	font-size: 22px;
 }
 
-body {
-    line-height: 1.4;
-    background-color: black;
-    color: lightgray;
-    padding: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0 auto; /* remove default styling */
+h2 {
+	color: #66ff00;
+	font-size: 20px;
 }
 
-@media only screen and (min-width: 40em) {
-    body {
-        max-width: 40em;
-    }
+h3, h4, h5, h6 {
+	color: #ff007f;
+	font-size: 18px;
 }
 
-h1 { color: #ff0000; font-size: 22px; }
-h2 { color: #66ff00; font-size: 20px; }
-h3 { color: #ff007f; font-size: 18px; }
-h4 { color: #ff007f; font-size: 18px; }
-h5 { color: #ff007f; font-size: 18px; }
-h6 { color: #ff007f; font-size: 18px; }
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
 
 p {
-    overflow-wrap: break-word;
-}
-
-a {
-    color: #0091ea;
-    text-decoration: none; /* remove default styling */
-}
-
-a:hover {
-    color: black;
-    background-color: #004eff;
+	margin-top: 0;
+	overflow-wrap: break-word;
 }
 
 pre {
-    color: #ffffba;
-    overflow: auto;
-    line-height: normal;
-}
-
-body > header {
-    margin-bottom: 2em;
-}
-
-#logo {
-    line-height: normal;
-}
-
-body > footer {
-    margin-top: 2em;
-}
-
-body > footer p {
-    margin-bottom: 0em;
+	color: #ffffba;
+	line-height: normal;
+	overflow: auto;
+	margin-bottom: 1.4em;
 }
 
 blockquote {
-    padding: 0.5em;
-    background-color: #272822;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
-    font-style: italic;
+	background-color: #272822;
+	font-style: italic;
+	margin: 1.4em;
+	padding: 0.5em;
 }
 
 blockquote p {
-    margin-bottom: 0em;
+	margin-bottom: 0;
 }
 
 ol {
-    list-style: decimal inside none;
+	list-style: decimal inside none;
+	padding: 0;
 }
 
 ul {
-    list-style: disc inside none;
+	list-style: disc inside none;
+	padding: 0;
 }
 
-p, main > pre, ul, ol, blockquote, .highlight {
-    margin-bottom: 1.4em;
+p, ul, ol, blockquote {
+	margin-bottom: 1.4em;
 }
 
-nav ul {
-    list-style: none;
+.body {
+	background-color: black;
+	color: lightgray;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	line-height: 1.4;
+	margin: 0 auto;
+	padding: 1.4em 0;
 }
 
-#return {
-    margin-bottom: 2em;
+@media only screen and (min-width: 40em) {
+	.body {
+		max-width: 40em;
+	}
+}
+
+.footer {}
+
+.footer__text {
+	margin-bottom: 0;
+	margin-top: 2em;
+}
+
+.highlight {
+	margin-bottom: 1.4em;
+	overflow: auto;
+}
+
+.highlight pre {
+	margin: 0;
+}
+
+.link {
+	color: #0091ea;
+	text-decoration: none;
+}
+
+.link:hover {
+	background-color: #004eff;
+	color: black;
+}
+
+.list {
+	list-style: none;
+	margin-top: 0;
 }
 
 @media (pointer: coarse) {
-    .navlink {
-        margin-bottom: 1em;
-    }
+	.list__item {
+		margin-bottom: 1em;
+	}
+}
+
+.logo {}
+
+.logo__text {
+	margin-bottom: 2em;
+	margin-top: 0;
 }

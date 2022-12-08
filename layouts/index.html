@@ -4,9 +4,9 @@
   <p>{{ .Site.Params.indexIntro }}</p>
   <h2>Navigation Links</h2>
   <nav>
-    <ul>
+    <ul class="list">
     {{- range .Site.Menus.main }}
-	<li class="navlink"><a href="{{ .URL }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Name }}</a></li>
+	<li class="list__item"><a class="link" href="{{ .URL }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Name }}</a></li>
     {{- end }}
     </ul>
   </nav>
