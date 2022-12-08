@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $emoji := cond (.Page.Params.showlinkemoji | default true) "{{ emojify ":link:" }} " "" -}}
+{{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
 => / {{ emojify ":link:" }} Return to homepage
 
 
