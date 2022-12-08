@@ -1,4 +1,3 @@
 <footer class="footer">
-  <p class="footer__text">Unless otherwise noted, the writing in this journal is licensed under {{ $.Site.Copyright }}<br>
-Copyright {{ .Site.Params.beginCopyrightYear }}-{{ now.Format "2006" }} {{ $.Site.Author.name }}</p>
+  <p class="footer__text">{{ replace $.Site.Copyright "{currentYear}" (now.Format "2006") }}</p>
 </footer>
