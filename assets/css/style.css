@@ -82,9 +82,9 @@ p, ul, ol, blockquote {
 	padding: 1.4em 0;
 }
 
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 72ch) {
 	.body {
-		max-width: 40em;
+		max-width: 72ch;
 	}
 }
 
