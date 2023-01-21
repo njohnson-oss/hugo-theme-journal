@@ -11,3 +11,6 @@ In order to render the blog in Gemini and Web format, it's best to render it wit
 
 ## License
 GPLv3 or later
+
+## Version
+This Hugo theme uses [semantic versioning](https://semver.org/) with Git tags.
