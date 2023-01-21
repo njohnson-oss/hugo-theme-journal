@@ -1,5 +1,4 @@
 - fix spacing
 - add tag support
 - fix "layouts/_default/single.gmi" changing preformatted text
-- add support for inline elements for HTML
 - test internationalization
