@@ -19,7 +19,7 @@
 {{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` (print "\n=> $2 " $emoji "$1") }}
 {{- end }}
 {{- $content = $content | replaceRE `\n####{0,3}` "\n###" }}
-{{- $content = $content | replaceRE `\*{3}(.+?)\*{3}|\*{2}(.+?)\*{2}|\*{1}(.+?)\*{1}` "$1$2$3$4$5$6" }}
+{{- $content = $content | replaceRE `(?s)\*{3}(.*?)\*{3}|\*{2}(.*?)\*{2}|\*{1}(.*?)\*{1}` "$1$2$3" }}
 {{- $content = $content | replaceRE `\n- ` "\n* " }}
 {{- $content = $content | emojify }}
 {{- $content | safeHTML }}
