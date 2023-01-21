@@ -22,7 +22,7 @@
 	{{- $scratch.Set "content" $contentInLoop }}
 	{{- $scratch.Set "ref" (add $ref 1) }}
 {{- end }}
-{{- $content := $scratch.Get "content" | replaceRE `\[(.+?)\]\((.+?)\) #(\d+)` "$1[$3]" }}
+{{- $content = $scratch.Get "content" | replaceRE `\[(.+?)\]\((.+?)\) #(\d+)` "$1[$3]" }}
 {{- else }}
 {{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` (print "\n=> $2 " $emoji "$1") }}
 {{- end }}
