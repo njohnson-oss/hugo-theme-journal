@@ -30,7 +30,7 @@
 {{- $content = $content | replaceRE `\n- ` "\n* " }}
 {{- $content = $content | emojify }}
 {{- $content | safeHTML }}
-{{- if (.Page.Params.makerefs | default true) }}
+{{- if and (.Page.Params.makerefs | default true) $refs }}
 
 ## Links
 {{- $scratch.Set "ref" 1 }}
