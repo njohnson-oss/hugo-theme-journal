@@ -10,13 +10,13 @@
 {{ $content := .RawContent }}
 {{- $refs := findRE `\[.+?\]\(.+?\)` $content }}
 {{- if (.Page.Params.makerefs | default true) }}
-{{- range $ref_index, $ref_val := $refs }}
-	{{- $ref_num := add $ref_index 1 }}
-	{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
-	{{- $content = replace $content $ref_val (print $ref_text "[" $ref_num "]") 1 }}
-{{- end }}
+	{{- range $ref_index, $ref_val := $refs }}
+		{{- $ref_num := add $ref_index 1 }}
+		{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
+		{{- $content = replace $content $ref_val (print $ref_text "[" $ref_num "]") 1 }}
+	{{- end }}
 {{- else }}
-{{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` (print "\n=> $2 " $emoji "$1") }}
+	{{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` (print "\n=> $2 " $emoji "$1") }}
 {{- end }}
 {{- $content = $content | replaceRE `\n####{0,3}` "\n###" }}
 {{- $content = $content | replaceRE `(?s)\*{3}(.*?)\*{3}|\*{2}(.*?)\*{2}|\*{1}(.*?)\*{1}` "$1$2$3" }}
@@ -26,11 +26,11 @@
 {{- if and (.Page.Params.makerefs | default true) $refs }}
 
 ## Links
-{{- range $ref_index, $ref_val := $refs }}
-	{{- $ref_num := add $ref_index 1 }}
-	{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
-	{{- $ref_link := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$2" }}
+	{{- range $ref_index, $ref_val := $refs }}
+		{{- $ref_num := add $ref_index 1 }}
+		{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
+		{{- $ref_link := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$2" }}
 {{ print "=> " $ref_link " " $emoji $ref_num ": " $ref_text | safeHTML }}
-{{- end }}
+	{{- end }}
 {{- end }}
 {{- end }}
