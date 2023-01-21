@@ -7,7 +7,7 @@ $ git clone <repository-url> themes/journal
 ```
 
 ## Generate The Blog
-In order to render the blog in Gemini and Web format, it's best to render it with separate configs.
+In order to render the blog in Gemini and Web format, it's best to render it with separate configuration files.
 
 ## License
 GPLv3 or later
