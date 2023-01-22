@@ -16,11 +16,11 @@
 		{{- $content = replace $content $ref_val (print $ref_text "[" $ref_num "]") 1 }}
 	{{- end }}
 {{- else }}
-	{{- $content = $content | replaceRE `\n\[(.+?)\]\((.+?)\)` (print "\n=> $2 " $emoji "$1") }}
+	{{- $content = $content | replaceRE `(?m)\[(.+?)\]\((.+?)\)` (print "=> $2 " $emoji "$1") }}
 {{- end }}
-{{- $content = $content | replaceRE `\n####{0,3}` "\n###" }}
+{{- $content = $content | replaceRE `(?m)^####{1,3}` "###" }}
 {{- $content = $content | replaceRE `(?s)\*{3}(.*?)\*{3}|\*{2}(.*?)\*{2}|\*{1}(.*?)\*{1}` "$1$2$3" }}
-{{- $content = $content | replaceRE `\n- ` "\n* " }}
+{{- $content = $content | replaceRE `(?m)^- ` "* " }}
 {{- $content = $content | emojify }}
 {{- $content | safeHTML }}
 {{- if and (.Page.Params.makerefs | default true) $refs }}
