@@ -8,21 +8,33 @@
 {{ end -}}
 # {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
-{{- $refs := findRE `\[.+?\]\(.+?\)` $content }}
-{{- if (.Page.Params.makerefs | default true) }}
-	{{- range $ref_index, $ref_val := $refs }}
-		{{- $ref_num := add $ref_index 1 }}
-		{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
-		{{- $content = replace $content $ref_val (print $ref_text "[" $ref_num "]") 1 }}
+{{- $scratch := newScratch }}
+{{- $chunks := findRE `(?s)(.*?)(?:(?:\n|^)\x60{3}.*?\n\x60{3}(?:\n|$)|$)` $content }}
+
+{{- range $chunks }}
+	{{- $before_chunk := (. | replaceRE `(?s)(.*?)(?:(?:(?:\n|^)\x60{3}.*?\n\x60{3}(?:\n|$))|$)` "$1") }}
+	{{- $cur_chunk := $before_chunk }}
+
+	{{- $scratch.Set "refs" (findRE `\[.+?\]\(.+?\)` $cur_chunk) }}
+	{{- $refs := $scratch.Get "refs" }}
+	{{- if ($.Page.Params.makerefs | default true) }}
+		{{- range $ref_index, $ref_val := $refs }}
+			{{- $ref_num := add $ref_index 1 }}
+			{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
+			{{- $cur_chunk = replace $cur_chunk $ref_val (print $ref_text "[" $ref_num "]") 1 }}
+		{{- end }}
+	{{- else }}
+		{{- $cur_chunk = $cur_chunk | replaceRE `(?m)\[(.+?)\]\((.+?)\)` (print "=> $2 " $emoji "$1") }}
 	{{- end }}
-{{- else }}
-	{{- $content = $content | replaceRE `(?m)\[(.+?)\]\((.+?)\)` (print "=> $2 " $emoji "$1") }}
+	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^####{1,3}` "###" }}
+	{{- $cur_chunk = $cur_chunk | replaceRE `(?s)\*{3}(.*?)\*{3}|\*{2}(.*?)\*{2}|\*{1}(.*?)\*{1}` "$1$2$3" }}
+	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^- ` "* " }}
+	{{- $cur_chunk = $cur_chunk | emojify }}
+	{{- $content = replace $content $before_chunk $cur_chunk 1 }}
 {{- end }}
-{{- $content = $content | replaceRE `(?m)^####{1,3}` "###" }}
-{{- $content = $content | replaceRE `(?s)\*{3}(.*?)\*{3}|\*{2}(.*?)\*{2}|\*{1}(.*?)\*{1}` "$1$2$3" }}
-{{- $content = $content | replaceRE `(?m)^- ` "* " }}
-{{- $content = $content | emojify }}
+
 {{- $content | safeHTML }}
+{{- $refs := $scratch.Get "refs" }}
 {{- if and (.Page.Params.makerefs | default true) $refs }}
 
 ## Links

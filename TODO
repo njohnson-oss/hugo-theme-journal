@@ -1,5 +1,4 @@
 - fix spacing
 - add tag support
 - document "layouts/_default/single.gmi"
-- fix "layouts/_default/single.gmi" changing preformatted text
 - test internationalization
