@@ -9,39 +9,50 @@
 # {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
 {{- $scratch := newScratch }}
-{{- $chunks := findRE `(?s)(.*?)(?:(?:\n|^)\x60{3}.*?\n\x60{3}(?:\n|$)|$)` $content }}
+{{- $chunks := findRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` $content }}
 
 {{- range $chunks }}
-	{{- $before_chunk := (. | replaceRE `(?s)(.*?)(?:(?:(?:\n|^)\x60{3}.*?\n\x60{3}(?:\n|$))|$)` "$1") }}
-	{{- $cur_chunk := $before_chunk }}
+	{{- $before_pre := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$1" . 1 }}
+	{{- $pre        := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$2" . 1 }}
+	{{- $after_pre  := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$3" . 1 }}
+
+	{{- $cur_chunk := print $before_pre $after_pre }}
 
 	{{- $scratch.Set "refs" (findRE `\[.+?\]\(.+?\)` $cur_chunk) }}
 	{{- $refs := $scratch.Get "refs" }}
 	{{- if ($.Page.Params.makerefs | default true) }}
 		{{- range $ref_index, $ref_val := $refs }}
 			{{- $ref_num := add $ref_index 1 }}
-			{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
+			{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
 			{{- $cur_chunk = replace $cur_chunk $ref_val (print $ref_text "[" $ref_num "]") 1 }}
 		{{- end }}
 	{{- else }}
-		{{- $cur_chunk = $cur_chunk | replaceRE `(?m)\[(.+?)\]\((.+?)\)` (print "=> $2 " $emoji "$1") }}
+		{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^\[(.+?)\]\((.+?)\)$` (print "=> $2 " $emoji "$1") }}
 	{{- end }}
 	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^####{1,3}` "###" }}
 	{{- $cur_chunk = $cur_chunk | replaceRE `\*{3}(\S.+?\S)\*{3}|\*{2}(\S.+?\S)\*{2}|\*{1}(\S.+?\S)\*{1}` "$1$2$3" }}
 	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^- ` "* " }}
 	{{- $cur_chunk = $cur_chunk | emojify }}
-	{{- $content = replace $content $before_chunk $cur_chunk 1 }}
+
+	{{- if $before_pre }}
+		{{- $before_pre = $cur_chunk }}
+		{{- $before_pre | safeHTML }}
+		{{- $pre | safeHTML }}
+	{{- else }}
+		{{- $after_pre = $cur_chunk }}
+		{{- $pre | safeHTML }}
+		{{- $after_pre | safeHTML }}
+	{{- end }}
 {{- end }}
 
-{{- $content | safeHTML }}
 {{- $refs := $scratch.Get "refs" }}
 {{- if and (.Page.Params.makerefs | default true) $refs }}
 
 ## Links
 	{{- range $ref_index, $ref_val := $refs }}
 		{{- $ref_num := add $ref_index 1 }}
-		{{- $ref_text := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$1" }}
-		{{- $ref_link := $ref_val | replaceRE `\[(.+?)\]\((.+?)\)` "$2" }}
+		{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
+		{{- $ref_link := replaceRE `\[(.+?)\]\((.+?)\)` "$2" $ref_val 1 }}
 {{ print "=> " $ref_link " " $emoji $ref_num ": " $ref_text | safeHTML }}
 	{{- end }}
 {{- end }}
