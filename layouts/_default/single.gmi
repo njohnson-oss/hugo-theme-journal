@@ -16,30 +16,30 @@
 	{{- $pre        := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$2" . 1 }}
 	{{- $after_pre  := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$3" . 1 }}
 
-	{{- $cur_chunk := print $before_pre $after_pre }}
+	{{- $rendered_text := print $before_pre $after_pre }}
 
-	{{- $scratch.Set "refs" (findRE `\[.+?\]\(.+?\)` $cur_chunk) }}
+	{{- $scratch.Set "refs" (findRE `\[.+?\]\(.+?\)` $rendered_text) }}
 	{{- $refs := $scratch.Get "refs" }}
 	{{- if ($.Page.Params.makerefs | default true) }}
 		{{- range $ref_index, $ref_val := $refs }}
 			{{- $ref_num := add $ref_index 1 }}
 			{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
-			{{- $cur_chunk = replace $cur_chunk $ref_val (print $ref_text "[" $ref_num "]") 1 }}
+			{{- $rendered_text = replace $rendered_text $ref_val (print $ref_text "[" $ref_num "]") 1 }}
 		{{- end }}
 	{{- else }}
-		{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^\[(.+?)\]\((.+?)\)$` (print "=> $2 " $emoji "$1") }}
+		{{- $rendered_text = $rendered_text | replaceRE `(?m)^\[(.+?)\]\((.+?)\)$` (print "=> $2 " $emoji "$1") }}
 	{{- end }}
-	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^####{1,3}` "###" }}
-	{{- $cur_chunk = $cur_chunk | replaceRE `\*{3}(\S.+?\S)\*{3}|\*{2}(\S.+?\S)\*{2}|\*{1}(\S.+?\S)\*{1}` "$1$2$3" }}
-	{{- $cur_chunk = $cur_chunk | replaceRE `(?m)^- ` "* " }}
-	{{- $cur_chunk = $cur_chunk | emojify }}
+	{{- $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3}` "###" }}
+	{{- $rendered_text = $rendered_text | replaceRE `\*{3}(\S.+?\S)\*{3}|\*{2}(\S.+?\S)\*{2}|\*{1}(\S.+?\S)\*{1}` "$1$2$3" }}
+	{{- $rendered_text = $rendered_text | replaceRE `(?m)^- ` "* " }}
+	{{- $rendered_text = $rendered_text | emojify }}
 
 	{{- if $before_pre }}
-		{{- $cur_chunk | safeHTML }}
+		{{- $rendered_text | safeHTML }}
 		{{- $pre | safeHTML }}
 	{{- else }}
 		{{- $pre | safeHTML }}
-		{{- $cur_chunk | safeHTML }}
+		{{- $rendered_text | safeHTML }}
 	{{- end }}
 {{- end }}
 
