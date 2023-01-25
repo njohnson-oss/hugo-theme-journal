@@ -35,13 +35,11 @@
 	{{- $cur_chunk = $cur_chunk | emojify }}
 
 	{{- if $before_pre }}
-		{{- $before_pre = $cur_chunk }}
-		{{- $before_pre | safeHTML }}
+		{{- $cur_chunk | safeHTML }}
 		{{- $pre | safeHTML }}
 	{{- else }}
-		{{- $after_pre = $cur_chunk }}
 		{{- $pre | safeHTML }}
-		{{- $after_pre | safeHTML }}
+		{{- $cur_chunk | safeHTML }}
 	{{- end }}
 {{- end }}
 
