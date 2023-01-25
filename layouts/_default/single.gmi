@@ -9,12 +9,12 @@
 # {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
 {{- $scratch := newScratch }}
-{{- $chunks := findRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` $content }}
+{{- $chunks := findRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` $content }}
 
 {{- range $chunks }}
-	{{- $before_pre := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$1" . 1 }}
-	{{- $pre        := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$2" . 1 }}
-	{{- $after_pre  := replaceRE `(?sm)(?:(.*?)(^\x60{3}.*?^\x60{3}$))|(.*$)` "$3" . 1 }}
+	{{- $before_pre := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$1" . 1 }}
+	{{- $pre        := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$2" . 1 }}
+	{{- $after_pre  := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$3" . 1 }}
 
 	{{- $cur_chunk := print $before_pre $after_pre }}
 
