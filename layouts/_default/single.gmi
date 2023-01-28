@@ -51,7 +51,7 @@
 		{{- $ref_num := add $ref_index 1 }}
 		{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
 		{{- $ref_link := replaceRE `\[(.+?)\]\((.+?)\)` "$2" $ref_val 1 }}
-{{ print "=> " $ref_link " " $emoji $ref_num ": " $ref_text | safeHTML }}
+{{ print "=> " $ref_link (emojify " :link: ") $ref_num ": " $ref_text | safeHTML }}
 	{{- end }}
 {{- end }}
 {{- end }}
