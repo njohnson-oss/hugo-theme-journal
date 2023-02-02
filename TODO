@@ -2,3 +2,4 @@
 - add tag support
 - document "layouts/_default/single.gmi"
 - test internationalization
+- rewrite regex in "layouts/_default/single.gmi" to remove nested italics/bolding
