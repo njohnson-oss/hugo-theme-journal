@@ -69,6 +69,7 @@ ol {
 
 ul {
 	list-style: disc inside none;
+	margin-top: 0;
 	padding: 0;
 }
 
