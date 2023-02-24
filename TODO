@@ -1,3 +1,4 @@
 - fix spacing
 - document "layouts/_default/single.gmi"
 - test internationalization
+- make non-critical page elements optional
