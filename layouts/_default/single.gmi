@@ -3,7 +3,7 @@
 => / {{ emojify ":link:" }} Return to homepage
 
 
-{{ if (.Page.Params.pageinfo | default true) }}{{ partial "pageinfo" . }}
+{{ if (.Page.Params.pageinfo | default true) }}{{ partial "pageinfo.gmi" . }}
 
 {{ end -}}
 # {{ .Name | safeHTML }}

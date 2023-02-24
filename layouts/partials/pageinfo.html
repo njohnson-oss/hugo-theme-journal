@@ -1,0 +1,2 @@
+{{ $dateFormat := .Site.Params.dateFormat | default "2 Jan 2006" -}}
+{{ emojify ":calendar:" }} {{ .Page.PublishDate.Format $dateFormat | safeHTML }} | {{ emojify ":stopwatch:" }} {{ .Page.ReadingTime | safeHTML }} minute read{{ if .Page.Params.Tags }} | {{ emojify ":label:" }} {{ end }}{{ range $key, $val := .Page.Params.Tags }}{{ if $key }}, {{ end }}<a class="link" href='{{ "/tags/" }}{{ . | urlize }}' rel="noreferrer">{{ $val }}</a>{{ end }}

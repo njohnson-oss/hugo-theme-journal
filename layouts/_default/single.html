@@ -3,7 +3,7 @@
   <p>{{ emojify ":link:" }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
 </nav>
 {{- if (.Page.Params.pageinfo | default true) }}
-<p>{{ partial "pageinfo" . }}</p>{{ end }}
+<p>{{ partial "pageinfo.html" . }}</p>{{ end }}
 <main>
   <h1 id="{{ .File.TranslationBaseName }}">{{ .Name }}</h1>
   {{ .Content -}}
