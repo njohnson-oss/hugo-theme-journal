@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
-=> / {{ emojify ":link:" }} Return to homepage
+=> / {{ emojify ":link:" | safeHTML }} Return to homepage
 
 
 {{ if (.Page.Params.pageinfo | default true) }}{{ partial "pageinfo.gmi" . }}

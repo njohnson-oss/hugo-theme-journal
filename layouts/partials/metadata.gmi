@@ -1,10 +1,10 @@
 {{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse) 1 }}
 {{- range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 {{- partial "pageinfo.gmi" . }}
-=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ .Title | safeHTML }}
+=> {{ .RelPermalink }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}
 
 {{ end }}
 
 {{- range last 1 (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 {{- partial "pageinfo.gmi" . }}
-=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ .Title | safeHTML }}{{ end }}
+=> {{ .RelPermalink }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}{{ end }}
