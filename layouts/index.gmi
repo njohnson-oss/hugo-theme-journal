@@ -4,7 +4,7 @@
 
 ## Navigation Links
 {{ range .Site.Menus.main -}}
-=> .{{ .URL }} {{ emojify ":link:" }} {{ .Name | safeHTML }}
+=> {{ .URL }} {{ emojify ":link:" }} {{ .Name | safeHTML }}
 {{ end }}
 ## Journal Entries
 {{ partial "metadata.gmi" . }}{{ end }}
