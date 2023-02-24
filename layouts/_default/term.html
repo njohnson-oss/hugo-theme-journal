@@ -1,0 +1,13 @@
+{{ define "main" -}}
+<nav>
+  <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
+</nav>
+<main>
+  <h1>All entries for {{ .Type | singularize }} "{{ .Title }}"</h1>
+  <ul class="list">
+  {{- range .Data.Pages }}
+    <li class="list__item">{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
+  {{- end }}
+  </ul>
+</main>
+{{- end }}

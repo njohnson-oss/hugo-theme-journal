@@ -1,0 +1,9 @@
+{{ define "main" -}}
+=> / {{ emojify ":link:" | safeHTML }} Return to homepage
+
+
+# All entries for {{ .Type | singularize | safeHTML }} "{{ .Title | safeHTML }}"
+{{ range .Data.Pages }}
+=> {{ .RelPermalink }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}
+{{- end }}
+{{- end }}
