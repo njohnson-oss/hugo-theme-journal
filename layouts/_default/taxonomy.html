@@ -3,7 +3,7 @@
   <h1>All {{ .Type }}</h1>
   <ul class="list">
   {{- range .Data.Pages }}
-    <li class="list__item"><a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Title }}</a></li>
+    <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
   {{- end }}
   </ul>
 </main>

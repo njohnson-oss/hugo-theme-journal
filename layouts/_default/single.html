@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <nav>
-  <p><a class="link" href="/" rel="noreferrer">{{ emojify ":link:" }} Return to homepage</a></p>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
 </nav>
 {{- if (.Page.Params.pageinfo | default true) }}
 <p>{{ partial "pageinfo" . }}</p>{{ end }}

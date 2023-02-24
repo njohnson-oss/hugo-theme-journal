@@ -1,8 +1,8 @@
 {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
 <article>
   <header>
-    <p>{{ partial "pageinfo" . }}<br>
-	<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ emojify ":link:" }} {{ .Title }}</a></p>
+    <p>{{ partial "pageinfo.html" . }}<br>
+       {{ emojify ":link:" }}&nbsp;<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></p>
   </header>
 </article>
 {{ end }}
