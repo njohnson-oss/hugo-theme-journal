@@ -1,4 +1,7 @@
 {{ define "main" -}}
+=> / {{ emojify ":link:" | safeHTML }} Return to homepage
+
+
 # All {{ .Type }}
 	{{- range .Data.Pages }}
 => {{ .RelPermalink }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}

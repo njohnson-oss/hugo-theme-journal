@@ -1,4 +1,7 @@
 {{ define "main" -}}
+<nav>
+  <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
+</nav>
 <main>
   <h1>All {{ .Type }}</h1>
   <ul class="list">
