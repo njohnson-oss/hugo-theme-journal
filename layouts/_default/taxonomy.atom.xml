@@ -1,0 +1,22 @@
+{{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>{{ .Permalink }}</id>
+    <title>{{ .Site.Title }}</title>
+    <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+    <link href="{{ .Permalink }}atom.xml" rel="self" />
+    <link href="{{ .Permalink }}" rel="alternate" />
+    <author>
+        <name>{{ .Site.Author.name }}</name>
+        <email>{{ .Site.Author.email }}</email>
+    </author>
+    <generator>Hugo -- gohugo.io</generator>
+    <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.Format "2006") }}</rights>
+    <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Data.Pages }}
+    <entry>
+        <id>{{ .Permalink }}</id>
+        <title type="html">{{ .Title }}</title>
+        <updated>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+        <link href="{{ .Permalink }}" />
+        <content type="html">{{ .Content | html }}</content>
+    </entry>{{ end }}
+</feed>

@@ -3,7 +3,10 @@
   <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
 </nav>
 <main>
-  <h1>All {{ .Type }}</h1>
+  <h1>{{ .Type | humanize }}</h1>
+  <h2>Feeds</h2>
+  <p><a class="link" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" | safeHTML }}&nbsp;Atom Feed</a></p>
+  <h2>List</h2>
   <ul class="list">
   {{- range .Data.Pages }}
     <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
