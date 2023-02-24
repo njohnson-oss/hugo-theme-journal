@@ -1,0 +1,6 @@
+{{ define "main" -}}
+# All {{ .Type }}
+	{{- range .Data.Pages }}
+=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ .Title }}
+	{{- end }}
+{{- end }}
