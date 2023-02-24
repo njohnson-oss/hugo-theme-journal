@@ -2,8 +2,18 @@
 => / {{ emojify ":link:" | safeHTML }} Return to homepage
 
 
-# All entries for {{ .Type | singularize | safeHTML }} "{{ .Title | safeHTML }}"
-{{ range .Data.Pages }}
-=> {{ .RelPermalink }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}
+# {{ .Type | singularize | humanize | safeHTML }} "{{ .Title | safeHTML }}"
+## Feeds
+=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} Atom Feed
+
+## Journal Entries
+{{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse) 1 }}
+{{- range first $entriesMinusOne .Data.Pages.ByPublishDate.Reverse }}
+{{- partial "metadata.gmi" . }}
+{{ end }}
+{{- if gt (len .Data.Pages) 1 }}
+
+{{- range last 1 .Data.Pages.ByPublishDate.Reverse }}
+{{- partial "metadata.gmi" . }}{{ end }}
 {{- end }}
 {{- end }}
