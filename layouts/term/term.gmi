@@ -7,13 +7,11 @@
 => {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} Atom Feed
 
 ## Journal Entries
-{{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse) 1 }}
-{{- range first $entriesMinusOne .Data.Pages.ByPublishDate.Reverse }}
-{{- partial "metadata.gmi" . }}
+{{ $entriesMinusOne := sub (len .Data.Pages) 1 -}}
+{{ range first $entriesMinusOne .Data.Pages.ByPublishDate.Reverse -}}
+{{ partial "metadata.gmi" . }}
+{{ end -}}
+{{ range last 1 .Data.Pages.ByPublishDate.Reverse -}}
+{{ partial "metadata.gmi" . -}}
+{{ end -}}
 {{ end }}
-{{- if gt (len .Data.Pages) 1 }}
-
-{{- range last 1 .Data.Pages.ByPublishDate.Reverse }}
-{{- partial "metadata.gmi" . }}{{ end }}
-{{- end }}
-{{- end }}

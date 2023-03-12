@@ -7,12 +7,11 @@
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}
 {{ end }}
 ## Journal Entries
-{{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse) 1 }}
-{{- range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
-{{- partial "metadata.gmi" . }}
-{{ end }}{{- if gt (len .Data.Pages) 1 }}
-
-{{- range last 1 (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
-{{- partial "metadata.gmi" . }}{{ end }}
-{{- end }}
-{{- end }}
+{{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry")) 1 -}}
+{{ range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
+{{ partial "metadata.gmi" . }}
+{{ end -}}
+{{ range last 1 (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
+{{ partial "metadata.gmi" . -}}
+{{ end -}}
+{{ end }}
