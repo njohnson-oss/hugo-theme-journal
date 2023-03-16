@@ -10,6 +10,7 @@
 {{ $content := .RawContent }}
 {{- $scratch := newScratch }}
 {{- $chunks := findRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` $content }}
+{{- $ref_index := 0 }}
 
 {{- range $chunks }}
 	{{- $before_pre := replaceRE `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` "$1" . 1 }}
@@ -18,13 +19,13 @@
 
 	{{- $rendered_text := print $before_pre $after_pre }}
 
-	{{- $scratch.Set "refs" (findRE `\[.+?\]\(.+?\)` $rendered_text) }}
-	{{- $refs := $scratch.Get "refs" }}
+	{{- $chunk_refs := findRE `\[.+?\]\(.+?\)` $rendered_text }}
+	{{- $scratch.Add "refs" $chunk_refs }}
 	{{- if ($.Page.Params.makerefs | default true) }}
-		{{- range $ref_index, $ref_val := $refs }}
-			{{- $ref_num := add $ref_index 1 }}
-			{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
-			{{- $rendered_text = replace $rendered_text $ref_val (print $ref_text "[" $ref_num "]") 1 }}
+		{{- range $chunk_refs }}
+			{{- $ref_index = add $ref_index 1 }}
+			{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" . 1 }}
+			{{- $rendered_text = replace $rendered_text . (print $ref_text "[" $ref_index "]") 1 }}
 		{{- end }}
 	{{- else }}
 		{{- $rendered_text = $rendered_text | replaceRE `(?m)^\[(.+?)\]\((.+?)\)$` (print "=> $2 " $emoji "$1") }}
@@ -47,13 +48,14 @@
 
 {{- $refs := $scratch.Get "refs" }}
 {{- if and (.Page.Params.makerefs | default true) $refs }}
+{{- $ref_index := 0 }}
 
 ## Links
-	{{- range $ref_index, $ref_val := $refs }}
-		{{- $ref_num := add $ref_index 1 }}
-		{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" $ref_val 1 }}
-		{{- $ref_link := replaceRE `\[(.+?)\]\((.+?)\)` "$2" $ref_val 1 }}
-{{ print "=> " $ref_link (emojify " :link: ") $ref_num ": " $ref_text | safeHTML }}
+	{{- range $refs }}
+		{{- $ref_index = add $ref_index 1 }}
+		{{- $ref_text := replaceRE `\[(.+?)\]\((.+?)\)` "$1" . 1 }}
+		{{- $ref_link := replaceRE `\[(.+?)\]\((.+?)\)` "$2" . 1 }}
+{{ print "=> " $ref_link (emojify " :link: ") $ref_index ": " $ref_text | safeHTML }}
 	{{- end }}
 {{- end }}
 {{- end }}
