@@ -34,7 +34,7 @@
 	{{- $rendered_text = $rendered_text | replaceRE `\*{3}(\S|\S.*?\S)\*{3}` "$1" }}
 	{{- $rendered_text = $rendered_text | replaceRE `\*{2}(\S|\S.*?\S)\*{2}` "$1" }}
 	{{- $rendered_text = $rendered_text | replaceRE `\*{1}(\S|\S.*?\S)\*{1}` "$1" }}
-	{{- $rendered_text = $rendered_text | replaceRE `(?m)^- ` "* " }}
+	{{- $rendered_text = $rendered_text | replaceRE `(?m)^[-+] ` "* " }}
 	{{- $rendered_text = $rendered_text | emojify }}
 
 	{{- if $before_pre }}
