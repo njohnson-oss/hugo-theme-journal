@@ -19,16 +19,16 @@
 
 	{{- $rendered_text := print $before_pre $after_pre }}
 
-	{{- $chunk_refs := findRE `!?\[.+?\]\(.+?\)` $rendered_text }}
+	{{- $chunk_refs := findRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` $rendered_text }}
 	{{- $scratch.Add "refs" $chunk_refs }}
 	{{- if ($.Page.Params.makerefs | default true) }}
 		{{- range $chunk_refs }}
 			{{- $ref_index = add $ref_index 1 }}
-			{{- $ref_text := replaceRE `!?\[(.+?)\]\((.+?)\)` "$1" . 1 }}
+			{{- $ref_text := replaceRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` "$1" . 1 }}
 			{{- $rendered_text = replace $rendered_text . (print $ref_text "[" $ref_index "]") 1 }}
 		{{- end }}
 	{{- else }}
-		{{- $rendered_text = $rendered_text | replaceRE `(?m)^!?\[(.+?)\]\((.+?)\)$` (print "=> $2 " $emoji "$1") }}
+		{{- $rendered_text = $rendered_text | replaceRE `(?m)^!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)$` (print "=> $2 " $emoji "$1") }}
 	{{- end }}
 	{{- $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3}` "###" }}
 	{{- $rendered_text = $rendered_text | replaceRE `\*{3}(\S|\S.*?\S)\*{3}` "$1" }}
@@ -53,8 +53,8 @@
 ## Links
 	{{- range $refs }}
 		{{- $ref_index = add $ref_index 1 }}
-		{{- $ref_text := replaceRE `!?\[(.+?)\]\((.+?)\)` "$1" . 1 }}
-		{{- $ref_link := replaceRE `!?\[(.+?)\]\((.+?)\)` "$2" . 1 }}
+		{{- $ref_text := replaceRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` "$1" . 1 }}
+		{{- $ref_link := replaceRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` "$2" . 1 }}
 {{ print "=> " $ref_link (emojify " :link: ") $ref_index ": " $ref_text | safeHTML }}
 	{{- end }}
 {{- end }}
