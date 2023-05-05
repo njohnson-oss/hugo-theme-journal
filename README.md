@@ -28,7 +28,7 @@ $ git submodule add <repository-url> themes/journal
 
 To render the blog for Gemini and the Web, use separate configuration files.
 
-The [Gemtext compatibility document](/GEMTEXT-COMPATIBILITY.md) explains which Markdown can be safely converted to Gemini.
+The [Gemtext compatibility document](GEMTEXT-COMPATIBILITY.md) explains which Markdown can be safely converted to Gemini.
 
 ## Versioning
 
@@ -36,4 +36,4 @@ This Hugo theme uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 ## License
 
-Hugo Journal Theme is licensed under [GPLv3 or later](/LICENSE).
+Hugo Journal Theme is licensed under [GPLv3 or later](LICENSE).
