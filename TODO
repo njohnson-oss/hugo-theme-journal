@@ -4,3 +4,4 @@
 * make non-critical page elements optional
 * document which Markdown syntax is compatible with Gemini
 * add color themes
+* add link title support to Gemini
