@@ -2,5 +2,4 @@
 * document "layouts/_default/single.gmi"
 * test internationalization
 * make non-critical page elements optional
-* document which Markdown syntax is compatible with Gemini
 * add color themes
