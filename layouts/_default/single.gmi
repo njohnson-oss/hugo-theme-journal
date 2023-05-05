@@ -19,9 +19,9 @@
 
 	{{- $rendered_text := print $before_pre $after_pre }}
 
-	{{- $chunk_refs := findRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` $rendered_text }}
-	{{- $scratch.Add "refs" $chunk_refs }}
 	{{- if ($.Page.Params.makerefs | default true) }}
+		{{- $chunk_refs := findRESubmatch `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` $rendered_text }}
+		{{- $scratch.Add "refs" $chunk_refs }}
 		{{- range $chunk_refs }}
 			{{- $ref_index = add $ref_index 1 }}
 			{{- $ref_text := replaceRE `!?\[(.+?)\]\((.+?)(?:\s+".*?")?\)` "$1" . 1 }}
