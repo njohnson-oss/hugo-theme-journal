@@ -33,9 +33,9 @@ Markdown headings are partially supported.
 
 Explanation:
 
-Markdown supports 6 headings while gemtext only supports 3. Markdown headings 1-3 (\#, \#\#, \#\#\#) map to their respective gemtext heading. Markdown headings 4-6 (\#\#\#\#, \#\#\#\#\#, \#\#\#\#\#\#) map to the level 3 (\#\#\#) gemtext heading. This flattening is also reflected in the HTML through the CSS styling.
+Markdown supports 6 headings while gemtext only supports 3. Markdown headings 1-3 \(\#, \#\#, \#\#\#\) map to their respective gemtext heading. Markdown headings 4-6 \(\#\#\#\#, \#\#\#\#\#, \#\#\#\#\#\#\) map to the level 3 \(\#\#\#\) gemtext heading. This flattening is also reflected in the HTML through the CSS styling.
 
-Alternate syntax for Markdown headings including == and -- is not supported. Only number signs (\#) may be used.
+Alternate syntax for Markdown headings including == and -- is not supported. Only number signs \(\#\) may be used.
 
 The goldmark Markdown renderer requires whitespace between the number signs and the heading name whereas the gemtext specification does not. For compatibility, do not use Markdown headings 4-6 and always put a space after the number signs.
 
@@ -109,7 +109,7 @@ Explanation:
 
 Since gemtext does not support ordered lists, ordered lists in Markdown map onto text lines in Gemini.
 
-Unordered list items in Markdown map onto unordered list items in gemtext. Gemtext does not support adding elements in lists nor nested lists. Dashes (\-), asterisks (\*), and plus signs (\+) can all be used to represent line items. For compatibility, use only flat lists containing no other elements.
+Unordered list items in Markdown map onto unordered list items in gemtext. Gemtext does not support adding elements in lists nor nested lists. Dashes \(\-\), asterisks \(\*\), and plus signs \(\+\) can all be used to represent line items. For compatibility, use only flat lists containing no other elements.
 
 E.g:
 
@@ -146,7 +146,7 @@ Links are partially supported.
 
 Explanation:
 
-Links in Markdown map to link lines in gemtext. The gemtext renderer does not recognize angle bracketed URLs nor reference-style links. It only recognizes links that have link text enclosed in brackets (e.g. \[Arch Linux\]), immediately followed by the URL in parenthesis (e.g. (archlinux.org)).
+Links in Markdown map to link lines in gemtext. The gemtext renderer does not recognize angle bracketed URLs nor reference-style links. It only recognizes links that have link text enclosed in brackets \(e.g. \[Arch Linux\]\), immediately followed by the URL in parenthesis \(e.g. \(archlinux.org\)\).
 
 ```markdown
 [Arch Linux](https://archlinux.org)
