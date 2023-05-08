@@ -45,7 +45,7 @@ Newlines are partially supported. Line breaks are unsupported.
 
 Explanation:
 
-The gemtext renderer and HTML renderer handle whitespace differently. While whitespace has special meaning in Markdown, the gemtext renderer simply copies it unmodified into the output. It is possible to achieve consecutive newlines in the HTML, but the gemtext won't render it correctly. For compatibility, always use exactly two literal newlines.
+The gemtext renderer and HTML renderer handle whitespace differently. While whitespace has special meaning in Markdown, the gemtext renderer simply copies it unmodified into the output. It is possible to achieve consecutive newlines in the HTML, but the gemtext won't render it correctly. For compatibility, use exactly two literal newlines except after headings. After headings, just use one newline.
 
 E.g:
 
