@@ -1,9 +1,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- if $.Site.Params.description }}
   <meta name="description" content="{{ $.Site.Params.description }}">
+  {{- end }}
+  {{- if $.Site.Params.keywords }}
   <meta name="keywords" content="{{ $.Site.Params.keywords }}">
+  {{- end }}
   <meta name="theme-color" content="#000">
   <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
+  {{- if $.Site.Params.title }}
   <title>{{ .Title }}</title>
+  {{- end }}
 </head>

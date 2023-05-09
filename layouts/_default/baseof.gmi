@@ -2,4 +2,6 @@
 
 {{ block "main" . }}{{ end }}
 
-{{ partial "footer.gmi" . -}}
+{{- if $.Site.Copyright }}
+{{ partial "footer.gmi" . }}
+{{- end -}}

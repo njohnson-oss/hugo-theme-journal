@@ -1,7 +1,11 @@
 {{ define "main" }}
+{{- if .Site.Params.indexTitle }}
 # {{ .Site.Params.indexTitle | safeHTML }}
+{{- end }}
+{{- if .Site.Params.indexIntro }}
 {{ .Site.Params.indexIntro | safeHTML }}
 
+{{- end }}
 ## Navigation Links
 {{ range .Site.Menus.main -}}
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}

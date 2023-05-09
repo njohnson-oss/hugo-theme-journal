@@ -4,6 +4,8 @@
   <body class="body">
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
+    {{- if $.Site.Copyright }}
     {{ partial "footer.html" . }}
+    {{- end }}
   </body>
 </html>
