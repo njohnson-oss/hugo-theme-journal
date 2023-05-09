@@ -13,11 +13,11 @@
 {{- $ref_index := 0 }}
 
 {{- range $chunks }}
-	{{- $before_pre := index . 1 }}
+	{{- $above_pre := index . 1 }}
 	{{- $pre        := index . 2 }}
-	{{- $after_pre  := index . 3 }}
+	{{- $below_pre  := index . 3 }}
 
-	{{- $rendered_text := print $before_pre $after_pre }}
+	{{- $rendered_text := print $above_pre $below_pre }}
 
 	{{- if ($.Page.Params.makerefs | default true) }}
 		{{- $chunk_refs := findRESubmatch `!?\[\s*(.+?)\s*\]\(\s*(.+?)(?:\s+"(.+?)")?\s*\)` $rendered_text }}
@@ -37,7 +37,7 @@
 	{{- $rendered_text = $rendered_text | replaceRE `(?m)^[-+] ` "* " }}
 	{{- $rendered_text = $rendered_text | emojify }}
 
-	{{- if $before_pre }}
+	{{- if $above_pre }}
 		{{- $rendered_text | safeHTML }}
 		{{- $pre | safeHTML }}
 	{{- else }}
