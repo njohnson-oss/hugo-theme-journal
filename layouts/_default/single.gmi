@@ -9,7 +9,7 @@
 # {{ .Name | safeHTML }}
 {{ $content := .RawContent }}
 {{- $scratch := newScratch }}
-{{- $chunks := findRESubmatch `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.*$)` $content }}
+{{- $chunks := findRESubmatch `(?sm)(?:(.+?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.+$)` $content }}
 {{- $ref_index := 0 }}
 
 {{- range $chunks }}
