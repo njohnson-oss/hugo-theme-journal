@@ -8,7 +8,13 @@
   <meta name="keywords" content="{{ $.Site.Params.keywords }}">
   {{- end }}
   <meta name="theme-color" content="#000">
+  {{- if .Site.Params.custom_css }}
+  {{- range .Site.Params.custom_css }}
+  <link rel="stylesheet" type="text/css" href="{{ relURL . }}">
+  {{- end }}
+  {{- else }}
   <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
+  {{- end }}
   {{- if $.Site.Params.title }}
   <title>{{ .Title }}</title>
   {{- end }}
