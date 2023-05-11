@@ -15,7 +15,5 @@
   {{- else }}
   <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
   {{- end }}
-  {{- if $.Site.Params.title }}
   <title>{{ .Title }}</title>
-  {{- end }}
 </head>
