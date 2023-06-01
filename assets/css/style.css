@@ -36,11 +36,11 @@ h3, h4, h5, h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+	margin-top: 1.5em;
+	margin-bottom: 1.0em;
 }
 
 p {
-	margin-top: 0;
 	overflow-wrap: break-word;
 }
 
@@ -48,14 +48,16 @@ pre {
 	color: #ffffba;
 	line-height: normal;
 	overflow: auto;
-	margin-bottom: 1.4em;
 }
 
 blockquote {
 	background-color: #272822;
 	font-style: italic;
-	margin: 1.4em;
-	padding: 0.5em;
+	padding: 1.0em;
+}
+
+blockquote :first-child {
+	margin-top: 0;
 }
 
 blockquote :last-child {
@@ -64,17 +66,19 @@ blockquote :last-child {
 
 ol {
 	list-style: decimal inside none;
-	padding: 0;
 }
 
 ul {
 	list-style: disc inside none;
-	margin-top: 0;
-	padding: 0;
 }
 
-p, ul, ol, blockquote {
-	margin-bottom: 1.4em;
+ol, ul {
+	padding-left: 0.5em;
+}
+
+blockquote, ol, p, pre, ul, .highlight {
+	margin-bottom: 1.0em;
+	margin-top: 1.0em;
 }
 
 .body {
@@ -100,13 +104,9 @@ p, ul, ol, blockquote {
 	margin-top: 2em;
 }
 
-.highlight {
-	margin-bottom: 1.4em;
-	overflow: auto;
-}
-
 .highlight pre {
-	margin: 0;
+	margin-bottom: 0em;
+	margin-top: 0em;
 }
 
 .link {
@@ -121,12 +121,13 @@ p, ul, ol, blockquote {
 
 .list {
 	list-style: none;
-	margin-top: 0;
+	padding-left: 0;
 }
 
 @media (pointer: coarse) {
 	.list__item {
 		margin-bottom: 1em;
+		margin-top: 1em;
 	}
 }
 
