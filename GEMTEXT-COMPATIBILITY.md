@@ -45,27 +45,29 @@ Newlines are partially supported. Line breaks are unsupported.
 
 Explanation:
 
-The gemtext renderer and HTML renderer handle whitespace differently. While whitespace has special meaning in Markdown, the gemtext renderer simply copies it unmodified into the output. It is possible to achieve consecutive newlines in the HTML, but the gemtext won't render it correctly. For compatibility, use exactly two literal newlines except after headings. After headings, just use one newline.
+The gemtext renderer and HTML renderer handle whitespace differently. While whitespace has special meaning in Markdown, the gemtext renderer simply copies it unmodified into the output. It is possible to achieve consecutive newlines in the HTML, but the gemtext won't render it correctly. For compatibility, use two literal newlines after each new element except before headings. Headings must be preceded by three literal newlines.
 
 E.g:
 
-```markdown
-Do
+````markdown
+I am a paragraph.
 
-this
+* unordered list item 1
+* unordered list item 2
+
+1. ordered list item 1
+2. ordered list item 2
+
+
+## I am a Heading
+
+```
+I am preformatted text.
 ```
 
-```markdown
-Don't do
-this
-```
-
-```markdown
-Don't do
-
-
-this
-```
+> I am
+> a quote
+````
 
 ## Emphasis
 
