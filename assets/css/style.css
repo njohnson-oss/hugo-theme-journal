@@ -48,6 +48,7 @@ pre {
 	color: #ffffba;
 	line-height: normal;
 	overflow: auto;
+	padding: 1.0em;
 }
 
 blockquote {
@@ -136,4 +137,5 @@ blockquote, ol, p, pre, ul, .highlight {
 .logo__text {
 	margin-bottom: 2em;
 	margin-top: 0;
+	padding: 0;
 }
