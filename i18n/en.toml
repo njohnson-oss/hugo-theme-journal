@@ -1,0 +1,3 @@
+[readingTime]
+  one = "1 minute read"
+  other = "{{ .Count }} minutes read"
