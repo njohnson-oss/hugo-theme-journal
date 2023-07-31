@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <nav>
-  <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="/" rel="noreferrer">Return to homepage</a></p>
+  <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
 <main>
   <h1>{{ .Type | humanize }}</h1>

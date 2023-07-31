@@ -1,5 +1,5 @@
 {{ define "main" -}}
-=> / {{ emojify ":link:" | safeHTML }} Return to homepage
+=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ i18n "returnHome" }}
 
 
 # {{ .Type | humanize }}
