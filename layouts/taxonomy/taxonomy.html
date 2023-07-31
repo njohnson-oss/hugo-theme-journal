@@ -4,9 +4,9 @@
 </nav>
 <main>
   <h1>{{ .Type | humanize }}</h1>
-  <h2>Feeds</h2>
-  <p><a class="link" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" | safeHTML }}&nbsp;Atom Feed</a></p>
-  <h2>List</h2>
+  <h2>{{ i18n "feeds" }}</h2>
+  <p><a class="link" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" | safeHTML }}&nbsp;{{ i18n "atomFeed" }}</a></p>
+  <h2>{{ i18n "list" }}</h2>
   <ul class="list">
   {{- range .Data.Pages }}
     <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>

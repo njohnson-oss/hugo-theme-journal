@@ -3,10 +3,10 @@
 
 
 # {{ .Type | humanize }}
-## Feeds
-=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} Atom Feed
+## {{ i18n "feeds" }}
+=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} {{ i18n "atomFeed" }}
 
-## List
+## {{ i18n "list" }}
 {{- range .Data.Pages }}
 => {{ .RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}
 {{- end }}

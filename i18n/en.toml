@@ -4,3 +4,15 @@
 
 [returnHome]
   other = "Return to homepage"
+
+[list]
+  other = "List"
+
+[feeds]
+  other = "Feeds"
+
+[atomFeed]
+  other = "Atom Feed"
+
+[tags]
+  other = "Tags"
