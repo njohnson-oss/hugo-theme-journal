@@ -3,10 +3,10 @@
 
 
 # {{ .Type | singularize | humanize | safeHTML }} "{{ .Title | safeHTML }}"
-## Feeds
-=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} Atom Feed
+## {{ i18n "feeds" }}
+=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} {{ i18n "atomFeed" }}
 
-## Journal Entries
+## {{ i18n "journalEntries" }}
 {{ $entriesMinusOne := sub (len .Data.Pages) 1 -}}
 {{ range first $entriesMinusOne .Data.Pages.ByPublishDate.Reverse -}}
 {{ partial "metadata.gmi" . }}
