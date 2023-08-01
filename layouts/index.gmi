@@ -6,11 +6,11 @@
 {{ .Site.Params.indexIntro | safeHTML }}
 
 {{- end }}
-## Navigation Links
+## {{ i18n "navLinks" }}
 {{ range .Site.Menus.main -}}
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}
 {{ end }}
-## Journal Entries
+## {{ i18n "journalEntries" }}
 {{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry")) 1 -}}
 {{ range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
 {{ partial "metadata.gmi" . }}

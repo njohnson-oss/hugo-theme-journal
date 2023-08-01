@@ -6,7 +6,7 @@
   {{- if .Site.Params.indexIntro }}
   <p>{{ .Site.Params.indexIntro }}</p>
   {{- end }}
-  <h2>Navigation Links</h2>
+  <h2>{{ i18n "navLinks" }}</h2>
   <nav>
     <ul class="list">
     {{- range .Site.Menus.main }}
@@ -14,7 +14,7 @@
     {{- end }}
     </ul>
   </nav>
-  <h2>Journal Entries</h2>
+  <h2>{{ i18n "journalEntries" }}</h2>
   {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
   {{ partial "metadata.html" . -}}
   {{ end -}}
