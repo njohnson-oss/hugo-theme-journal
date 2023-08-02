@@ -20,8 +20,8 @@
 [journalEntries]
   other = "Journal Entries"
 
-[links]
-  other = "Links"
+[refs]
+  other = "References"
 
 [navLinks]
   other = "Navigation Links"

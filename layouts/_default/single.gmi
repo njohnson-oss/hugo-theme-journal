@@ -73,7 +73,7 @@
 {{- if and (.Page.Params.makerefs | default true) $refs }}
 {{- $ref_index := 0 }}
 
-## {{ i18n "links" }}
+## {{ i18n "refs" }}
 	{{- range $refs }}
 		{{- $ref_index  = add $ref_index 1 }}
 		{{- $ref_text  := index . 1 }}
