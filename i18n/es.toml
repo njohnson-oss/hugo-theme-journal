@@ -1,0 +1,27 @@
+[readingTime]
+  one = "1 minuto para leer"
+  other = "{{ .Count }} minutos para leer"
+
+[returnHome]
+  other = "Regresar a la página de inicio"
+
+[list]
+  other = "Lista"
+
+[feeds]
+  other = "Feeds"
+
+[atomFeed]
+  other = "Atom Feed"
+
+[tags]
+  other = "Etiquetas"
+
+[journalEntries]
+  other = "Entradas"
+
+[refs]
+  other = "Referencias"
+
+[navLinks]
+  other = "Enlaces de navegación"
