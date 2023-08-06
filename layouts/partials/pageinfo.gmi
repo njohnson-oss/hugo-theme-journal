@@ -1,2 +1,2 @@
 {{ $dateFormat := .Site.Params.dateFormat | default ":date_long" -}}
-{{ emojify ":calendar:" | safeHTML }} {{ .Page.PublishDate | time.Format $dateFormat | safeHTML }} | {{ emojify ":stopwatch:" | safeHTML }} {{ i18n "readingTime" .ReadingTime }}{{ if .Page.Params.Tags }} | {{ emojify ":label:" | safeHTML }} {{ end }}{{ range $key, $val := .Page.Params.Tags }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
+{{ emojify ":calendar:" | safeHTML }} {{ .Page.PublishDate | time.Format $dateFormat | safeHTML }} | {{ emojify ":stopwatch:" | safeHTML }} {{ i18n "readingTime" .ReadingTime }}{{ if (.Param (lower (i18n "tags"))) }} | {{ emojify ":label:" | safeHTML }} {{ end }}{{ range $key, $val := (.Param (lower (i18n "tags"))) }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
