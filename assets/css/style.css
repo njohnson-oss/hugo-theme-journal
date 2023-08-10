@@ -77,6 +77,10 @@ ol, ul {
 	padding-left: 0.5em;
 }
 
+img {
+	max-width: 100%;
+}
+
 blockquote, ol, p, pre, ul, .highlight {
 	margin-bottom: 1.0em;
 	margin-top: 1.0em;
