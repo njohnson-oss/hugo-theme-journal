@@ -16,7 +16,7 @@
   </nav>
   <h2>{{ i18n "journalEntries" }}</h2>
   {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
-  {{ partial "metadata.html" . -}}
+  {{ partial "metadata.html" . }}
   {{ end -}}
 </main>
 {{- end }}
