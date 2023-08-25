@@ -1,11 +1,13 @@
 {{ define "main" -}}
 {{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ i18n "returnHome" }}
+=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ i18n "returnHome" -}}
+
+{{ if (.Page.Params.pageinfo | default true) }}
+
+{{ partial "pageinfo.gmi" . -}}
+{{ end }}
 
 
-{{ if (.Page.Params.pageinfo | default true) }}{{ partial "pageinfo.gmi" . }}
-
-{{ end -}}
 # {{ .Name | safeHTML }}
 {{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}
