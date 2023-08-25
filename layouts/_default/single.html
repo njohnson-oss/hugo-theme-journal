@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <nav>
-  <p>{{ emojify ":link:" | safeHTML }}&nbsp;<a class="link" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
+  <p>{{ emojify ":link:" | safeHTML }} <a class="link" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
 {{- if (.Page.Params.pageinfo | default true) }}
 <p>{{ partial "pageinfo.html" . }}</p>{{ end }}
