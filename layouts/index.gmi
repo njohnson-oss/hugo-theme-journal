@@ -3,12 +3,16 @@
 
 {{ .Site.Params.indexIntro | safeHTML }}
 
+{{- if .Site.Menus.main }}
+
 
 ## {{ i18n "navLinks" }}
+{{ range .Site.Menus.main }}
+=> {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML -}}
+{{ end -}}
 
-{{ range .Site.Menus.main -}}
-=> {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}
 {{ end }}
+
 
 ## {{ i18n "journalEntries" -}}
 {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
