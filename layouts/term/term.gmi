@@ -3,14 +3,21 @@
 
 
 # {{ .Type | singularize | humanize | safeHTML }} "{{ .Title | safeHTML }}"
+
+
 ## {{ i18n "feeds" }}
+
 => {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} {{ i18n "atomFeed" }}
 
+
 ## {{ i18n "journalEntries" }}
+
 {{ $entriesMinusOne := sub (len .Data.Pages) 1 -}}
 {{ range first $entriesMinusOne .Data.Pages.ByPublishDate.Reverse -}}
 {{ partial "metadata.gmi" . }}
+
 {{ end -}}
+
 {{ range last 1 .Data.Pages.ByPublishDate.Reverse -}}
 {{ partial "metadata.gmi" . -}}
 {{ end -}}
