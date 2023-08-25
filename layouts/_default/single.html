@@ -6,6 +6,6 @@
 <p>{{ partial "pageinfo.html" . }}</p>{{ end }}
 <main>
   <h1 id="{{ .File.TranslationBaseName }}">{{ .Name }}</h1>
-  {{ .Content -}}
+  {{ chomp (.Content) -}}
 </main>
 {{- end }}

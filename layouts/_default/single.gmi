@@ -7,7 +7,7 @@
 
 {{ end -}}
 # {{ .Name | safeHTML }}
-{{ $content := .RawContent -}}
+{{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}
 
 {{/* split text into chunks, with each chunk containing 3 parts: above, within, and below preformatted text */ -}}
