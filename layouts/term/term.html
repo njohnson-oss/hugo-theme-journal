@@ -9,6 +9,6 @@
   <h2>{{ i18n "journalEntries" }}</h2>
   {{- range .Data.Pages.ByPublishDate.Reverse }}
   {{ partial "metadata.html" . -}}
-  {{- end -}}
+  {{ end }}
 </main>
 {{- end }}

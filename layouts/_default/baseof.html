@@ -3,9 +3,9 @@
   {{ partial "head.html" . }}
   <body class="body">
     {{ partial "header.html" . }}
-    {{ block "main" . }}{{ end }}
-    {{- if $.Site.Copyright }}
-    {{ partial "footer.html" . }}
-    {{- end }}
+    {{ block "main" . }}{{ end -}}
+    {{ if $.Site.Copyright }}
+    {{ partial "footer.html" . -}}
+    {{ end }}
   </body>
 </html>

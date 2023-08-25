@@ -1,7 +1,7 @@
 {{ partial "header.gmi" . }}
 
-{{ block "main" . }}{{ end }}
+{{ block "main" . }}{{ end -}}
 
-{{- if $.Site.Copyright }}
-{{ partial "footer.gmi" . }}
-{{- end -}}
+{{ if $.Site.Copyright }}
+{{ partial "footer.gmi" . -}}
+{{ end }}

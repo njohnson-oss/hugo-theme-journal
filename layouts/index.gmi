@@ -1,11 +1,11 @@
-{{ define "main" }}
-{{- if .Site.Params.indexTitle }}
-# {{ .Site.Params.indexTitle | safeHTML }}
-{{- end }}
-{{- if .Site.Params.indexIntro }}
-{{ .Site.Params.indexIntro | safeHTML }}
+{{ define "main" -}}
+{{ if .Site.Params.indexTitle }}
+# {{ .Site.Params.indexTitle | safeHTML -}}
+{{ end -}}
+{{ if .Site.Params.indexIntro }}
+{{ .Site.Params.indexIntro | safeHTML -}}
 
-{{- end }}
+{{ end }}
 ## {{ i18n "navLinks" }}
 {{ range .Site.Menus.main -}}
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}

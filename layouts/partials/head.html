@@ -1,18 +1,18 @@
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{- if $.Site.Params.description }}
   <meta name="description" content="{{ $.Site.Params.description }}">
-  {{- end }}
-  {{- if $.Site.Params.keywords }}
+  {{- end -}}
+  {{ if $.Site.Params.keywords }}
   <meta name="keywords" content="{{ $.Site.Params.keywords }}">
-  {{- end }}
-  <meta name="theme-color" content="#000">
-  {{- if .Site.Params.custom_css }}
-  {{- range .Site.Params.custom_css }}
+  {{- end -}}
+  {{ if .Site.Params.custom_css -}}
+  {{ range .Site.Params.custom_css }}
   <link rel="stylesheet" type="text/css" href="{{ relURL . }}">
-  {{- end }}
-  {{- else }}
+  {{- end -}}
+  {{ else }}
   <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
   {{- end }}
   <title>{{ .Title }}</title>

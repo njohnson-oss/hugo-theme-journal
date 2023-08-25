@@ -1,2 +1,2 @@
-{{- partial "pageinfo.gmi" . }}
+{{ partial "pageinfo.gmi" . }}
 => {{ .RelPermalink | replaceRE `(?m)index.gmi` "" }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML }}
