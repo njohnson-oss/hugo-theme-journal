@@ -10,15 +10,10 @@
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML }}
 {{ end }}
 
-## {{ i18n "journalEntries" }}
+## {{ i18n "journalEntries" -}}
+{{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 
-{{ $entriesMinusOne := sub (len (where .Site.RegularPages.ByTitle "Section" "entry")) 1 -}}
-{{ range first $entriesMinusOne (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
-{{ partial "metadata.gmi" . }}
-
-{{ end -}}
-
-{{ range last 1 (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
 {{ partial "metadata.gmi" . -}}
 {{ end -}}
+
 {{ end }}
