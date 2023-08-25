@@ -1,5 +1,6 @@
 {{ partial "header.gmi" . }}
 
+
 {{ block "main" . }}{{ end -}}
 
 {{ if $.Site.Copyright }}
