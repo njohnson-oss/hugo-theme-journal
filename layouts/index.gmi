@@ -11,13 +11,17 @@
 => {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML -}}
 {{ end -}}
 
-{{ end }}
+{{ end -}}
+
+{{ if .Site.RegularPages }}
 
 
 ## {{ i18n "journalEntries" -}}
 {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
 
 {{ partial "metadata.gmi" . -}}
+{{ end -}}
+
 {{ end -}}
 
 {{ end }}

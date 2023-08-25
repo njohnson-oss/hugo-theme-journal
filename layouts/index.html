@@ -12,9 +12,11 @@
     </ul>
   </nav>
   {{ end -}}
+  {{ if .Site.RegularPages -}}
   <h2>{{ i18n "journalEntries" }}</h2>
   {{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse -}}
   {{ partial "metadata.html" . }}
+  {{ end -}}
   {{ end -}}
 </main>
 {{- end }}
