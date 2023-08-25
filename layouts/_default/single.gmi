@@ -71,18 +71,29 @@
 
 {{ $refs := $scratch.Get "refs" -}}
 {{ if and (.Page.Params.makerefs | default true) $refs -}}
-{{ $ref_index := 0 }}
+{{ $ref_index := 0 -}}
+{{ $refsMinusOne := sub (len $refs) 1 }}
 
-## {{ i18n "refs" -}}
-	{{ range $refs -}}
-		{{ $ref_index  = add $ref_index 1 -}}
-		{{ $ref_text  := index . 1 -}}
-		{{ $ref_link  := index . 2 -}}
-		{{ $ref_title := index . 3 -}}
 
-{{/* render referenced links */ -}}
+## {{ i18n "refs" }}
+
+{{ range first $refsMinusOne $refs -}}
+	{{ $ref_index  = add $ref_index 1 -}}
+	{{ $ref_text  := index . 1 -}}
+	{{ $ref_link  := index . 2 -}}
+	{{ $ref_title := index . 3 -}}
+
+	{{/* render referenced links */ -}}
+{{ print "=> " $ref_link (emojify " :link: ") $ref_index ": " (cond (ne (len $ref_title) 0) $ref_title $ref_text) | safeHTML }}
+{{ end -}}
+
+{{ range last 1 $refs -}}
+	{{ $ref_index = add $ref_index 1 -}}
+	{{ $ref_text  := index . 1 -}}
+	{{ $ref_link  := index . 2 -}}
+	{{ $ref_title := index . 3 -}}
+	{{/* render referenced link */ -}}
 {{ print "=> " $ref_link (emojify " :link: ") $ref_index ": " (cond (ne (len $ref_title) 0) $ref_title $ref_text) | safeHTML -}}
-
-	{{ end -}}
+{{ end -}}
 {{ end -}}
 {{ end }}
