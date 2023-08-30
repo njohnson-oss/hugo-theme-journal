@@ -1,3 +1,5 @@
 <header class="logo">
-  <pre class="logo__text">{{ readFile "templates/logo.txt" }}</pre>
+<pre class="logo__text">
+{{ chomp (readFile "templates/logo.txt") }}
+</pre>
 </header>
