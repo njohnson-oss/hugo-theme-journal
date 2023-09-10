@@ -139,7 +139,9 @@ blockquote, ol, p, pre, ul, .highlight {
 .logo {}
 
 .logo__text {
+	line-height: 1.2;
 	margin-bottom: 2em;
 	margin-top: 0;
+	overflow-y: hidden;
 	padding: 0;
 }
