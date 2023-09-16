@@ -116,7 +116,7 @@ blockquote, ol, p, pre, ul, .highlight {
 
 .link {
 	color: #0091ea;
-	text-decoration: none;
+	text-underline-offset: 3px;
 }
 
 .link:hover {
