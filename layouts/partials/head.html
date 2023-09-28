@@ -14,6 +14,9 @@
   {{- end -}}
   {{ else }}
   <link rel="stylesheet" type="text/css" href="{{ (resources.Get "css/style.css").RelPermalink }}">
+  {{- end -}}
+  {{ if (not (fileExists "static/favicon.ico")) }}
+  <link rel="icon" href="data:,">
   {{- end }}
   <title>{{ .Title }}</title>
 </head>
