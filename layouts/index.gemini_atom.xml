@@ -10,7 +10,7 @@
         <email>{{ .Site.Author.email }}</email>
     </author>
     <generator>Hugo -- gohugo.io</generator>
-    <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.Format "2006") }}</rights>
+    <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.UTC.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
         <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
