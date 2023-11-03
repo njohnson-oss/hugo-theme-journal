@@ -41,8 +41,20 @@
 			{{ $ref_index = add $ref_index 1 -}}
 			{{ $ref_text := index . 1 -}}
 
-			{{/*- replace link with reference numbers enclosed in brackets */ -}}
-			{{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text "[" $ref_index "]") 1 -}}
+			{{/* create superscript of $ref_index */ -}}
+			{{ $ref_index := replace $ref_index "0" "⁰" -}}
+			{{ $ref_index =  replace $ref_index "1" "¹" -}}
+			{{ $ref_index =  replace $ref_index "2" "²" -}}
+			{{ $ref_index =  replace $ref_index "3" "³" -}}
+			{{ $ref_index =  replace $ref_index "4" "⁴" -}}
+			{{ $ref_index =  replace $ref_index "5" "⁵" -}}
+			{{ $ref_index =  replace $ref_index "6" "⁶" -}}
+			{{ $ref_index =  replace $ref_index "7" "⁷" -}}
+			{{ $ref_index =  replace $ref_index "8" "⁸" -}}
+			{{ $ref_index =  replace $ref_index "9" "⁹" -}}
+
+			{{/* replace Markdown links with link text and their superscripted reference numbers */ -}}
+			{{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text $ref_index) 1 -}}
 
 		{{ end -}}
 
