@@ -25,8 +25,8 @@
 
 {{ range $chunks -}}
 	{{ $above_pre := index . 1 -}}
-	{{ $pre        := index . 2 -}}
-	{{ $below_pre  := index . 3 -}}
+	{{ $pre       := index . 2 -}}
+	{{ $below_pre := index . 3 -}}
 
 	{{/* mux regex matches above and below preformatted text for rendering (the matches are mutually exclusive) */ -}}
 	{{ $rendered_text := print $above_pre $below_pre -}}
