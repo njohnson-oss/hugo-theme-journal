@@ -154,7 +154,7 @@ Links in Markdown map to link lines in gemtext. The gemtext renderer does not re
 [Arch Linux](https://archlinux.org)
 ```
 
-Gemtext does not support inline links. To circumvent this limitation, the default behavior is to create link references and append them to the bottom of the blog post.
+Gemtext does not support inline links. To circumvent this limitation, the default behavior is to create link references and append them to the bottom of the page.
 
 E.g:
 
