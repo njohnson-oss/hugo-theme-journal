@@ -169,9 +169,9 @@ What about the [Gentoo](https://www.gentoo.org/) distro?
 Gemtext output:
 
 ```gemtext
-Do you like the Arch Linux[1] distro?
+Do you like the Arch Linux¹ distro?
 
-What about the Gentoo[2] distro?
+What about the Gentoo² distro?
 
 
 => https://archlinux.org 🔗 1: Arch Linux 
@@ -211,7 +211,7 @@ Markdown input:
 Gemtext output:
 
 ```gemtext
-Cute cat photo[1]
+Cute cat photo¹
 
 
 => cat.png 🔗 1: Cute cat photo
@@ -230,7 +230,7 @@ Do you like the [Arch Linux](https://archlinux.org "Arch") distro?
 Gemtext output:
 
 ```gemtext
-Do you like the Arch Linux[1] distro?
+Do you like the Arch Linux¹ distro?
 
 
 => https://archlinux.org 🔗 1: Arch
