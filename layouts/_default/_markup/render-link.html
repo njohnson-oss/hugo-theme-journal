@@ -1,2 +1,2 @@
 {{ $emoji := cond (and (not (.Page.Params.makerefs | default true)) (.Page.Params.showlinkemoji | default true)) (emojify ":link: ") "" -}}
-{{ $emoji }}<a class="link" href="{{ .Destination | safeURL }}"{{ if strings.HasPrefix .Destination "http" }} rel="noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
+{{ $emoji }}<a class="link" href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} rel="noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
