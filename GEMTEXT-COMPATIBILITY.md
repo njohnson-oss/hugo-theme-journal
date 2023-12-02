@@ -236,4 +236,4 @@ Do you like the Arch Linux¹ distro?
 => https://archlinux.org 🔗 1: Arch
 ```
 
-For compatibility, only use links with brackets and parenthesis. Always URL encode links. Do not use inline links with the "makerefs" page variable disabled.
+For compatibility, only use links with brackets and parenthesis. Always URL encode links. Do not use inline links with the "makerefs" page variable disabled. Do not omit link text nor hypertext references.
