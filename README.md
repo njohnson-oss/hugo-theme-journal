@@ -16,6 +16,10 @@ Hugo Journal Theme is an accessible, no-JS, minimalist, high-contrast Hugo theme
 * English
 * Spanish
 
+## Documentation
+
+The [gemtext compatibility reference guide](GEMTEXT-COMPATIBILITY-REFERENCE-GUIDE.md) documents the compatibility of Markdown features with gemtext as an output format in of this Hugo theme. The [gemtext compatibility rationale document](GEMTEXT-COMPATIBILITY-RATIONALE.md) explains the rationale behind the design decisions for the gemtext output format.
+
 ## Get The Theme
 
 Run from the root of your Hugo site:
@@ -33,8 +37,6 @@ $ git submodule add <repository-url> themes/journal
 ## Generate The Site
 
 To render the blog for Gemini and the Web, use separate configuration files.
-
-The [Gemtext compatibility document](GEMTEXT-COMPATIBILITY.md) explains which Markdown can be safely converted to Gemini.
 
 ## Versioning
 
