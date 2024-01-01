@@ -81,7 +81,7 @@
 	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[-+] ` "* " -}}
 
 	{{/* convert Markdown ordered list item to gemtext unordered list item /* -}}
-	{{ $rendered_text = $rendered_text | replaceRE `^[1-9]\d*\.[\t ]+(.*?)[\t ]*$` "$1" -}}
+	{{ $rendered_text = $rendered_text | replaceRE `^[1-9]\d*\.[\t ]+(.*?)[\t ]*$` "* $1" -}}
 
 	{{ $rendered_text = $rendered_text | emojify -}}
 
