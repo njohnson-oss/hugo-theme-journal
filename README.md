@@ -36,6 +36,8 @@ $ git submodule add <repository-url> themes/journal
 
 ## Generate The Site
 
+**Notice:** Hugo versions above v0.113.0 produce errors with this theme due to [a recently introduced bug](https://github.com/gohugoio/hugo/issues/11131 "Unexpected results with append template function") in how Hugo handles slices.
+
 To render the blog for Gemini and the Web, use separate configuration files.
 
 ## Versioning
