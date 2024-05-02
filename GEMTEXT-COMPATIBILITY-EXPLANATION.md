@@ -80,4 +80,4 @@ In order to allow other output formats to use inline image syntax without harmin
 
 Whitespace has no special meaning in gemtext. Gemini clients simply display whitespace verbatim. This can lead to discrepancies between the gemtext output format and other output formats if the guidelines in the [gemtext compatibility reference guide](GEMTEXT-COMPATIBILITY-REFERENCE-GUIDE.md) are not followed.
 
-There are plans to implement regex which "autocorrects" the whitespace between elements so that discrepancies cannot appear in the gemtext output and so that the user does not need to manually insert the correct amount of whitespace between elements.
+The gemtext renderer can "autocorrect" whitespace to avoid the need to manually format it. This feature was implemented, but later scrapped since it made the regex unmaintainable and introduced too many new edge cases.
