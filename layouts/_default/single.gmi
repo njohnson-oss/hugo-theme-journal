@@ -34,7 +34,7 @@
 	{{ if ($.Page.Params.makerefs | default true) -}}
 
 		{{/* find all the links within a chunk */ -}}
-		{{ $chunk_refs := findRESubmatch `!?\[\s*(.+?)\s*\]\(\s*(.+?)(?:\s+"(.+?)")?\s*\)` $rendered_text -}}
+		{{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
 
 		{{ $scratch.Add "refs" $chunk_refs -}}
 		{{ range $chunk_refs -}}
@@ -61,7 +61,7 @@
 	{{ else -}}
 
 		{{/* render all links directly */ -}}
-		{{ $rendered_text = $rendered_text | replaceRE `(?m)^!?\[\s*(.+?)\s*\]\(\s*(.+?)(?:\s+"(.+?)")?\s*\)$` (print "=> $2 " $emoji "$1") -}}
+		{{ $rendered_text = $rendered_text | replaceRE `(?m)^!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)$` (print "=> $2 " $emoji "$1") -}}
 
 	{{ end -}}
 
