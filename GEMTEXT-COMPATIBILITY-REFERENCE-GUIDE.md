@@ -146,7 +146,7 @@ emphasis (italic) => text with italic delimiters removed
 
 Support level: partial
 
-Asterisks delimiting italicized text are removed from the gemtext output.
+Asterisks delimiting italicized text are removed from the gemtext output. Using italics with other supported Markdown features can cause unexpected behavior.
 
 E.g:
 
@@ -154,12 +154,16 @@ Markdown input:
 
 ```markdown
 I will become *italicized* in the HTML output.
+
+*##* I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 Gemtext output:
 
 ```gemtext
 I will become italicized in the HTML output.
+
+## I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 ## Emphasis (Bold)
@@ -170,7 +174,7 @@ emphasis (bold) => text with bold delimiters removed
 
 Support level: partial
 
-Asterisks delimiting bolded text are removed from the gemtext output.
+Asterisks delimiting bolded text are removed from the gemtext output. Using bolding with other supported Markdown features can cause unexpected behavior.
 
 E.g:
 
@@ -178,12 +182,16 @@ Markdown input:
 
 ```markdown
 I will become **bolded** in the HTML output.
+
+**##** I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 Gemtext output:
 
 ```gemtext
 I will become bolded in the HTML output.
+
+## I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 ## Emphasis (Bold and Italic)
@@ -194,7 +202,7 @@ emphasis (bold and italic) => text with bold and italic delimiters removed
 
 Support level: partial
 
-Asterisks delimiting bolded and italicized text are removed from the gemtext output.
+Asterisks delimiting bolded and italicized text are removed from the gemtext output. Using bolding and italics with other supported Markdown features can cause unexpected behavior.
 
 E.g:
 
@@ -202,12 +210,16 @@ Markdown input:
 
 ```markdown
 I will become ***bolded and italicized*** in the HTML output.
+
+***##*** I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 Gemtext output:
 
 ```gemtext
 I will become bolded and italicized in the HTML output.
+
+## I will become a level 2 heading in the gemtext output but not in the HTML output
 ```
 
 ## Unordered Lists
