@@ -73,6 +73,7 @@
 	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\-+$` "## $1" -}}
 
 	{{/* remove bold and italics asterisk symbols */ -}}
+	{{/* note: this operation is performed in 3 steps to handle nested bold and italics */ -}}
 	{{ $rendered_text = $rendered_text | replaceRE `\*{3}(\S(?:.*\S)?)\*{3}` "$1" -}}
 	{{ $rendered_text = $rendered_text | replaceRE `\*{2}(\S(?:.*\S)?)\*{2}` "$1" -}}
 	{{ $rendered_text = $rendered_text | replaceRE `\*{1}(\S(?:.*\S)?)\*{1}` "$1" -}}
