@@ -204,7 +204,7 @@ Markdown input:
 I will become ***bolded and italicized*** in the HTML output.
 ```
 
-gemtext output:
+Gemtext output:
 
 ```gemtext
 I will become bolded and italicized in the HTML output.
