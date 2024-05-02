@@ -14,7 +14,7 @@
 {{ $scratch := newScratch -}}
 
 {{/* if content begins with a heading, add an extra space */ -}}
-{{ if (findRE `(?)^#{1,3}` $content) }}
+{{ if (findRE `^#{1,6} ` $content 1) }}
 {{ end -}}
 
 {{/* split text into chunks, with each chunk containing 3 parts: above, within, and below preformatted text */ -}}
@@ -66,7 +66,7 @@
 	{{ end -}}
 
 	{{/* trim extra heading symbols */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3}` "###" -}}
+	{{ $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3} ` "### " -}}
 
 	{{/* convert alternative heading syntax to number signs */ -}}
 	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\=+$` "# $1" -}}
