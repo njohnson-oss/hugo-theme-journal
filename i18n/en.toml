@@ -24,3 +24,6 @@
 
 [navLinks]
   other = "Navigation Links"
+
+[pageNotFound]
+  other = "Page Not Found"
