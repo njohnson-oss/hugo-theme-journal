@@ -37,8 +37,8 @@
 		{{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
 
 		{{ range $chunk_refs -}}
-			{{ $ref_index = add $ref_index 1 -}}
 			{{ $chunk_ref := dict
+				"index" (add $ref_index 1)
 				"text" (index . 1)
 				"link" (index . 2)
 				"title" (index . 3)
@@ -46,6 +46,7 @@
 
 			{{ $scratch.Add "refs" (slice $chunk_ref) -}}
 
+			{{ $ref_index := $chunk_ref.index -}}
 			{{ $ref_text := $chunk_ref.text -}}
 
 			{{/* create superscript of $ref_index */ -}}
@@ -106,13 +107,12 @@
 {{ end -}}
 
 {{ $refs := $scratch.Get "refs" -}}
-{{ if and (.Page.Params.makerefs | default true) $refs -}}
-{{ $ref_index := 0 }}
+{{ if and (.Page.Params.makerefs | default true) $refs }}
 
 
 ## {{ i18n "refs" }}
 {{ range $refs -}}
-	{{ $ref_index  = add $ref_index 1 -}}
+	{{ $ref_index := .index -}}
 	{{ $ref_text  := .text -}}
 	{{ $ref_link  := .link -}}
 	{{ $ref_title := .title -}}
