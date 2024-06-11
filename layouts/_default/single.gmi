@@ -36,10 +36,17 @@
 		{{/* find all the links within a chunk */ -}}
 		{{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
 
-		{{ $scratch.Add "refs" $chunk_refs -}}
 		{{ range $chunk_refs -}}
 			{{ $ref_index = add $ref_index 1 -}}
-			{{ $ref_text := index . 1 -}}
+			{{ $chunk_ref := dict
+				"text" (index . 1)
+				"link" (index . 2)
+				"title" (index . 3)
+			-}}
+
+			{{ $scratch.Add "refs" (slice $chunk_ref) -}}
+
+			{{ $ref_text := $chunk_ref.text -}}
 
 			{{/* create superscript of $ref_index */ -}}
 			{{ $ref_index := replace $ref_index "0" "⁰" -}}
@@ -106,9 +113,9 @@
 ## {{ i18n "refs" }}
 {{ range $refs -}}
 	{{ $ref_index  = add $ref_index 1 -}}
-	{{ $ref_text  := index . 1 -}}
-	{{ $ref_link  := index . 2 -}}
-	{{ $ref_title := index . 3 -}}
+	{{ $ref_text  := .text -}}
+	{{ $ref_link  := .link -}}
+	{{ $ref_title := .title -}}
 
 	{{/* render referenced links */}}
 {{ print "=> " $ref_link (emojify " :link: [") $ref_index "]: " (cond (ne (len $ref_title) 0) $ref_title $ref_text) | safeHTML -}}
