@@ -37,8 +37,9 @@
 		{{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
 
 		{{ range $chunk_refs -}}
+			{{ $ref_index = add $ref_index 1 -}}
 			{{ $chunk_ref := dict
-				"index" (add $ref_index 1)
+				"index" $ref_index
 				"text" (index . 1)
 				"link" (index . 2)
 				"title" (index . 3)
