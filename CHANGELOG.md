@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.7 - 2024-07-04
+
+### Fixed
+
+- Remove extra whitespace accidentally introduced in v1.3.5
+
 ## 1.3.6 - 2024-06-30
 
 ### Added
