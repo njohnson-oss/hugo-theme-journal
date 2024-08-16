@@ -37,11 +37,12 @@
     <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
     <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "atom.xml" | safeURL }}" rel="self" />
     <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" | safeURL }}" rel="alternate" />
+    {{- with $authorName }}
     <author>
-        <name>{{ $authorName }}</name>
+        <name>{{ . }}</name>
         {{- with $authorEmail }}
         <email>{{ . }}</email>{{ end }}
-    </author>
+    </author>{{ end }}
     <generator>Hugo -- gohugo.io</generator>
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.UTC.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Data.Pages }}
