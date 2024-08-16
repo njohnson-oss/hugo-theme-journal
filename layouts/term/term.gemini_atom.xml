@@ -1,10 +1,10 @@
 {{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>{{ replace .Permalink "https://" "gemini://" }}</id>
+    <id>{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" }}</id>
     <title>{{ .Site.Title }}</title>
     <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
-    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}atom.xml" rel="self" />
-    <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />
+    <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "atom.xml" | safeURL }}" rel="self" />
+    <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" | safeURL }}" rel="alternate" />
     <author>
         <name>{{ .Site.Author.name }}</name>
         <email>{{ .Site.Author.email }}</email>
@@ -13,9 +13,9 @@
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.UTC.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Data.Pages }}
     <entry>
-        <id>{{ replace .Permalink "https://" "gemini://" | safeURL }}</id>
+        <id>{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" | safeURL }}</id>
         <title>{{ .Title }}</title>
         <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
-        <link href="{{ replace .Permalink "https://" "gemini://" | safeURL }}" rel="alternate" />
+        <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" | safeURL }}" rel="alternate" />
     </entry>{{ end }}
 </feed>
