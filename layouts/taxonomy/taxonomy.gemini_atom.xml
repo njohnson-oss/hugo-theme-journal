@@ -1,3 +1,35 @@
+{{/* Deprecate site.Author.name in favor of site.Params.author.name */}}
+{{- $authorName := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .name }}
+      {{- $authorName = . }}
+    {{- end }}
+  {{- else }}
+    {{- $authorName  = . }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.name }}
+    {{- $authorName = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.name instead." }}
+  {{- end }}
+{{- end }}
+
+{{- /* Deprecate site.Author.email in favor of site.Params.author.email */}}
+{{- $authorEmail := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .email }}
+      {{- $authorEmail = . }}
+    {{- end }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.email }}
+    {{- $authorEmail = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.email instead." }}
+  {{- end }}
+{{- end -}}
+
 {{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" }}</id>
@@ -6,8 +38,8 @@
     <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "atom.xml" | safeURL }}" rel="self" />
     <link href="{{ replace .Permalink "https://" "gemini://" | replaceRE `(?m)index.gmi$` "" | safeURL }}" rel="alternate" />
     <author>
-        <name>{{ .Site.Params.author.name }}</name>
-        {{- with .Site.Params.author.email }}
+        <name>{{ $authorName }}</name>
+        {{- with $authorEmail }}
         <email>{{ . }}</email>{{ end }}
     </author>
     <generator>Hugo -- gohugo.io</generator>
