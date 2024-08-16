@@ -47,7 +47,7 @@
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.UTC.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
-        <id>{{ .Permalink | replaceRE `^https://(.*)index.gmi$` "gemini://$1" | safeURL }}</id>
+        <id>{{ .Permalink | replaceRE `^https://(.*)index.gmi$` "gemini://$1" }}</id>
         <title>{{ .Title }}</title>
         <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
         <link href="{{ .Permalink | replaceRE `^https://(.*)index.gmi$` "gemini://$1" | safeURL }}" rel="alternate" />
