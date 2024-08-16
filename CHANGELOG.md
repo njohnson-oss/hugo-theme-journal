@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.4.0 - 2024-08-16
+
+### Changed
+
+- Make author element optional in Atom feeds
+- Make email subelement optional in author element
+
+### Added
+
+- Add support for site.Params.author, retain compatibility with site.Author
+
+### Fixed
+
+- Remove erroneous "index.gmi" suffix in gemtext Atom feeds
+- Fix incorrect greedy italics/bold parsing in gemtext renderer
+
 ## 1.3.7 - 2024-07-04
 
 ### Fixed
