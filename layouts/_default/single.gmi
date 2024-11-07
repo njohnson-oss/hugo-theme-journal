@@ -24,86 +24,86 @@
 {{ $ref_index := 0 -}}
 
 {{ range $chunks -}}
-	{{ $above_pre := index . 1 -}}
-	{{ $pre       := index . 2 -}}
-	{{ $below_pre := index . 3 -}}
+  {{ $above_pre := index . 1 -}}
+  {{ $pre       := index . 2 -}}
+  {{ $below_pre := index . 3 -}}
 
-	{{/* mux regex matches above and below preformatted text for rendering (the matches are mutually exclusive) */ -}}
-	{{ $rendered_text := print $above_pre $below_pre -}}
+  {{/* mux regex matches above and below preformatted text for rendering (the matches are mutually exclusive) */ -}}
+  {{ $rendered_text := print $above_pre $below_pre -}}
 
-	{{ if ($.Page.Params.makerefs | default true) -}}
+  {{ if ($.Page.Params.makerefs | default true) -}}
 
-		{{/* find all the links within a chunk */ -}}
-		{{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
+    {{/* find all the links within a chunk */ -}}
+    {{ $chunk_refs := findRESubmatch `!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)` $rendered_text -}}
 
-		{{ range $chunk_refs -}}
-			{{ $ref_index = add $ref_index 1 -}}
-			{{ $chunk_ref := dict
-				"index" $ref_index
-				"text" (index . 1)
-				"link" (index . 2)
-				"title" (index . 3)
-			-}}
+    {{ range $chunk_refs -}}
+      {{ $ref_index = add $ref_index 1 -}}
+      {{ $chunk_ref := dict
+        "index" $ref_index
+        "text" (index . 1)
+        "link" (index . 2)
+        "title" (index . 3)
+      -}}
 
-			{{ $scratch.Add "refs" (slice $chunk_ref) -}}
+      {{ $scratch.Add "refs" (slice $chunk_ref) -}}
 
-			{{ $ref_index := $chunk_ref.index -}}
-			{{ $ref_text := $chunk_ref.text -}}
+      {{ $ref_index := $chunk_ref.index -}}
+      {{ $ref_text := $chunk_ref.text -}}
 
-			{{/* create superscript of $ref_index */ -}}
-			{{ $ref_index := replace $ref_index "0" "⁰" -}}
-			{{ $ref_index =  replace $ref_index "1" "¹" -}}
-			{{ $ref_index =  replace $ref_index "2" "²" -}}
-			{{ $ref_index =  replace $ref_index "3" "³" -}}
-			{{ $ref_index =  replace $ref_index "4" "⁴" -}}
-			{{ $ref_index =  replace $ref_index "5" "⁵" -}}
-			{{ $ref_index =  replace $ref_index "6" "⁶" -}}
-			{{ $ref_index =  replace $ref_index "7" "⁷" -}}
-			{{ $ref_index =  replace $ref_index "8" "⁸" -}}
-			{{ $ref_index =  replace $ref_index "9" "⁹" -}}
+      {{/* create superscript of $ref_index */ -}}
+      {{ $ref_index := replace $ref_index "0" "⁰" -}}
+      {{ $ref_index =  replace $ref_index "1" "¹" -}}
+      {{ $ref_index =  replace $ref_index "2" "²" -}}
+      {{ $ref_index =  replace $ref_index "3" "³" -}}
+      {{ $ref_index =  replace $ref_index "4" "⁴" -}}
+      {{ $ref_index =  replace $ref_index "5" "⁵" -}}
+      {{ $ref_index =  replace $ref_index "6" "⁶" -}}
+      {{ $ref_index =  replace $ref_index "7" "⁷" -}}
+      {{ $ref_index =  replace $ref_index "8" "⁸" -}}
+      {{ $ref_index =  replace $ref_index "9" "⁹" -}}
 
-			{{/* replace Markdown links with link text and their superscripted reference numbers */ -}}
-			{{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text $ref_index) 1 -}}
+      {{/* replace Markdown links with link text and their superscripted reference numbers */ -}}
+      {{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text $ref_index) 1 -}}
 
-		{{ end -}}
+    {{ end -}}
 
-	{{ else -}}
+  {{ else -}}
 
-		{{/* render all links directly */ -}}
-		{{ $rendered_text = $rendered_text | replaceRE `(?m)^!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)$` (print "=> $2 " $emoji "$1") -}}
+    {{/* render all links directly */ -}}
+    {{ $rendered_text = $rendered_text | replaceRE `(?m)^!?\[[\t ]*(.+?)[\t ]*\]\([\t ]*(.+?)(?:[\t ]+"(.+?)")?[\t ]*\)$` (print "=> $2 " $emoji "$1") -}}
 
-	{{ end -}}
+  {{ end -}}
 
-	{{/* trim extra heading symbols */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3} ` "### " -}}
+  {{/* trim extra heading symbols */ -}}
+  {{ $rendered_text = $rendered_text | replaceRE `(?m)^####{1,3} ` "### " -}}
 
-	{{/* convert Markdown alternative heading syntax to gemtext heading syntax */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\=+$` "# $1" -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\-+$` "## $1" -}}
+  {{/* convert Markdown alternative heading syntax to gemtext heading syntax */ -}}
+  {{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\=+$` "# $1" -}}
+  {{ $rendered_text = $rendered_text | replaceRE `(?m)^[\t ]*(\S.+?)[\t ]*\n\-+$` "## $1" -}}
 
-	{{/* convert Markdown alternative unordered list syntax to gemtext unordered list syntax */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[-+] ` "* " -}}
+  {{/* convert Markdown alternative unordered list syntax to gemtext unordered list syntax */ -}}
+  {{ $rendered_text = $rendered_text | replaceRE `(?m)^[-+] ` "* " -}}
 
-	{{/* convert Markdown ordered list items to gemtext unordered list items */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `(?m)^[1-9]\d*\.[\t ]+(.*?)[\t ]*$` "* $1" -}}
+  {{/* convert Markdown ordered list items to gemtext unordered list items */ -}}
+  {{ $rendered_text = $rendered_text | replaceRE `(?m)^[1-9]\d*\.[\t ]+(.*?)[\t ]*$` "* $1" -}}
 
-	{{/* remove bold and italics asterisk symbols */ -}}
-	{{/* note: this operation is performed in 3 steps to handle nested bold and italics */ -}}
-	{{/* note: this operation is performed last to avoid incorrectly rendering (un)ordered lists */ -}}
-	{{ $rendered_text = $rendered_text | replaceRE `\*{3}(\S(?:.*?\S)?)\*{3}` "$1" -}}
-	{{ $rendered_text = $rendered_text | replaceRE `\*{2}(\S(?:.*?\S)?)\*{2}` "$1" -}}
-	{{ $rendered_text = $rendered_text | replaceRE `\*{1}(\S(?:.*?\S)?)\*{1}` "$1" -}}
+  {{/* remove bold and italics asterisk symbols */ -}}
+  {{/* note: this operation is performed in 3 steps to handle nested bold and italics */ -}}
+  {{/* note: this operation is performed last to avoid incorrectly rendering (un)ordered lists */ -}}
+  {{ $rendered_text = $rendered_text | replaceRE `\*{3}(\S(?:.*?\S)?)\*{3}` "$1" -}}
+  {{ $rendered_text = $rendered_text | replaceRE `\*{2}(\S(?:.*?\S)?)\*{2}` "$1" -}}
+  {{ $rendered_text = $rendered_text | replaceRE `\*{1}(\S(?:.*?\S)?)\*{1}` "$1" -}}
 
-	{{ $rendered_text = $rendered_text | emojify -}}
+  {{ $rendered_text = $rendered_text | emojify -}}
 
-	{{/* demux regex matches above and below preformatted text */ -}}
-	{{ if $above_pre -}}
-		{{ $rendered_text | safeHTML -}}
-		{{ $pre | safeHTML -}}
-	{{ else -}}
-		{{ $pre | safeHTML -}}
-		{{ $rendered_text | safeHTML -}}
-	{{ end -}}
+  {{/* demux regex matches above and below preformatted text */ -}}
+  {{ if $above_pre -}}
+    {{ $rendered_text | safeHTML -}}
+    {{ $pre | safeHTML -}}
+  {{ else -}}
+    {{ $pre | safeHTML -}}
+    {{ $rendered_text | safeHTML -}}
+  {{ end -}}
 
 {{ end -}}
 
@@ -113,12 +113,12 @@
 
 ## {{ i18n "refs" }}
 {{ range $refs -}}
-	{{ $ref_index := .index -}}
-	{{ $ref_text  := .text -}}
-	{{ $ref_link  := .link -}}
-	{{ $ref_title := .title -}}
+  {{ $ref_index := .index -}}
+  {{ $ref_text  := .text -}}
+  {{ $ref_link  := .link -}}
+  {{ $ref_title := .title -}}
 
-	{{/* render referenced links */}}
+  {{/* render referenced links */}}
 {{ print "=> " $ref_link (emojify " :link: [") $ref_index "]: " (cond (ne (len $ref_title) 0) $ref_title $ref_text) | safeHTML -}}
 {{ end -}}
 
