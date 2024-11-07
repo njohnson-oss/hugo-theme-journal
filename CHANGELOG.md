@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.5.0 - 2024-11-07
+
+### Changed
+
+- Transition to new config file naming convention
+- Convert tabs to spaces
+
+### Added
+
+- Add time element to entry date and duration in HTML output format
+
+### Removed
+
+- Remove niche timestamp obfuscation privacy feature
+
 ## 1.4.0 - 2024-08-16
 
 ### Changed
