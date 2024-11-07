@@ -1,6 +1,6 @@
 {{ define "main" -}}
 {{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" -}}
+=> {{ .Site.Home.RelPermalink | replaceRE `index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" -}}
 
 {{ if (.Page.Params.pageinfo | default true) }}
 

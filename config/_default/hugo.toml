@@ -11,9 +11,11 @@
   [outputFormats.Gemini]
     mediaType = "text/gemini"
     isPlainText = true # Disable HTML renderer
+    protocol = "gemini://"
   [outputFormats.Gemini_Atom]
     mediaType = "application/atom"
     baseName = "atom"
+    protocol = "gemini://"
 
 [markup]
   [markup.goldmark]
