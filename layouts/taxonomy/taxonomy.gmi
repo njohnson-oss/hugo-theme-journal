@@ -1,5 +1,5 @@
 {{ define "main" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ i18n "returnHome" }}
+=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
 
 
 # {{ .Type | humanize }}
@@ -7,11 +7,11 @@
 
 ## {{ i18n "feeds" }}
 
-=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" | safeHTML }} {{ emojify ":link:" | safeHTML }} {{ i18n "atomFeed" }}
+=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "atom.xml" }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
 
 
 ## {{ i18n "list" }}
 {{ range .Data.Pages }}
-=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ .Title | safeHTML -}}
+=> {{ .RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" }} {{ .Title -}}
 {{ end -}}
 {{ end }}

@@ -10,6 +10,7 @@
     baseName = "atom"
   [outputFormats.Gemini]
     mediaType = "text/gemini"
+    isPlainText = true # Disable HTML renderer
   [outputFormats.Gemini_Atom]
     mediaType = "application/atom"
     baseName = "atom"

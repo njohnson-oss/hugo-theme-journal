@@ -1,14 +1,14 @@
 {{ define "main" -}}
-# {{ .Site.Params.indexTitle | safeHTML }}
+# {{ .Site.Params.indexTitle }}
 
-{{ .Site.Params.indexIntro | safeHTML }}
+{{ .Site.Params.indexIntro }}
 
 {{- if .Site.Menus.main }}
 
 
 ## {{ i18n "navLinks" }}
 {{ range .Site.Menus.main }}
-=> {{ .URL }} {{ emojify ":link:" | safeHTML }} {{ .Name | safeHTML -}}
+=> {{ .URL }} {{ emojify ":link:" }} {{ .Name -}}
 {{ end -}}
 
 {{ end -}}

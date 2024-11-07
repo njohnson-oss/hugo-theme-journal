@@ -1,6 +1,6 @@
 {{ define "main" -}}
 {{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" | safeHTML }} {{ i18n "returnHome" -}}
+=> {{ .Site.Home.RelPermalink | replaceRE `(?m)index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" -}}
 
 {{ if (.Page.Params.pageinfo | default true) }}
 
@@ -8,7 +8,7 @@
 {{ end }}
 
 
-# {{ .Name | safeHTML }}
+# {{ .Name }}
 
 {{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}
@@ -98,11 +98,11 @@
 
   {{/* demux regex matches above and below preformatted text */ -}}
   {{ if $above_pre -}}
-    {{ $rendered_text | safeHTML -}}
-    {{ $pre | safeHTML -}}
+    {{ $rendered_text -}}
+    {{ $pre -}}
   {{ else -}}
-    {{ $pre | safeHTML -}}
-    {{ $rendered_text | safeHTML -}}
+    {{ $pre -}}
+    {{ $rendered_text -}}
   {{ end -}}
 
 {{ end -}}
@@ -119,7 +119,7 @@
   {{ $ref_title := .title -}}
 
   {{/* render referenced links */}}
-{{ print "=> " $ref_link (emojify " :link: [") $ref_index "]: " (cond (ne (len $ref_title) 0) $ref_title $ref_text) | safeHTML -}}
+{{ print "=> " $ref_link (emojify " :link: [") $ref_index "]: " (cond (ne (len $ref_title) 0) $ref_title $ref_text) -}}
 {{ end -}}
 
 {{ end -}}
