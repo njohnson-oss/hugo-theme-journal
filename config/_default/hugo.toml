@@ -11,6 +11,7 @@
   [outputFormats.Gemini]
     mediaType = "text/gemini"
     isPlainText = true # Disable HTML renderer
+    isHTML = false # Disable LiveReload, alias redirect, etc.
     protocol = "gemini://"
   [outputFormats.Gemini_Atom]
     mediaType = "application/atom"
