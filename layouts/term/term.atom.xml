@@ -34,7 +34,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink }}</id>
     <title>{{ .Site.Title }}</title>
-    <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+    <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
     <link href="{{ .Permalink }}atom.xml" rel="self" />
     <link href="{{ .Permalink }}" rel="alternate" />
     {{- with $authorName }}
@@ -49,7 +49,7 @@
     <entry>
         <id>{{ .Permalink }}</id>
         <title type="html">{{ .Title }}</title>
-        <updated>{{ .Date.UTC.Format "2006-01-02T15:04:05Z" | safeHTML }}</updated>
+        <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
         <link href="{{ .Permalink }}" />
         <content type="html">{{ .Content | html }}</content>
     </entry>{{ end }}
