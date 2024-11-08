@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.1 - 2024-11-08
+
+### Fixed
+
+- Fix typo in README.md
+
 ## 1.6.0 - 2024-11-08
 
 ### Changed
