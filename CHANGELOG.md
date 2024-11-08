@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.6.0 - 2024-11-08
+
+### Changed
+
+- Make hover/non-hover link colors equivalent
+- Improve code readability
+
+### Added
+
+- Add distinct CSS styling to external links
+
+### Fixed
+
+- Disable html renderer in gemtext output format
+- Disable html-specific features in gemtext output format
+- Stop treating link titles as safe html
+
 ## 1.5.0 - 2024-11-07
 
 ### Changed
