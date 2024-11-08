@@ -1,5 +1,5 @@
 {{ define "main" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
+=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
 
 
 # {{ .Type | singularize | humanize }} "{{ .Title }}"

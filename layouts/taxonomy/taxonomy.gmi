@@ -1,5 +1,5 @@
 {{ define "main" -}}
-=> {{ .Site.Home.RelPermalink | replaceRE `index.gmi$` "" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
+=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
 
 
 # {{ .Type | humanize }}
@@ -12,6 +12,6 @@
 
 ## {{ i18n "list" }}
 {{ range .Data.Pages }}
-=> {{ .RelPermalink | replaceRE `index.gmi$` "" }} {{ emojify ":link:" }} {{ .Title -}}
+=> {{ .RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ .Title -}}
 {{ end -}}
 {{ end }}

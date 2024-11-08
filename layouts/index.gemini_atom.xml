@@ -32,11 +32,11 @@
 
 {{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>{{ .Permalink | replaceRE `index.gmi$` "" }}</id>
+    <id>{{ .Permalink | strings.TrimSuffix "index.gmi" }}</id>
     <title>{{ .Site.Title }}</title>
     <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
     <link href="{{ .Permalink | replaceRE `index.gmi$` "atom.xml" | safeURL }}" rel="self" />
-    <link href="{{ .Permalink | replaceRE `index.gmi$` "" | safeURL }}" rel="alternate" />
+    <link href="{{ .Permalink | strings.TrimSuffix "index.gmi" | safeURL }}" rel="alternate" />
     {{- with $authorName }}
     <author>
         <name>{{ . }}</name>
@@ -47,9 +47,9 @@
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
     <entry>
-        <id>{{ .Permalink | replaceRE `index.gmi$` "" }}</id>
+        <id>{{ .Permalink | strings.TrimSuffix "index.gmi" }}</id>
         <title>{{ .Title }}</title>
         <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
-        <link href="{{ .Permalink | replaceRE `index.gmi$` "" | safeURL }}" rel="alternate" />
+        <link href="{{ .Permalink | strings.TrimSuffix "index.gmi" | safeURL }}" rel="alternate" />
     </entry>{{ end }}
 </feed>
