@@ -7,7 +7,7 @@
   <nav>
     <ul class="list">
     {{- range .Site.Menus.main }}
-      <li class="list__item">{{ emojify ":link:" | safeHTML }} <a class="link" href="{{ .URL }}" rel="noreferrer">{{ .Name }}</a></li>
+      <li class="list__item">{{ emojify ":link:" }} <a class="link" href="{{ .URL }}" rel="noreferrer">{{ .Name }}</a></li>
     {{- end }}
     </ul>
   </nav>

@@ -1,11 +1,11 @@
 {{ define "main" -}}
 <nav>
-  <p>{{ emojify ":link:" | safeHTML }} <a class="link" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
+  <p>{{ emojify ":link:" }} <a class="link" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
 <main>
   <h1>{{ .Type | humanize }}</h1>
   <h2>{{ i18n "feeds" }}</h2>
-  <p><a class="link" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" | safeHTML }} {{ i18n "atomFeed" }}</a></p>
+  <p><a class="link" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" }} {{ i18n "atomFeed" }}</a></p>
   <h2>{{ i18n "list" }}</h2>
   <ul class="list">
   {{- range .Data.Pages }}
