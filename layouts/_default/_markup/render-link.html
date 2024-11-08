@@ -1,2 +1,3 @@
 {{ $emoji := cond (and (not (.Page.Params.makerefs | default true)) (.Page.Params.showlinkemoji | default true)) (emojify ":link: ") "" -}}
-{{ $emoji }}<a class="link" href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} rel="{{ if (urls.Parse .Destination).IsAbs }}external {{ end }}noreferrer">{{ .Text }}</a>
+{{ $isExternalLink := (urls.Parse .Destination).IsAbs -}}
+{{ $emoji }}<a class="link {{ if $isExternalLink }}link--external{{ else }}link--internal{{ end }}" href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} rel="{{ if $isExternalLink }}external {{ end }}noreferrer">{{ .Text }}</a>

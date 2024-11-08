@@ -115,12 +115,24 @@ blockquote, ol, p, pre, ul, .highlight {
 }
 
 .link {
-	color: #0091ea;
 	text-underline-offset: 3px;
 }
 
-.link:hover {
+.link--internal {
+	color: #0091ea;
+}
+
+.link--internal:hover {
 	background-color: #0091ea;
+	color: black;
+}
+
+.link--external {
+	color: #9370DB;
+}
+
+.link--external:hover {
+	background-color: #9370DB;
 	color: black;
 }
 
