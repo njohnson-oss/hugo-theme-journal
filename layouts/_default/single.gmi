@@ -51,19 +51,25 @@
       {{ $ref_text := $chunk_ref.text -}}
 
       {{/* create superscript of $ref_index */ -}}
-      {{ $ref_index := replace $ref_index "0" "⁰" -}}
-      {{ $ref_index =  replace $ref_index "1" "¹" -}}
-      {{ $ref_index =  replace $ref_index "2" "²" -}}
-      {{ $ref_index =  replace $ref_index "3" "³" -}}
-      {{ $ref_index =  replace $ref_index "4" "⁴" -}}
-      {{ $ref_index =  replace $ref_index "5" "⁵" -}}
-      {{ $ref_index =  replace $ref_index "6" "⁶" -}}
-      {{ $ref_index =  replace $ref_index "7" "⁷" -}}
-      {{ $ref_index =  replace $ref_index "8" "⁸" -}}
-      {{ $ref_index =  replace $ref_index "9" "⁹" -}}
+      {{ $superscript_map := dict
+        "0" "⁰"
+        "1" "¹"
+        "2" "²"
+        "3" "³"
+        "4" "⁴"
+        "5" "⁵"
+        "6" "⁶"
+        "7" "⁷"
+        "8" "⁸"
+        "9" "⁹"
+      -}}
+      {{ $ref_superscript := "" -}}
+      {{ range (split $ref_index "") -}}
+        {{ $ref_superscript = print $ref_superscript (index $superscript_map .) -}}
+      {{ end -}}
 
       {{/* replace Markdown links with link text and their superscripted reference numbers */ -}}
-      {{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text $ref_index) 1 -}}
+      {{ $rendered_text = replace $rendered_text (index . 0) (print $ref_text $ref_superscript) 1 -}}
 
     {{ end -}}
 
