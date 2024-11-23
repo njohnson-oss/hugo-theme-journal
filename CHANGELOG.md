@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.2 - 2024-11-23
+
+### Changed
+
+- Improve conversion of ref numbers to superscripts
+
 ## 1.6.1 - 2024-11-08
 
 ### Fixed
