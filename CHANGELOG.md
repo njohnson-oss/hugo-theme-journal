@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.3 - 2024-11-25
+
+### Changed
+
+- Move css stylesheet to subdirectory
+
 ## 1.6.2 - 2024-11-23
 
 ### Changed
