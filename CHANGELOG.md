@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.4 - 2025-01-28
+
+### Added
+
+- Add Gemini capsule demo URL to README.md
+
 ## 1.6.3 - 2024-11-25
 
 ### Changed
