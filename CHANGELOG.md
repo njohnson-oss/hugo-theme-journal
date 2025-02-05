@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.5 - 2025-02-05
+
+### Fixed
+
+- Add missing hyphen to compound modifier in pageinfo partial for English translation
+
 ## 1.6.4 - 2025-01-28
 
 ### Added
