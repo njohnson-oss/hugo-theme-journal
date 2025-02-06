@@ -1,2 +1,2 @@
 {{ partial "pageinfo.gmi" . }}
-=> {{ .RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ .Title }}
+=> {{ .RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ .Title }}

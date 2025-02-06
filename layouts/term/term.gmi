@@ -1,5 +1,5 @@
 {{ define "main" -}}
-=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
+=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
 
 
 # {{ .Type | singularize | humanize }} "{{ .Title }}"
@@ -7,7 +7,7 @@
 
 ## {{ i18n "feeds" }}
 
-=> {{ .RelPermalink | replaceRE `index.gmi$` "atom.xml" }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
+=> {{ .RelPermalink | replaceRE `index.gmi$` "atom.xml" }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
 
 
 ## {{ i18n "journalEntries" -}}

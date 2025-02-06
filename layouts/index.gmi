@@ -8,7 +8,7 @@
 
 ## {{ i18n "navLinks" }}
 {{ range .Site.Menus.main }}
-=> {{ .URL }} {{ emojify ":link:" }} {{ .Name -}}
+=> {{ .URL }} {{ emojify ":link:" }} {{ .Name -}}
 {{ end -}}
 
 {{ end -}}

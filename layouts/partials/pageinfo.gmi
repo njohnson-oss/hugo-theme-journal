@@ -1,2 +1,11 @@
 {{ $dateFormat := .Site.Params.dateFormat | default ":date_long" -}}
-{{ emojify ":calendar:" }} {{ .Page.PublishDate | time.Format $dateFormat }} | {{ emojify ":stopwatch:" }} {{ i18n "readingTime" .ReadingTime }}{{ if (.Param (lower (i18n "tags"))) }} | {{ emojify ":label:" }} {{ end }}{{ range $key, $val := (.Param (lower (i18n "tags"))) }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
+
+{{ $nonBreakingPublishDate := .Page.PublishDate | time.Format $dateFormat -}}
+{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate " " " " -}}
+{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate "-" "‑" -}}
+
+{{ $nonBreakingReadingTime := i18n "readingTime" .ReadingTime -}}
+{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime " " " " -}}
+{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime "-" "‑" -}}
+
+{{ emojify ":calendar:" }} {{ $nonBreakingPublishDate }} | {{ emojify ":stopwatch:" }} {{ $nonBreakingReadingTime }}{{ if (.Param (lower (i18n "tags"))) }} | {{ emojify ":label:" }} {{ end }}{{ range $key, $val := (.Param (lower (i18n "tags"))) }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
