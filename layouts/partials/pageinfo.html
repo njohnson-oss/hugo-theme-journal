@@ -10,4 +10,14 @@
 {{ $nonBreakingReadingTime = replace $nonBreakingReadingTime " " "&nbsp;" -}}
 {{ $nonBreakingReadingTime = replace $nonBreakingReadingTime "-" "&#8209;" -}}
 
-{{ emojify ":calendar:" }}&nbsp;<time {{ printf "datetime=%q" (.Page.PublishDate | time.Format "2006-01-02T15:04:05-0700") | safeHTMLAttr }}>{{ $nonBreakingPublishDate | safeHTML }}</time> | {{ emojify ":stopwatch:" }}&nbsp;<time datetime="PT{{ .ReadingTime }}M">{{ $nonBreakingReadingTime | safeHTML }}</time>{{ if (.Param (lower (i18n "tags"))) }} | {{ emojify ":label:" }}&nbsp;{{ end }}{{ range $key, $val := (.Param (lower (i18n "tags"))) }}{{ if $key }} {{ end }}<a class="link link--internal" href='{{ relLangURL (lower (i18n "tags")) }}/{{ . | urlize }}/' rel="noreferrer">{{ $val }}</a>{{ end }}
+{{ $breakingTags := .Param (lower (i18n "tags")) -}}
+{{ $nonBreakingTags := slice -}}
+{{ range $breakingTags -}}
+  {{/* user-defined tags are escaped pre-insertion so that HTML entities can be inserted */ -}}
+  {{ $nonBreakingTag := htmlEscape . -}}
+  {{ $nonBreakingTag = replace $nonBreakingTag " " "&nbsp;" -}}
+  {{ $nonBreakingTag = replace $nonBreakingTag "-" "&#8209;" -}}
+  {{ $nonBreakingTags = $nonBreakingTags | append $nonBreakingTag -}}
+{{ end -}}
+
+{{ emojify ":calendar:" }}&nbsp;<time {{ printf "datetime=%q" (.Page.PublishDate | time.Format "2006-01-02T15:04:05-0700") | safeHTMLAttr }}>{{ $nonBreakingPublishDate | safeHTML }}</time> | {{ emojify ":stopwatch:" }}&nbsp;<time datetime="PT{{ .ReadingTime }}M">{{ $nonBreakingReadingTime | safeHTML }}</time>{{ if $nonBreakingTags }} | {{ emojify ":label:" }}&nbsp;{{ end }}{{ range $key, $val := $nonBreakingTags }}{{ if $key }} {{ end }}<a class="link link--internal" href='{{ relLangURL (lower (i18n "tags")) }}/{{ index $breakingTags $key | urlize }}/' rel="noreferrer">{{ $val | safeHTML }}</a>{{ end }}
