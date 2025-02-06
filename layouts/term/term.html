@@ -5,7 +5,7 @@
 <main>
   <h1>{{ .Type | singularize | humanize }} "{{ .Title }}"</h1>
   <h2>{{ i18n "feeds" }}</h2>
-  <p><a class="link link--internal" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer"> {{ emojify ":link:" }}&nbsp;{{ i18n "atomFeed" }}</a></p>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>
   <h2>{{ i18n "journalEntries" }}</h2>
   {{- range .Data.Pages.ByPublishDate.Reverse }}
   {{ partial "metadata.html" . -}}
