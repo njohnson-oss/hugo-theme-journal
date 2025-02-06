@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.6 - 2025-02-06
+
+### Changed
+
+* Add non-breaking spaces after emojis and within entry dates and read times
+* Remove commas from entry tag list in html output format
+
+### Fixed
+
+* Move taxonomy and term feeds' link emojis to outside link text in html output format
+
 ## 1.6.5 - 2025-02-05
 
 ### Fixed
