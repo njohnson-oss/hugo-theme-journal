@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.7 - 2025-02-06
+
+### Changed
+
+* Add non-breaking spaces within entry tag names
+
 ## 1.6.6 - 2025-02-06
 
 ### Changed
