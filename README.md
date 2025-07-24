@@ -39,10 +39,6 @@ $ git submodule add <repository-url> themes/journal
 
 To render the blog for Gemini and the Web, use separate configuration files.
 
-## Versioning
-
-This Hugo theme uses [Semantic Versioning 2.0.0](https://semver.org/).
-
 ## License
 
 Hugo Journal Theme is licensed under [GPLv3 or later](LICENSE).
