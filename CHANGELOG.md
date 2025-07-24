@@ -1,5 +1,15 @@
 # Changelog
 
+## 2025.07.24.1 - 2025-07-24
+
+### Changed
+
+- Switch from semantic versioning to calendar versioning
+
+### Added
+
+- Support Hugo versions 0.146.0 and later
+
 ## 2025.07.24 - 2025-07-24
 
 ### Changed
