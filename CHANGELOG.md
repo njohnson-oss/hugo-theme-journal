@@ -213,7 +213,7 @@
 
 - Support Markdown's ordered lists in gemtext renderer
 
-## 2023.12.29 - 2023-12-31
+## 2023.12.29 - 2023-12-29
 
 ### Added
 
