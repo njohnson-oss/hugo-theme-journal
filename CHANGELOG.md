@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.8 - 2025-07-24
+
+### Changed
+
+- Utilize front matter key "build", retain compatibility with deprecated key "_build"
+
+### Added
+
+- Document maximum supported Hugo version in README.md
+
 ## 1.6.7 - 2025-02-06
 
 ### Changed
