@@ -1,5 +1,16 @@
 # Changelog
 
+## 2025.07.27 - 2025-07-27
+
+## Changed
+
+- Change minimum supported Hugo version to 0.146.0
+- Migrate to new template system in Hugo v0.146.0
+
+## Fixed
+
+- Fix rendering of term pages
+
 ## 2025.07.24.1 - 2025-07-24
 
 ### Changed
