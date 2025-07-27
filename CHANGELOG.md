@@ -1,5 +1,12 @@
 # Changelog
 
+## 2025.07.27.2 - 2025-07-27
+
+### Changed
+
+- Make content area's background color always fill viewport height
+- Make footer always stick to bottom of page
+
 ## 2025.07.27.1 - 2025-07-27
 
 ### Changed
