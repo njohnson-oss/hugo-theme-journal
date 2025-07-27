@@ -2,12 +2,12 @@
 
 ## 2025.07.27 - 2025-07-27
 
-## Changed
+### Changed
 
 - Change minimum supported Hugo version to 0.146.0
 - Migrate to new template system in Hugo v0.146.0
 
-## Fixed
+### Fixed
 
 - Fix rendering of term pages
 
