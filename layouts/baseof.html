@@ -2,8 +2,10 @@
 <html lang="{{ $.Site.Language }}">
   {{ partial "head.html" . }}
   <body class="body">
-    {{ partial "header.html" . }}
-    {{ block "main" . }}{{ end }}
+    <div class="base">
+      {{ partial "header.html" . }}
+      {{ block "main" . }}{{ end }}
+    </div>
     {{ partial "footer.html" . }}
   </body>
 </html>
