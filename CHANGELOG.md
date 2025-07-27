@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025.07.27.1 - 2025-07-27
+
+### Changed
+
+- Add gray background to website
+
 ## 2025.07.27 - 2025-07-27
 
 ### Changed
