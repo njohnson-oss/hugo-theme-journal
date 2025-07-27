@@ -2,7 +2,7 @@
 <nav>
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
-<main>
+<main class="main">
   <h1>{{ .Type | humanize }}</h1>
   <h2>{{ i18n "feeds" }}</h2>
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>
