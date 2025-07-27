@@ -99,9 +99,9 @@ blockquote, ol, p, pre, ul, .highlight {
 	padding: 1.4em;
 }
 
-@media only screen and (min-width: 72ch) {
+@media only screen and (min-width: calc(72ch + 2 * 1.4em)) {
 	.body {
-		max-width: 72ch;
+		max-width: calc(72ch + 2 * 1.4em);
 	}
 }
 
