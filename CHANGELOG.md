@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025.09.07 - 2025-09-07
+
+### Fixed
+
+- Fix link in README
+
 ## 2025.07.27.2 - 2025-07-27
 
 ### Changed
