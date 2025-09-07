@@ -17,7 +17,7 @@ Hugo Journal Theme is an accessible, no-JS, minimalist, high-contrast Hugo theme
 
 ## Documentation
 
-The [gemtext compatibility reference guide](GEMTEXT-COMPATIBILITY-REFERENCE-GUIDE.md) documents the compatibility of Markdown features with gemtext as an output format of this Hugo theme. The [gemtext compatibility rationale document](GEMTEXT-COMPATIBILITY-RATIONALE.md) explains the rationale behind the design decisions for the gemtext output format.
+The [gemtext compatibility reference guide](GEMTEXT-COMPATIBILITY-REFERENCE-GUIDE.md) documents the compatibility of Markdown features with gemtext as an output format of this Hugo theme. The [gemtext compatibility explanation document](GEMTEXT-COMPATIBILITY-EXPLANATION.md) explains the rationale behind the design decisions for the gemtext output format.
 
 ## Get The Theme
 
