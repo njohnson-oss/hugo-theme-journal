@@ -50,7 +50,7 @@
 
 - Document maximum supported Hugo version in README.md
 
-## 2025.02.06 - 2025-02-06
+## 2025.02.06.1 - 2025-02-06
 
 ### Changed
 
@@ -201,7 +201,7 @@
 
 - Fix incorrect (un)ordered list parsing in gemtext renderer
 
-## 2024.05.02 - 2024-05-02
+## 2024.05.02.1 - 2024-05-02
 
 ### Added
 
@@ -235,7 +235,7 @@
 - Fix some gemtext rendering rules not being applied
 - Fix incorrect parsing of unordered lists in gemtext renderer again
 
-## 2024.01.01 - 2024-01-01
+## 2024.01.01.1 - 2024-01-01
 
 ### Fixed
 
