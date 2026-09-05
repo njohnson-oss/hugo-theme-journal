@@ -15,4 +15,4 @@
   {{ $nonBreakingTags = $nonBreakingTags | append $nonBreakingTag -}}
 {{ end -}}
 
-{{ emojify ":calendar:" }} {{ $nonBreakingPublishDate }} | {{ emojify ":stopwatch:" }} {{ $nonBreakingReadingTime }}{{ if $nonBreakingTags }} | {{ emojify ":label:" }} {{ end }}{{ range $key, $val := $nonBreakingTags }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
+{{ emojify ":calendar:" }} {{ $nonBreakingPublishDate }}  {{ emojify ":stopwatch:" }} {{ $nonBreakingReadingTime }}{{ if $nonBreakingTags }}  {{ emojify ":label:" }} {{ end }}{{ range $key, $val := $nonBreakingTags }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
