@@ -8,7 +8,7 @@
 {{ end }}
 
 
-# {{ .Name }}
+# {{ .Title }}
 
 {{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}
