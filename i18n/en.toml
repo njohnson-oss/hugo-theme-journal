@@ -1,5 +1,5 @@
 [readingTime]
-  other = "{{ .Count }}-minute read"
+  other = "{{ . }}-minute read"
 
 [returnHome]
   other = "Return to homepage"

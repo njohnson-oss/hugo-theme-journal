@@ -1,6 +1,6 @@
 [readingTime]
   one = "1 minuto para leer"
-  other = "{{ .Count }} minutos para leer"
+  other = "{{ . }} minutos para leer"
 
 [returnHome]
   other = "Regresar a la página de inicio"
