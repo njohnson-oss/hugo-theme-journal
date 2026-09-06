@@ -36,3 +36,6 @@
 
 [audioUnsupported]
   other = "Your browser does not support audio playback."
+
+[downloadAudio]
+  other = "Download audio version of {{ . }}"

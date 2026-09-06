@@ -6,6 +6,10 @@
 # {{ .Title }}
 {{- if (.Page.Params.pageinfo | default true) }}
 {{ partial "pageinfo.gmi" . }}
+{{- end -}}
+
+{{ with index (where .Resources "MediaType.MainType" "audio") 0 }}
+=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "downloadAudio" $.Title }}
 {{- end }}
 
 {{ $content := chomp (.RawContent) -}}
