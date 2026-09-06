@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026.09.06 - 2026-09-06
+
+### Changed
+
+- Move pageinfo partial below heading for cleaner look
+- Change pageinfo dividers to spaces to improve readability
+- Minify and fingerprint CSS to improve page load times
+
+### Added
+
+- Support audio versions of entries
+
 ## 2025.09.07 - 2025-09-07
 
 ### Fixed
