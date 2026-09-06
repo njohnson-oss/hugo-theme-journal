@@ -10,10 +10,10 @@
   {{- end -}}
   {{ if .Site.Params.custom_css -}}
   {{ range .Site.Params.custom_css }}
-  <link rel="stylesheet" type="text/css" href="{{ relURL . }}">
+  <link rel="stylesheet" type="text/css" href="{{ (resources.Get . | minify | fingerprint).RelPermalink }}">
   {{- end -}}
   {{ else }}
-  <link rel="stylesheet" type="text/css" href="{{ (resources.Get "static/css/style.css").RelPermalink }}">
+  <link rel="stylesheet" type="text/css" href="{{ (resources.Get "static/css/style.css" | minify | fingerprint).RelPermalink }}">
   {{- end -}}
   {{ if (not (fileExists "static/favicon.ico")) }}
   <link rel="icon" href="data:,">
