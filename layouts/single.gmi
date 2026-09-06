@@ -1,20 +1,18 @@
 {{ define "main" -}}
 {{ $emoji := cond (.Page.Params.showlinkemoji | default true) (emojify ":link: ") "" -}}
-=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" -}}
-
-{{ if (.Page.Params.pageinfo | default true) }}
-
-{{ partial "pageinfo.gmi" . -}}
-{{ end }}
+=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
 
 
 # {{ .Title }}
+{{- if (.Page.Params.pageinfo | default true) }}
+{{ partial "pageinfo.gmi" . }}
+{{- end }}
 
 {{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}
 
-{{/* if content begins with a heading, add an extra newline */ -}}
-{{ if (findRE `^#{1,6} ` $content 1) }}
+{{/* if pageinfo exists or content begins with a heading, add an extra newline */ -}}
+{{ if (or (.Page.Params.pageinfo | default true) (findRE `^#{1,6} ` $content 1)) }}
 {{ end -}}
 
 {{/* split text into chunks, with each chunk containing 3 parts: above, within, and below preformatted text */ -}}
