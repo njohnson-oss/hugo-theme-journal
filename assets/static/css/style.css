@@ -136,7 +136,7 @@ article:last-child header p,
 	margin-bottom: 1.0em;
 }
 
-.entry__heading, .entry__pageinfo {
+.entry__heading, .entry__pageinfo, .entry__audio {
 	margin-bottom: 0.2em;
 	margin-top: 0.2em;
 }

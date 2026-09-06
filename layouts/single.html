@@ -7,6 +7,12 @@
     <h1 id="{{ .File.TranslationBaseName }}" class="entry__heading">{{ .Title }}</h1>
     {{- if (.Page.Params.pageinfo | default true) }}
     <p class="entry__pageinfo">{{ partial "pageinfo.html" . }}</p>
+    {{- end -}}
+    {{ with index (where .Resources "MediaType.MainType" "audio") 0 }}
+    <audio class="entry__audio" controls preload="metadata" aria-label="{{ i18n "audioVersion" $.Title }}">
+      <source src="{{ .RelPermalink }}" type="{{ .MediaType }}">
+      {{ i18n "audioUnsupported" }}
+    </audio>
     {{- end }}
   </div>
   {{ chomp (.Content) }}

@@ -28,3 +28,12 @@
 
 [pageNotFound]
   other = "Página no encontrada"
+
+[audioAvailable]
+  other = "audio disponible"
+
+[audioVersion]
+  other = "Versión en audio de {{ . }}."
+
+[audioUnsupported]
+  other = "Tu navegador no puede reproducir audio."
