@@ -117,6 +117,30 @@ article:last-child header p,
 	}
 }
 
+.entry {}
+
+.entry__details {
+	margin-bottom: 1.5em;
+	margin-top: 1.5em;
+}
+
+.entry__details > :first-child {
+	margin-top: 0;
+}
+
+.entry__details > :last-child {
+	margin-bottom: 0;
+}
+
+.entry__details:has(> h1:only-child) {
+	margin-bottom: 1.0em;
+}
+
+.entry__heading, .entry__pageinfo {
+	margin-bottom: 0.2em;
+	margin-top: 0.2em;
+}
+
 .footer {}
 
 .footer__text {

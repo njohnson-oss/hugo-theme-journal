@@ -2,11 +2,13 @@
 <nav>
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
-{{- if (.Page.Params.pageinfo | default true) }}
-<p>{{ partial "pageinfo.html" . }}</p>
-{{- end }}
 <main class="main">
-  <h1 id="{{ .File.TranslationBaseName }}">{{ .Title }}</h1>
+  <div class="entry__details">
+    <h1 id="{{ .File.TranslationBaseName }}" class="entry__heading">{{ .Title }}</h1>
+    {{- if (.Page.Params.pageinfo | default true) }}
+    <p class="entry__pageinfo">{{ partial "pageinfo.html" . }}</p>
+    {{- end }}
+  </div>
   {{ chomp (.Content) }}
 </main>
 {{- end }}
