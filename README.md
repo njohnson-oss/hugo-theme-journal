@@ -6,6 +6,7 @@ Hugo Journal Theme is an accessible, no-JS, minimalist, high-contrast Hugo theme
 
 * Outputs Gemtext for the [Gemini protocol](https://gemini.circumlunar.space/docs/specification.gmi)
 * Multilingual support
+* Audio versions of entries
 * Works well on all screen sizes
 * No bloated Javascript
 * Absolutely no analytics
