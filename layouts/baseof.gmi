@@ -1,6 +1,7 @@
-{{ partial "header.gmi" . }}
+{{ with partial "header.gmi" . }}{{ . }}
 
 
+{{ end -}}
 {{ block "main" . }}{{ end }}
 
 

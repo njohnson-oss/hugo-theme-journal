@@ -8,12 +8,12 @@
   {{ if $.Site.Params.keywords }}
   <meta name="keywords" content="{{ $.Site.Params.keywords }}">
   {{- end -}}
-  {{ if .Site.Params.custom_css -}}
-  {{ range .Site.Params.custom_css }}
-  <link rel="stylesheet" type="text/css" href="{{ (resources.Get . | minify | fingerprint).RelPermalink }}">
-  {{- end -}}
-  {{ else }}
-  <link rel="stylesheet" type="text/css" href="{{ (resources.Get "static/css/style.css" | minify | fingerprint).RelPermalink }}">
+  {{ range .Site.Params.custom_css | default (slice "static/css/style.css") }}
+  {{- with resources.Get . }}
+  <link rel="stylesheet" type="text/css" href="{{ (. | minify | fingerprint).RelPermalink }}">
+  {{- else }}
+  {{- errorf "stylesheet %q listed in params.custom_css was not found in the assets directory" . }}
+  {{- end }}
   {{- end -}}
   {{ with .OutputFormats.Get "Atom" }}
   <link rel="alternate" type="application/atom+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">
