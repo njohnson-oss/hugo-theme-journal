@@ -1,0 +1,58 @@
+# Configuration for the website. The capsule is built from
+# hugo.gemini.toml; see the readme for why the two are separate.
+
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "A Journal"
+# The directory name the theme is installed under in themes/.
+theme = "journal"
+
+# "{currentYear}" is replaced with the year the site is built.
+copyright = "Copyright (C) 2026 Example Author. Some rights reserved."
+
+# Lets entries use emoji shortcodes such as :smile: in their Markdown.
+enableEmoji = true
+
+[params]
+  # Heading and opening paragraph of the homepage.
+  indexTitle = "A Journal"
+  indexIntro = "An example of the journal theme, an accessible, no-JS, minimalist, high-contrast theme that outputs both gemtext and HTML."
+
+  # Atom feeds require at least the author name.
+  author = { name = "Example Author", email = "author@example.com" }
+
+  # Used for the description meta element and as the feed subtitle.
+  description = "An example journal built with the journal theme."
+
+  # Optional. Used for the keywords meta element.
+  keywords = "journal, example, gemini"
+
+  # Optional. Any layout that time.Format accepts, or one of Hugo's
+  # named layouts. Defaults to ":date_long".
+  dateFormat = ":date_long"
+
+  # Optional. Replaces the theme's stylesheet with your own, resolved
+  # from the assets directory. Every entry must exist or the build fails.
+  # custom_css = ["css/my-theme.css"]
+
+[taxonomies]
+  tag = "tags"
+
+# Each kind must list the formats it is rendered in. Leaving a kind out
+# falls back to Hugo's defaults, which include an RSS feed this theme
+# has no template for.
+[outputs]
+  home = ["HTML", "Atom"]
+  section = ["HTML"]
+  taxonomy = ["HTML", "Atom"]
+  term = ["HTML", "Atom"]
+  page = ["HTML"]
+
+# Optional. Caps the number of entries in a feed; unlimited by default.
+# [services.rss]
+#   limit = 20
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 1

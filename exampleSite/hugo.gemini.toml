@@ -1,0 +1,58 @@
+# Configuration for the capsule. The website is built from
+# hugo.toml; see the readme for why the two are separate.
+
+baseURL = "gemini://example.com/"
+languageCode = "en-us"
+title = "A Journal"
+# The directory name the theme is installed under in themes/.
+theme = "journal"
+
+# "{currentYear}" is replaced with the year the site is built.
+copyright = "Copyright (C) 2026 Example Author. Some rights reserved."
+
+# Lets entries use emoji shortcodes such as :smile: in their Markdown.
+enableEmoji = true
+
+# A capsule has no use for either, and rendering the 404 page would pull
+# the website's stylesheet into the capsule along with it.
+disableKinds = ["404", "sitemap"]
+
+[params]
+  # Heading and opening paragraph of the homepage.
+  indexTitle = "A Journal"
+  indexIntro = "An example of the journal theme, an accessible, no-JS, minimalist, high-contrast theme that outputs both gemtext and HTML."
+
+  # Atom feeds require at least the author name.
+  author = { name = "Example Author", email = "author@example.com" }
+
+  # Used for the description meta element and as the feed subtitle.
+  description = "An example journal built with the journal theme."
+
+  # Optional. Used for the keywords meta element.
+  keywords = "journal, example, gemini"
+
+  # Optional. Any layout that time.Format accepts, or one of Hugo's
+  # named layouts. Defaults to ":date_long".
+  dateFormat = ":date_long"
+
+[taxonomies]
+  tag = "tags"
+
+# Each kind must list the formats it is rendered in. Leaving a kind out
+# falls back to Hugo's defaults, which would render the kind as HTML
+# into the capsule.
+[outputs]
+  home = ["Gemini", "Gemini_Atom"]
+  section = ["Gemini"]
+  taxonomy = ["Gemini", "Gemini_Atom"]
+  term = ["Gemini", "Gemini_Atom"]
+  page = ["Gemini"]
+
+# Optional. Caps the number of entries in a feed; unlimited by default.
+# [services.rss]
+#   limit = 20
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 1
