@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026.09.19 - 2026-09-19
+
+### Changed
+
+- Include site title in page titles
+- Order feeds by publish date to match the entry listings
+- Declare dark color scheme so that browser controls suit the theme
+- Highlight focused links as hovered links are highlighted
+- Break long words in list items, blockquotes and headings
+- Drop scripting URL schemes from links and images
+- Use registered media type "application/atom+xml" for Atom feeds
+- Document configuration and front matter in README
+
+### Added
+
+- Add example site with annotated configuration for website and capsule
+- Add section templates, which no output format previously had
+- Add Atom feed autodiscovery links to document head
+- Support more than one audio version per entry
+
+### Fixed
+
+- Fix build failure on sites that do not set "services.rss.limit"
+- Fix preformatted text at the start of an entry being rendered as prose in gemtext output format
+- Fix Atom feeds omitting the author element required of them
+- Fix entries that are page bundles all sharing the heading anchor "index"
+- Fix homepage feeds listing pages outside the entry section
+- Fix empty entry heading on sites with no entries
+- Fix empty logo block on sites without "templates/logo.txt"
+- Fix inconsistent blank line below pageinfo in gemtext output format
+- Fix unclear error when "params.custom_css" names a missing stylesheet
+
 ## 2026.09.06 - 2026-09-06
 
 ### Changed
