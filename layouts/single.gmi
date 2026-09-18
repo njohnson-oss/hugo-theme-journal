@@ -21,7 +21,7 @@
 
 {{/* split text into chunks, with each chunk containing 3 parts: above, within, and below preformatted text */ -}}
 {{/* the regex matching below the preformatted text matches exactly once in the entire text */ -}}
-{{ $chunks := findRESubmatch `(?sm)(?:(.+?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.+$)` $content -}}
+{{ $chunks := findRESubmatch `(?sm)(?:(.*?)(^\x60{3}[^\x60].*?^\x60{3}$))|(.+$)` $content -}}
 
 {{ $ref_index := 0 -}}
 
