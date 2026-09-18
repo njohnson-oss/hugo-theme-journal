@@ -1,0 +1,18 @@
+{{ define "main" -}}
+<nav>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
+</nav>
+<main class="main">
+  <h1>{{ .Title }}</h1>
+  {{ with .OutputFormats.Get "Atom" -}}
+  <h2>{{ i18n "feeds" }}</h2>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>
+  {{ end -}}
+  {{ with .Pages.ByPublishDate.Reverse -}}
+  <h2>{{ i18n "journalEntries" }}</h2>
+  {{ range . -}}
+  {{ partial "metadata.html" . }}
+  {{ end -}}
+  {{ end -}}
+</main>
+{{- end }}

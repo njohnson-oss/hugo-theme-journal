@@ -1,0 +1,22 @@
+{{ define "main" -}}
+=> {{ .Site.Home.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "returnHome" }}
+
+
+# {{ .Title }}
+{{- with .OutputFormats.Get "Gemini_Atom" }}
+
+
+## {{ i18n "feeds" }}
+
+=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
+{{- end }}
+{{- with .Pages.ByPublishDate.Reverse }}
+
+
+## {{ i18n "journalEntries" -}}
+{{ range . }}
+
+{{ partial "metadata.gmi" . -}}
+{{ end -}}
+{{ end -}}
+{{ end }}
