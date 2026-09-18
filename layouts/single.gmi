@@ -12,7 +12,7 @@
 => {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "downloadAudio" $.Title }}
 {{- end }}{{ end }}
 
-{{ $content := chomp (.RawContent) -}}
+{{ $content := strings.Trim .RawContent "\r\n" -}}
 {{ $scratch := newScratch -}}
 
 {{/* if pageinfo exists or content begins with a heading, add an extra newline */ -}}
