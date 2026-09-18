@@ -21,7 +21,7 @@
   {{- end }}
 {{- end -}}
 
-{{- $pages := where .Site.RegularPages "Section" "entry" }}
+{{- $pages := (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
 {{- $limit := .Site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
 {{- $pages = first $limit $pages }}
@@ -30,7 +30,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink | strings.TrimSuffix "index.gmi" }}</id>
     <title>{{ .Site.Title }}</title>
-    <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
+    <updated>{{ .PublishDate.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
     <link href="{{ .Permalink | replaceRE `index.gmi$` "atom.xml" | safeURL }}" rel="self" />
     <link href="{{ .Permalink | strings.TrimSuffix "index.gmi" | safeURL }}" rel="alternate" />
     <author>
@@ -44,7 +44,7 @@
     <entry>
         <id>{{ .Permalink | strings.TrimSuffix "index.gmi" }}</id>
         <title>{{ .Title }}</title>
-        <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
+        <updated>{{ .PublishDate.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
         <link href="{{ .Permalink | strings.TrimSuffix "index.gmi" | safeURL }}" rel="alternate" />
     </entry>{{ end }}
 </feed>

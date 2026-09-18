@@ -21,7 +21,7 @@
   {{- end }}
 {{- end -}}
 
-{{- $pages := .Data.Pages }}
+{{- $pages := .Data.Pages.ByPublishDate.Reverse }}
 {{- $limit := .Site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
 {{- $pages = first $limit $pages }}
@@ -30,7 +30,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink }}</id>
     <title>{{ .Site.Title }}</title>
-    <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
+    <updated>{{ .PublishDate.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
     <link href="{{ .Permalink }}atom.xml" rel="self" />
     <link href="{{ .Permalink }}" rel="alternate" />
     <author>
@@ -44,7 +44,7 @@
     <entry>
         <id>{{ .Permalink }}</id>
         <title type="html">{{ .Title }}</title>
-        <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
+        <updated>{{ .PublishDate.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
         <link href="{{ .Permalink }}" />
         <content type="html">{{ .Content | html }}</content>
     </entry>{{ end }}
