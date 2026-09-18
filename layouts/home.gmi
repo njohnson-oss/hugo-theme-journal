@@ -13,11 +13,11 @@
 
 {{ end -}}
 
-{{ if .Site.RegularPages }}
+{{ with (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
 
 
 ## {{ i18n "journalEntries" -}}
-{{ range (where .Site.RegularPages.ByTitle "Section" "entry").ByPublishDate.Reverse }}
+{{ range . }}
 
 {{ partial "metadata.gmi" . -}}
 {{ end -}}
