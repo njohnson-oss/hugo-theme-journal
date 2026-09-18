@@ -1,3 +1,12 @@
 {{ $emoji := cond (and (not (.Page.Params.makerefs | default true)) (.Page.Params.showlinkemoji | default true)) (emojify ":link: ") "" -}}
 {{ $isExternalLink := (urls.Parse .Destination).IsAbs -}}
+
+{{/* .Destination is marked safe below so that schemes the web knows nothing */ -}}
+{{/* about, such as gemini://, survive; scripting schemes are dropped instead */ -}}
+{{ $scheme := lower (urls.Parse .Destination).Scheme -}}
+{{ if in (slice "javascript" "vbscript" "data") $scheme -}}
+{{ warnidf "unsafe-link-scheme" "dropped %s: link in %s" $scheme .Page.Path -}}
+{{ .Text -}}
+{{ else -}}
 {{ $emoji }}<a class="link {{ if $isExternalLink }}link--external{{ else }}link--internal{{ end }}" href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} rel="{{ if $isExternalLink }}external {{ end }}noreferrer">{{ .Text }}</a>
+{{- end -}}

@@ -1,1 +1,7 @@
+{{/* .Destination is marked safe below, so scripting schemes are dropped here */ -}}
+{{ $scheme := lower (urls.Parse .Destination).Scheme -}}
+{{ if in (slice "javascript" "vbscript") $scheme -}}
+{{ warnidf "unsafe-image-scheme" "dropped %s: image in %s" $scheme .Page.Path -}}
+{{ else -}}
 <img src="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} alt="{{ .Text }}" referrerpolicy="no-referrer" loading="lazy">
+{{- end -}}
