@@ -3,8 +3,11 @@
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
 <main class="main">
+  {{/* derived from the page's own URL so that it is stable and unique for
+       single files, page bundles and pages built by a content adapter alike */ -}}
+  {{ $headingID := path.Base .RelPermalink | strings.TrimSuffix ".html" -}}
   <div class="entry__details">
-    <h1 id="{{ .File.TranslationBaseName }}" class="entry__heading">{{ .Title }}</h1>
+    <h1 id="{{ $headingID }}" class="entry__heading">{{ .Title }}</h1>
     {{- if (.Page.Params.pageinfo | default true) }}
     <p class="entry__pageinfo">{{ partial "pageinfo.html" . }}</p>
     {{- end -}}
