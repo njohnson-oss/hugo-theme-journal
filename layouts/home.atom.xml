@@ -5,8 +5,11 @@
       {{- $authorName = . }}
     {{- end }}
   {{- else }}
-    {{- $authorName  = . }}
+    {{- $authorName = . }}
   {{- end }}
+{{- end }}
+{{- if not $authorName }}
+  {{- errorf "Missing author" }}
 {{- end }}
 
 {{- $authorEmail := "" }}
@@ -30,12 +33,11 @@
     <updated>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</updated>
     <link href="{{ .Permalink }}atom.xml" rel="self" />
     <link href="{{ .Permalink }}" rel="alternate" />
-    {{- with $authorName }}
     <author>
-        <name>{{ . }}</name>
+        <name>{{ $authorName }}</name>
         {{- with $authorEmail }}
         <email>{{ . }}</email>{{ end }}
-    </author>{{ end }}
+    </author>
     <generator>Hugo -- gohugo.io</generator>
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.Format "2006") }}</rights>
     <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range $pages }}
