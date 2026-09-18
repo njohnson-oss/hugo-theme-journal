@@ -18,6 +18,11 @@
   {{- end }}
 {{- end -}}
 
+{{- $pages := .Site.RegularPages }}
+{{- $limit := .Site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+{{- $pages = first $limit $pages }}
+{{- end -}}
 {{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink }}</id>
@@ -33,7 +38,7 @@
     </author>{{ end }}
     <generator>Hugo -- gohugo.io</generator>
     <rights type="html">{{ replace .Site.Copyright "{currentYear}" (now.Format "2006") }}</rights>
-    <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range first .Site.Config.Services.RSS.Limit .Site.RegularPages }}
+    <subtitle>{{ .Site.Params.Description }}</subtitle>{{ range $pages }}
     <entry>
         <id>{{ .Permalink }}</id>
         <title type="html">{{ .Title }}</title>
