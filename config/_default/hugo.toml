@@ -1,12 +1,12 @@
 [mediaTypes]
-  [mediaTypes."application/atom"]
+  [mediaTypes."application/atom+xml"]
     suffixes = ["xml"]
   [mediaTypes."text/gemini"]
     suffixes = ["gmi"]
 
 [outputFormats]
   [outputFormats.Atom]
-    mediaType = "application/atom"
+    mediaType = "application/atom+xml"
     baseName = "atom"
   [outputFormats.Gemini]
     mediaType = "text/gemini"
@@ -15,7 +15,7 @@
     permalinkable = true
     protocol = "gemini://"
   [outputFormats.Gemini_Atom]
-    mediaType = "application/atom"
+    mediaType = "application/atom+xml"
     baseName = "atom"
     protocol = "gemini://"
 
