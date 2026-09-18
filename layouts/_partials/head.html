@@ -21,5 +21,5 @@
   {{ if (not (fileExists "static/favicon.ico")) }}
   <link rel="icon" href="data:,">
   {{- end }}
-  <title>{{ .Title }}</title>
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 </head>
