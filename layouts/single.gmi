@@ -8,9 +8,9 @@
 {{ partial "pageinfo.gmi" . }}
 {{- end -}}
 
-{{ with index (where .Resources "MediaType.MainType" "audio") 0 }}
+{{ with partial "audio.html" . }}{{ with index . 0 }}
 => {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "downloadAudio" $.Title }}
-{{- end }}
+{{- end }}{{ end }}
 
 {{ $content := chomp (.RawContent) -}}
 {{ $scratch := newScratch -}}

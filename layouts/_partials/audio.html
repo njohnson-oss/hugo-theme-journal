@@ -1,0 +1,32 @@
+{{/* Returns the page's audio resources, best sounding first, so that a
+     browser takes the best encoding it can play and the capsule links
+     the best single file. Public listening tests put Opus ahead of the
+     field at the bitrates spoken word uses, with Vorbis and AAC close
+     behind it and MP3 last. Lossless comes after the lossy codecs
+     rather than before, since a browser that can play FLAC would
+     otherwise fetch several times the bytes for no audible gain.
+
+     Hugo reports .opus, .oga and .ogg alike as audio/ogg, so the
+     extension is what tells the codecs apart. Formats not listed here
+     keep Hugo's own order at the end. Returns an empty slice when there
+     is no audio. */ -}}
+
+{{ $preferred := slice ".opus" ".ogg" ".oga" ".m4a" ".aac" ".mp3" ".flac" ".wav" -}}
+{{ $audio := where .Resources "MediaType.MainType" "audio" -}}
+{{ $ordered := slice -}}
+
+{{ range $extension := $preferred -}}
+  {{ range $audio -}}
+    {{ if eq (lower (path.Ext .Name)) $extension -}}
+      {{ $ordered = $ordered | append . -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+{{ range $audio -}}
+  {{ if not (in $preferred (lower (path.Ext .Name))) -}}
+    {{ $ordered = $ordered | append . -}}
+  {{ end -}}
+{{ end -}}
+
+{{ return $ordered }}

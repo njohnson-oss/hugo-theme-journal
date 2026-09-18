@@ -11,10 +11,10 @@
     {{- if (.Page.Params.pageinfo | default true) }}
     <p class="entry__pageinfo">{{ partial "pageinfo.html" . }}</p>
     {{- end -}}
-    {{ with index (where .Resources "MediaType.MainType" "audio") 0 }}
+    {{ with partial "audio.html" . }}
     <audio class="entry__audio" controls preload="metadata" aria-label="{{ i18n "audioVersion" $.Title }}">
-      <source src="{{ .RelPermalink }}" type="{{ .MediaType }}">
-      {{ i18n "audioUnsupported" }}
+      {{ range . }}<source src="{{ .RelPermalink }}" type="{{ .MediaType }}">
+      {{ end }}{{ i18n "audioUnsupported" }}
     </audio>
     {{- end }}
   </div>
