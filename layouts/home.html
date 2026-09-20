@@ -12,6 +12,10 @@
     </ul>
   </nav>
   {{ end }}
+  {{ with .OutputFormats.Get "Atom" }}
+  <h2>{{ i18n "feeds" }}</h2>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>
+  {{ end }}
   {{ with (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
   <h2>{{ i18n "journalEntries" }}</h2>
   {{ range . }}

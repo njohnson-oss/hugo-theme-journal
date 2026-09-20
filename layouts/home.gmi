@@ -13,6 +13,15 @@
 
 {{ end -}}
 
+{{ with .OutputFormats.Get "Gemini_Atom" }}
+
+
+## {{ i18n "feeds" }}
+
+=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "atomFeed" -}}
+
+{{ end -}}
+
 {{ with (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
 
 
