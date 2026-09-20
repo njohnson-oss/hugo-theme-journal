@@ -5,4 +5,4 @@
 {{ block "main" . }}{{ end }}
 
 
-{{ partial "footer.gmi" . }}
+{{ partial "footer.gmi" . -}}

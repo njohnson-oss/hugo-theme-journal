@@ -1,1 +1,1 @@
-{{ replace $.Site.Copyright "{currentYear}" (now.Format "2006") }}
+{{ replace $.Site.Copyright "{currentYear}" (now.Format "2006") -}}

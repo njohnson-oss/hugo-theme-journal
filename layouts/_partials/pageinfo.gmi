@@ -19,4 +19,4 @@
 {{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable " " " " -}}
 {{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable "-" "‑" -}}
 
-{{ emojify ":calendar:" }} {{ $nonBreakingPublishDate }}  {{ emojify ":stopwatch:" }} {{ $nonBreakingReadingTime }}{{ if where .Resources "MediaType.MainType" "audio" }}  {{ emojify ":headphones:" }} {{ $nonBreakingAudioAvailable }}{{ end }}{{ if $nonBreakingTags }}  {{ emojify ":label:" }} {{ end }}{{ range $key, $val := $nonBreakingTags }}{{ if $key }}, {{ end }}{{ $val }}{{ end }}
+{{ emojify ":calendar:" }} {{ $nonBreakingPublishDate }}  {{ emojify ":stopwatch:" }} {{ $nonBreakingReadingTime }}{{ if where .Resources "MediaType.MainType" "audio" }}  {{ emojify ":headphones:" }} {{ $nonBreakingAudioAvailable }}{{ end }}{{ if $nonBreakingTags }}  {{ emojify ":label:" }} {{ end }}{{ range $key, $val := $nonBreakingTags }}{{ if $key }}, {{ end }}{{ $val }}{{ end -}}
