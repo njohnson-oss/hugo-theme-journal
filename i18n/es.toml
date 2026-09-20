@@ -17,6 +17,9 @@
 [tags]
   other = "Etiquetas"
 
+[tagList]
+  other = "Lista de etiquetas"
+
 [journalEntries]
   other = "Entradas"
 

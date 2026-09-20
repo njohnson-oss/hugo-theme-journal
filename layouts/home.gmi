@@ -13,6 +13,16 @@
 
 {{ end -}}
 
+{{ $tagList := .Site.GetPage (lower (i18n "tags")) -}}
+{{ if and $tagList $tagList.Pages }}
+
+
+## {{ i18n "tags" }}
+
+=> {{ $tagList.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "tagList" -}}
+
+{{ end -}}
+
 {{ with .OutputFormats.Get "Gemini_Atom" }}
 
 

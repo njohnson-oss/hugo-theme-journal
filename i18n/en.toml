@@ -16,6 +16,9 @@
 [tags]
   other = "Tags"
 
+[tagList]
+  other = "Tag List"
+
 [journalEntries]
   other = "Journal Entries"
 

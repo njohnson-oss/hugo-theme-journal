@@ -12,6 +12,11 @@
     </ul>
   </nav>
   {{ end }}
+  {{ $tagList := .Site.GetPage (lower (i18n "tags")) }}
+  {{ if and $tagList $tagList.Pages }}
+  <h2>{{ i18n "tags" }}</h2>
+  <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ $tagList.RelPermalink }}" rel="noreferrer">{{ i18n "tagList" }}</a></p>
+  {{ end }}
   {{ with .OutputFormats.Get "Atom" }}
   <h2>{{ i18n "feeds" }}</h2>
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>

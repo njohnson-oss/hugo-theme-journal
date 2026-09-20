@@ -19,6 +19,7 @@
 - Add section templates, which no output format previously had
 - Add Atom feeds for sections, in both output formats
 - Add a feed link to the homepage, as the other listing pages have
+- Add a tag list link to the homepage, so that tags are reachable in gemtext
 - Add Atom feed autodiscovery links to document head
 - Support more than one audio version per entry
 
