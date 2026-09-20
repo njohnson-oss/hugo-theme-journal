@@ -16,7 +16,7 @@ an entry's front matter to render links in place on both instead.
 ## What The Theme Gives You
 
 * An entry list on the homepage, and one per tag
-* Atom feeds for the homepage, each tag and the tag list
+* Atom feeds for the homepage, each section, each tag and the tag list
 * Publication date and reading time on every entry
 * Optional audio versions of entries
 * No JavaScript and no analytics

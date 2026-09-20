@@ -17,6 +17,7 @@
 
 - Add example site with annotated configuration for website and capsule
 - Add section templates, which no output format previously had
+- Add Atom feeds for sections, in both output formats
 - Add Atom feed autodiscovery links to document head
 - Support more than one audio version per entry
 

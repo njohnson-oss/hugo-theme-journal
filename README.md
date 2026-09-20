@@ -55,7 +55,7 @@ Every page kind that the site renders must list its output formats, because Hugo
 ```toml
 [outputs]
   home = ["HTML", "Atom"]
-  section = ["HTML"]
+  section = ["HTML", "Atom"]
   taxonomy = ["HTML", "Atom"]
   term = ["HTML", "Atom"]
   page = ["HTML"]
@@ -66,11 +66,13 @@ And for the capsule:
 ```toml
 [outputs]
   home = ["Gemini", "Gemini_Atom"]
-  section = ["Gemini"]
+  section = ["Gemini", "Gemini_Atom"]
   taxonomy = ["Gemini", "Gemini_Atom"]
   term = ["Gemini", "Gemini_Atom"]
   page = ["Gemini"]
 ```
+
+A feed is rendered for every kind that lists `Atom` or `Gemini_Atom`: the homepage, each section, the taxonomy list and each term. Leave the format out of a kind to omit that feed.
 
 ### Optional
 

@@ -43,7 +43,7 @@ disableKinds = ["404", "sitemap"]
 # into the capsule.
 [outputs]
   home = ["Gemini", "Gemini_Atom"]
-  section = ["Gemini"]
+  section = ["Gemini", "Gemini_Atom"]
   taxonomy = ["Gemini", "Gemini_Atom"]
   term = ["Gemini", "Gemini_Atom"]
   page = ["Gemini"]

@@ -43,7 +43,7 @@ enableEmoji = true
 # has no template for.
 [outputs]
   home = ["HTML", "Atom"]
-  section = ["HTML"]
+  section = ["HTML", "Atom"]
   taxonomy = ["HTML", "Atom"]
   term = ["HTML", "Atom"]
   page = ["HTML"]
