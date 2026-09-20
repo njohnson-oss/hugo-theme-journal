@@ -1,4 +1,4 @@
-{{ define "main" -}}
+{{ define "main" }}
 <nav>
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .Site.Home.RelPermalink }}" rel="noreferrer">{{ i18n "returnHome" }}</a></p>
 </nav>
@@ -8,9 +8,9 @@
   <p>{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ print .RelPermalink "atom.xml" }}" rel="noreferrer">{{ i18n "atomFeed" }}</a></p>
   <h2>{{ i18n "list" }}</h2>
   <ul class="list">
-  {{- range .Data.Pages }}
+  {{ range .Data.Pages }}
     <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
-  {{- end }}
+  {{ end }}
   </ul>
 </main>
-{{- end }}
+{{ end }}

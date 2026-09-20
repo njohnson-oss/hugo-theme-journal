@@ -1,32 +1,34 @@
-{{- $authorName := "" }}
-{{- with site.Params.author }}
-  {{- if reflect.IsMap . }}
-    {{- with .name }}
-      {{- $authorName = . }}
-    {{- end }}
-  {{- else }}
-    {{- $authorName = . }}
-  {{- end }}
-{{- end }}
-{{- if not $authorName }}
-  {{- errorf "Missing author" }}
-{{- end }}
-
-{{- $authorEmail := "" }}
-{{- with site.Params.author }}
-  {{- if reflect.IsMap . }}
-    {{- with .email }}
-      {{- $authorEmail = . }}
-    {{- end }}
-  {{- end }}
-{{- end -}}
-
-{{- $pages := (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
-{{- $limit := .Site.Config.Services.RSS.Limit }}
-{{- if ge $limit 1 }}
-{{- $pages = first $limit $pages }}
-{{- end -}}
 {{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{/* The XML declaration is emitted before anything else, including the
+     variables below, since whitespace may not precede it. */}}
+{{ $authorName := "" }}
+{{ with site.Params.author }}
+  {{ if reflect.IsMap . }}
+    {{ with .name }}
+      {{ $authorName = . }}
+    {{ end }}
+  {{ else }}
+    {{ $authorName = . }}
+  {{ end }}
+{{ end }}
+{{ if not $authorName }}
+  {{ errorf "Missing author" }}
+{{ end }}
+
+{{ $authorEmail := "" }}
+{{ with site.Params.author }}
+  {{ if reflect.IsMap . }}
+    {{ with .email }}
+      {{ $authorEmail = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $pages := (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
+{{ $limit := .Site.Config.Services.RSS.Limit }}
+{{ if ge $limit 1 }}
+{{ $pages = first $limit $pages }}
+{{ end }}
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>{{ .Permalink | strings.TrimSuffix "index.gmi" }}</id>
     <title>{{ .Site.Title }}</title>
@@ -35,7 +37,7 @@
     <link href="{{ .Permalink | strings.TrimSuffix "index.gmi" | safeURL }}" rel="alternate" />
     <author>
         <name>{{ $authorName }}</name>
-        {{- with $authorEmail }}
+        {{ with $authorEmail }}
         <email>{{ . }}</email>{{ end }}
     </author>
     <generator>Hugo -- gohugo.io</generator>

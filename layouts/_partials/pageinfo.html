@@ -1,28 +1,28 @@
-{{ $dateFormat := .Site.Params.dateFormat | default ":date_long" -}}
+{{ $dateFormat := .Site.Params.dateFormat | default ":date_long" }}
 
-{{/* user-overridable parameter $dateFormat is escaped pre-insertion so that HTML entities can be inserted */ -}}
-{{ $nonBreakingPublishDate := .Page.PublishDate | time.Format $dateFormat | htmlEscape -}}
-{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate " " "&nbsp;" -}}
-{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate "-" "&#8209;" -}}
+{{/* user-overridable parameter $dateFormat is escaped pre-insertion so that HTML entities can be inserted */}}
+{{ $nonBreakingPublishDate := .Page.PublishDate | time.Format $dateFormat | htmlEscape }}
+{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate " " "&nbsp;" }}
+{{ $nonBreakingPublishDate = replace $nonBreakingPublishDate "-" "&#8209;" }}
 
-{{/* user-overridable parameter $readingTime is escaped pre-insertion so that HTML entities can be inserted */ -}}
-{{ $nonBreakingReadingTime := i18n "readingTime" .ReadingTime | htmlEscape -}}
-{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime " " "&nbsp;" -}}
-{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime "-" "&#8209;" -}}
+{{/* user-overridable parameter $readingTime is escaped pre-insertion so that HTML entities can be inserted */}}
+{{ $nonBreakingReadingTime := i18n "readingTime" .ReadingTime | htmlEscape }}
+{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime " " "&nbsp;" }}
+{{ $nonBreakingReadingTime = replace $nonBreakingReadingTime "-" "&#8209;" }}
 
-{{ $breakingTags := .Param (lower (i18n "tags")) -}}
-{{ $nonBreakingTags := slice -}}
-{{ range $breakingTags -}}
-  {{/* user-defined tags are escaped pre-insertion so that HTML entities can be inserted */ -}}
-  {{ $nonBreakingTag := htmlEscape . -}}
-  {{ $nonBreakingTag = replace $nonBreakingTag " " "&nbsp;" -}}
-  {{ $nonBreakingTag = replace $nonBreakingTag "-" "&#8209;" -}}
-  {{ $nonBreakingTags = $nonBreakingTags | append $nonBreakingTag -}}
-{{ end -}}
+{{ $breakingTags := .Param (lower (i18n "tags")) }}
+{{ $nonBreakingTags := slice }}
+{{ range $breakingTags }}
+  {{/* user-defined tags are escaped pre-insertion so that HTML entities can be inserted */}}
+  {{ $nonBreakingTag := htmlEscape . }}
+  {{ $nonBreakingTag = replace $nonBreakingTag " " "&nbsp;" }}
+  {{ $nonBreakingTag = replace $nonBreakingTag "-" "&#8209;" }}
+  {{ $nonBreakingTags = $nonBreakingTags | append $nonBreakingTag }}
+{{ end }}
 
-{{/* user-overridable parameter $audioAvailable is escaped pre-insertion so that HTML entities can be inserted */ -}}
-{{ $nonBreakingAudioAvailable := i18n "audioAvailable" .Title | htmlEscape -}}
-{{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable " " "&nbsp;" -}}
-{{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable "-" "&#8209;" -}}
+{{/* user-overridable parameter $audioAvailable is escaped pre-insertion so that HTML entities can be inserted */}}
+{{ $nonBreakingAudioAvailable := i18n "audioAvailable" .Title | htmlEscape }}
+{{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable " " "&nbsp;" }}
+{{ $nonBreakingAudioAvailable = replace $nonBreakingAudioAvailable "-" "&#8209;" }}
 
 <span class="meta-item">{{ emojify ":calendar:" }}&nbsp;<time {{ printf "datetime=%q" (.Page.PublishDate | time.Format "2006-01-02T15:04:05-0700") | safeHTMLAttr }}>{{ $nonBreakingPublishDate | safeHTML }}</time></span><span class="meta-item">{{ emojify ":stopwatch:" }}&nbsp;<time datetime="PT{{ .ReadingTime }}M">{{ $nonBreakingReadingTime | safeHTML }}</time></span>{{ if where .Resources "MediaType.MainType" "audio" }}<span class="meta-item">{{ emojify ":headphones:" }}&nbsp;{{ $nonBreakingAudioAvailable | safeHTML }}</span>{{ end }}{{ if $nonBreakingTags }}<span class="meta-item">{{ emojify ":label:" }}&nbsp;{{ range $key, $val := $nonBreakingTags }}{{ if $key }} {{ end }}<a class="link link--internal" href='{{ relLangURL (lower (i18n "tags")) }}/{{ index $breakingTags $key | urlize }}/' rel="noreferrer">{{ $val | safeHTML }}</a>{{ end }}</span>{{ end }}

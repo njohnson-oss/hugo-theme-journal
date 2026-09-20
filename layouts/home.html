@@ -1,22 +1,22 @@
-{{ define "main" -}}
+{{ define "main" }}
 <main class="main">
   <h1>{{ .Site.Params.indexTitle }}</h1>
   <p>{{ .Site.Params.indexIntro }}</p>
-  {{ if .Site.Menus.main -}}
+  {{ if .Site.Menus.main }}
   <h2>{{ i18n "navLinks" }}</h2>
   <nav>
     <ul class="list">
-    {{- range .Site.Menus.main }}
+    {{ range .Site.Menus.main }}
       <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .URL }}" rel="noreferrer">{{ .Name }}</a></li>
-    {{- end }}
+    {{ end }}
     </ul>
   </nav>
-  {{ end -}}
-  {{ with (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse -}}
+  {{ end }}
+  {{ with (where .Site.RegularPages "Section" "entry").ByPublishDate.Reverse }}
   <h2>{{ i18n "journalEntries" }}</h2>
-  {{ range . -}}
+  {{ range . }}
   {{ partial "metadata.html" . }}
-  {{ end -}}
-  {{ end -}}
+  {{ end }}
+  {{ end }}
 </main>
-{{- end }}
+{{ end }}
