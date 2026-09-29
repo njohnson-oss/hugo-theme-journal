@@ -2,6 +2,14 @@
 
 Hugo Journal Theme is an accessible, no-JS, minimalist, high-contrast Hugo theme that outputs Gemtext and HTML. It's suitable for blogs.
 
+The homepage of the [example site](exampleSite), rendered as a website in Firefox:
+
+![The example site's homepage in Firefox](images/website.png)
+
+And as a capsule in the Lagrange Gemini client:
+
+![The example capsule's homepage in Lagrange](images/capsule.png)
+
 ## Features
 
 * Outputs Gemtext for the [Gemini protocol](https://gemini.circumlunar.space/docs/specification.gmi)
