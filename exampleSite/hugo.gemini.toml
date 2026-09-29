@@ -2,7 +2,7 @@
 # hugo.toml; see the readme for why the two are separate.
 
 baseURL = "gemini://example.com/"
-languageCode = "en-us"
+locale = "en-us"
 title = "A Journal"
 # The directory name the theme is installed under in themes/.
 theme = "journal"

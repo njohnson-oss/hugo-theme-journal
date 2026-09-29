@@ -30,7 +30,7 @@ The [gemtext compatibility reference guide](GEMTEXT-COMPATIBILITY-REFERENCE-GUID
 
 ## Get The Theme
 
-This theme requires Hugo 0.146.0 or later.
+This theme requires Hugo 0.158.0 or later.
 
 Run from the root of your Hugo site:
 
