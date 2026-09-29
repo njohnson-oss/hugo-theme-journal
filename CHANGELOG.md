@@ -1,5 +1,16 @@
 # Changelog
 
+## [2026.09.28] - 2026-09-28
+
+### Changed
+
+- Change minimum supported Hugo version to 0.158.0
+- Replace "languageCode" with "locale" in example site configuration
+
+### Added
+
+- Add example capsule & example site screenshots to README
+
 ## 2026.09.19 - 2026-09-19
 
 ### Changed
