@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026.09.29 - 2026-09-29
+
+### Changed
+
+- Stop setting "build.list" to never in the default archetype and the example about page, so that standalone pages appear in the sitemap and on the pages of their tags
+
+### Added
+
+- Add GitHub Actions workflow that builds the example site and capsule on the minimum supported and latest Hugo versions, and checks feeds, HTML, internal links and accessibility
+
+### Fixed
+
+- Fix Atom feed dates not following RFC 3339, whose time zone offset requires a colon
+
 ## 2026.09.28 - 2026-09-28
 
 ### Changed
