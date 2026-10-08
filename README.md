@@ -1,5 +1,7 @@
 # Journal Theme For Hugo
 
+[![CI](https://github.com/njohnson-oss/hugo-theme-journal/actions/workflows/ci.yml/badge.svg)](https://github.com/njohnson-oss/hugo-theme-journal/actions/workflows/ci.yml)
+
 Hugo Journal Theme is an accessible, no-JS, minimalist, high-contrast Hugo theme that outputs Gemtext and HTML. It's suitable for blogs.
 
 The homepage of the [example site](exampleSite), rendered as a website in Firefox:
