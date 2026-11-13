@@ -7,7 +7,7 @@
 
 ## {{ i18n "feeds" }}
 
-=> {{ .RelPermalink | replaceRE `index.gmi$` "atom.xml" }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
+=> {{ .RelPermalink | replaceRE `index.gmi$` "atom.xml" }} {{ emojify ":satellite_antenna:" }} {{ i18n "atomFeed" }}
 
 
 ## {{ i18n "journalEntries" -}}

@@ -8,7 +8,7 @@
 
 ## {{ i18n "feeds" }}
 
-=> {{ .RelPermalink }} {{ emojify ":link:" }} {{ i18n "atomFeed" }}
+=> {{ .RelPermalink }} {{ emojify ":satellite_antenna:" }} {{ i18n "atomFeed" }}
 {{- end }}
 {{- with .Pages.ByPublishDate.Reverse }}
 
