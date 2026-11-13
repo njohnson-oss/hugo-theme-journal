@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026.11.13] - 2026-11-13
+
+### Changed
+
+- Mark links back to the homepage with a house emoji instead of a link emoji
+- Mark feed links with a satellite antenna emoji instead of a link emoji
+- Mark tag links with a label emoji instead of a link emoji, matching the one shown beside entry tags
+- Update example site & example capsule screenshots in README
+
 ## 2026.09.29 - 2026-09-29
 
 ### Changed
@@ -650,3 +659,5 @@
 ## 2023.01.21 - 2023-01-21
 
 _First release._
+
+[2026.11.13]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.09.29...2026.11.13
