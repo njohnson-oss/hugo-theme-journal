@@ -9,7 +9,7 @@
   <h2>{{ i18n "list" }}</h2>
   <ul class="list">
   {{ range .Data.Pages }}
-    <li class="list__item">{{ emojify ":link:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
+    <li class="list__item">{{ emojify ":label:" }}&nbsp;<a class="link link--internal" href="{{ .RelPermalink }}" rel="noreferrer">{{ .Title }}</a></li>
   {{ end }}
   </ul>
 </main>

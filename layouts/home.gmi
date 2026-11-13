@@ -19,7 +19,7 @@
 
 ## {{ i18n "tags" }}
 
-=> {{ $tagList.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ i18n "tagList" -}}
+=> {{ $tagList.RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":label:" }} {{ i18n "tagList" -}}
 
 {{ end -}}
 

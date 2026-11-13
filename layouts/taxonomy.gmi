@@ -12,6 +12,6 @@
 
 ## {{ i18n "list" }}
 {{ range .Data.Pages }}
-=> {{ .RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":link:" }} {{ .Title -}}
+=> {{ .RelPermalink | strings.TrimSuffix "index.gmi" }} {{ emojify ":label:" }} {{ .Title -}}
 {{ end -}}
 {{ end }}
