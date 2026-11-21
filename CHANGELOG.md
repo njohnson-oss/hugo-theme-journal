@@ -1,5 +1,11 @@
 # Changelog
 
+## [2026.11.21] - 2026-11-21
+
+### Added
+
+- Add GitHub Actions workflow that publishes a release for each tag, with the tag's message as its release notes
+
 ## [2026.11.13] - 2026-11-13
 
 ### Changed
@@ -660,4 +666,5 @@
 
 _First release._
 
+[2026.11.21]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.11.13...2026.11.21
 [2026.11.13]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.09.29...2026.11.13
