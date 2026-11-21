@@ -230,7 +230,7 @@
 
 ### Fixed
 
-- Remove extra whitespace accidentally introduced in v1.3.5
+- Remove extra whitespace accidentally introduced in 2024.06.28
 
 ## 2024.06.30 - 2024-06-30
 
