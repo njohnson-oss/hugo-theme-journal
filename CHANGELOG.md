@@ -1,5 +1,12 @@
 # Changelog
 
+## [2026.11.27] - 2026-11-27
+
+### Added
+
+- Add Forgejo Actions workflow for Codeberg that builds the example site and capsule on the minimum supported and latest Hugo versions, and checks feeds, HTML, internal links and accessibility
+- Add Forgejo Actions workflow for Codeberg that publishes a release for each tag, with the tag's message as its release notes
+
 ## [2026.11.21] - 2026-11-21
 
 ### Added
@@ -666,5 +673,6 @@
 
 _First release._
 
+[2026.11.27]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.11.21...2026.11.27
 [2026.11.21]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.11.13...2026.11.21
 [2026.11.13]: https://github.com/njohnson-oss/hugo-theme-journal/compare/2026.09.29...2026.11.13
