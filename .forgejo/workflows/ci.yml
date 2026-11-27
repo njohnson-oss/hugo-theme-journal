@@ -1,0 +1,161 @@
+---
+name: CI
+
+# Mirrors .github/workflows/ci.yml for Codeberg's Forgejo Actions. Keep the
+# two in step. Differences from the GitHub workflow:
+#
+# - Expressions use the forge context, which Forgejo also provides as
+#   forgejo and, for compatibility, as github.
+# - Jobs run on Codeberg's hosted runners, whose image is
+#   catthehacker/ubuntu:act-latest. Their runtime limits are 5 minutes for
+#   codeberg-small and 10 for codeberg-medium.
+# - A bare action name resolves against the instance's DEFAULT_ACTIONS_URL,
+#   which on Codeberg is data.forgejo.org. Actions mirrored there are given
+#   by name; the rest are given as full GitHub URLs.
+# - Artifacts use Forgejo's patched upload-artifact and download-artifact,
+#   because upstream v4 and later refuse to run outside github.com.
+# - The Firefox that pa11y launches needs libraries the image lacks.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ forge.workflow }}-${{ forge.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (Hugo ${{ matrix.hugo }})
+    runs-on: codeberg-small
+    strategy:
+      fail-fast: false
+      matrix:
+        # The oldest version is min_version in theme.toml; keep the two in step.
+        hugo: ["0.158.0", "latest"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: https://github.com/peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ matrix.hugo }}
+
+      # The website and the capsule use separate configuration files, so
+      # either can break on its own. Warnings fail the build so that a
+      # deprecation or a missing template does not go unnoticed.
+      - name: Build the website
+        run: >
+          hugo --source exampleSite --themesDir ../.. --theme "$(basename "$PWD")"
+          --config hugo.toml --destination "$PWD/public/web" --panicOnWarning
+
+      - name: Build the capsule
+        run: >
+          hugo --source exampleSite --themesDir ../.. --theme "$(basename "$PWD")"
+          --config hugo.gemini.toml --destination "$PWD/public/gemini" --panicOnWarning
+
+      - name: Check that neither output contains the other's formats
+        run: |
+          status=0
+          if find public/gemini -type f \( -name '*.html' -o -name '*.css' \) | grep .; then
+            echo "::error::The capsule contains website files."
+            status=1
+          fi
+          if find public/web -type f -name '*.gmi' | grep .; then
+            echo "::error::The website contains gemtext files."
+            status=1
+          fi
+          exit $status
+
+      - name: Check that the feeds are well-formed XML
+        run: |
+          find public -name '*.xml' -print0 | xargs -0 python3 -c '
+          import sys, xml.etree.ElementTree as ET
+          failed = False
+          for path in sys.argv[1:]:
+              try:
+                  ET.parse(path)
+              except ET.ParseError as e:
+                  print(f"::error file={path}::{e}")
+                  failed = True
+          sys.exit(failed)
+          '
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Validate the HTML
+        run: npx --yes html-validate@11.16.1 --config .github/htmlvalidate.json "public/web/**/*.html"
+
+      # Only links within the website are checked; external ones would make
+      # the result depend on other people's servers.
+      - name: Check the links
+        uses: https://github.com/lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --no-progress --offline
+            --root-dir ${{ forge.workspace }}/public/web
+            --index-files index.html --include-fragments
+            public/web
+          jobSummary: false
+
+      - uses: forgejo/upload-artifact@v5
+        with:
+          name: site-hugo-${{ matrix.hugo }}
+          path: public/
+          retention-days: 7
+
+  accessibility:
+    name: Accessibility
+    needs: build
+    runs-on: codeberg-medium
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: forgejo/download-artifact@v7
+        with:
+          name: site-hugo-latest
+          path: public/
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      # The runner image is a trimmed Ubuntu without a desktop, so the
+      # libraries Firefox links against are installed here. The image is
+      # Ubuntu 24.04 or later, where GTK and ALSA carry the t64 suffix; the
+      # old names are virtual packages apt will not choose a provider for.
+      - name: Install Firefox's libraries
+        run: |
+          apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            libgtk-3-0t64 libasound2t64 libdbus-glib-1-2 libx11-xcb1 libxtst6
+
+      # The pages are tested in Firefox, which pa11y is told to launch in
+      # pa11yci.json. Puppeteer only ever downloads Chrome on its own, so
+      # Firefox is installed explicitly, and the unused Chrome download is
+      # skipped to stay within the runner's time limit.
+      - name: Install pa11y-ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pa11y" --no-audit --no-fund pa11y-ci@4.1.1
+          "$RUNNER_TEMP/pa11y/node_modules/.bin/puppeteer" browsers install firefox
+
+      # The site is served rather than opened from disk so that its
+      # root-relative stylesheet loads and colour contrast is tested. Pages
+      # come from the build rather than the sitemap, which leaves out the
+      # 404 page.
+      - name: Check the website's accessibility
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory public/web &
+          server=$!
+          trap 'kill "$server"' EXIT
+          for _ in $(seq 20); do
+            curl -sf -o /dev/null http://127.0.0.1:8080/ && break
+            sleep 0.5
+          done
+          (cd public/web && find . -name '*.html' | sort) \
+            | sed 's#^\./#http://127.0.0.1:8080/#; s#index\.html$##' \
+            | xargs "$RUNNER_TEMP/pa11y/node_modules/.bin/pa11y-ci" --config .github/pa11yci.json
