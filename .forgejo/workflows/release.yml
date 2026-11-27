@@ -1,0 +1,51 @@
+---
+name: Release
+
+# Mirrors .github/workflows/release.yml for Codeberg's Forgejo Actions. Keep
+# the two in step. Forgejo has no gh, so the release is created through the
+# Forgejo API with the workflow's automatic token. Expressions use the
+# forge context, which Forgejo also provides as forgejo and, for
+# compatibility, as github.
+#
+# Publishes a release for each version tag, with the tag's message as its
+# notes. The tag must be annotated: a lightweight one has no message.
+#
+# Versions are dates, YYYY.MM.DD. A further release on the same day appends
+# a counter, YYYY.MM.DD.N.
+on:
+  push:
+    tags:
+      - "[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9]"
+      - "[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9].[0-9]+"
+
+jobs:
+  release:
+    runs-on: codeberg-tiny
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - name: Read the tag message
+        env:
+          TAG: ${{ forge.ref_name }}
+        run: |
+          if [ "$(git cat-file -t "$TAG")" != tag ]; then
+            echo "::error::$TAG is a lightweight tag, so it has no message"
+            exit 1
+          fi
+          # Subject and body, leaving out any signature.
+          git tag --list "$TAG" --format='%(contents:subject)%0a%0a%(contents:body)' > notes.md
+
+      - name: Publish the release
+        env:
+          TOKEN: ${{ forge.token }}
+          API: ${{ forge.api_url }}
+          REPO: ${{ forge.repository }}
+          TAG: ${{ forge.ref_name }}
+        run: |
+          jq -n --arg tag "$TAG" --rawfile notes notes.md \
+            '{tag_name: $tag, name: $tag, body: $notes}' > release.json
+          curl -sS --fail-with-body \
+            -H "Authorization: token $TOKEN" \
+            -H "Content-Type: application/json" \
+            --data @release.json \
+            "$API/repos/$REPO/releases"
